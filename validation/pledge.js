@@ -10,11 +10,11 @@ module.exports = function validatePledgeInput(data) {
   // data.address = validText(data.address) ? data.address : "";
   // data.state = validText(data.state) ? data.state : "";
   // data.city = validText(data.city) ? data.city : "";
-  data.ownerId = validText(data.ownerId) ? data.ownerId : "";
+  // data.ownerId = validText(data.ownerId) ? data.ownerId : "";
 
-  if (Validator.isEmpty(data.ownerId)) {
-    errors.user = "Owner id required.";
-  }
+  // if (Validator.isEmpty(data.ownerId)) {
+  //   errors.user = "Owner id required.";
+  // }
 
   if (Validator.isEmpty(data.title)) {
     errors.title = "Title field is required.";
