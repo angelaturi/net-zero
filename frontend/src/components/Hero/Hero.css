@@ -1,0 +1,8 @@
+.hero {
+  height: 68vh;
+  min-height: 550px;
+  background-image: url(https://uploads-ssl.webflow.com/5d3aa39…/5ec78d5…_1-min.jpg);
+  background-position: 70% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
