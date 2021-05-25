@@ -38,6 +38,15 @@ body{
 
 .links{
     display: flex;
+   border-bottom: 1px solid darkgray;
+   padding-bottom: 10px;
+}
+
+.dates{
+    
+    display: flex;
+    justify-content: space-between;
+
 }
 
 
@@ -49,3 +58,7 @@ font-size: 1rem;
 .links p:hover{
     color: blue;
 }
+
+
+
+
