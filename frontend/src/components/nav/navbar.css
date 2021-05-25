@@ -80,7 +80,7 @@
     /* text-shadow: 1px 1px rgba(51, 51, 51, 0.527); */
 }
 
-.events-button-header {
+.feed-button-header {
     font-family: Helvetica, sans-serif;
     font-weight: bold;
     cursor: pointer;
@@ -89,12 +89,12 @@
     padding-right: 20px;
     color: black;
     position: fixed;
-    right: 230px;
+    right: 260px;
     margin-top: 12px;
 
 }
 
-.profile-button-header {
+.my-pledges-button-header {
     font-family: Helvetica, sans-serif;
     font-weight: bold;
     cursor: pointer;
@@ -109,8 +109,8 @@
     right: 150px;
 }
 
-.events-button-header:hover,
-.profile-button-header:hover {
+.feed-button-header:hover,
+.my-pledges-button-header:hover {
      color: rgb(104,220,93);
 }
 
