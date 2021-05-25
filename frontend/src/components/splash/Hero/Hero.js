@@ -2,12 +2,14 @@ import "./Hero.css";
 
 const Hero = () => (
   <section className="hero">
-    <h1>Build Golden Habits, Unlock your Potential</h1>
-    <h4>
+    <div className="hero-box">
+    <div className="hero-header">Build Golden Habits, Unlock your Potential</div>
+    <div className="hero-subheader">
       Focus on what truly matters with Habitify. Build the best version of
       yourself by mastering your habits.
-    </h4>
-    <button>Get Started</button>
+    </div>
+    <button className="hero-button">Get Started</button>
+    </div>
   </section>
 );
 

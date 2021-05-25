@@ -3,7 +3,7 @@
     top: 0;
     left: 10px;
     width: 100%;
-    z-index: 999;
+    /* z-index: 999; */
     height: 59px;
     overflow: hidden;
     -webkit-transition: height 0.3s;
@@ -12,9 +12,15 @@
 }
 
 .logo-placeholder {
+    cursor: pointer;
     font-family: Helvetica, sans-serif;
     font-weight: bold;
     font-size: 40px;
+    color: black;
+}
+
+.logo-placeholder:hover {
+    color: rgb(104,220,93);
 }
 
 .main-header {
@@ -26,7 +32,7 @@
     height: 59px;
     border-bottom: .5px solid lightgray;
     z-index: 999;
-    /* background-color: white; */
+    background-color: white;
     align-items:center;
 }
 
@@ -126,4 +132,5 @@
 .navbar-logout-button:hover {
     background-color:  rgb(104,220,93);
     border: 1px solid  rgb(104,220,93);
+    color: black;
 }

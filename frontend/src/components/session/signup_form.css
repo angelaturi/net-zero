@@ -35,9 +35,13 @@
     height: 40px;
     width: 360px;
     margin-top: 10px;
+    font-family: Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .signup-submit-button:hover {
     background-color:  rgb(104,220,93);
     border: 1px solid  rgb(104,220,93);
+    color: black;
 }

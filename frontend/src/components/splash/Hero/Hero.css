@@ -2,7 +2,47 @@
   height: 68vh;
   min-height: 550px;
   background-image: url(https://uploads-ssl.webflow.com/5d3aa39…/5ec78d5…_1-min.jpg);
-  background-position: 70% 50%;
+  background-position: 60% 50%;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+.hero-box {
+  margin-top: 300px;
+  text-align: center;
+}
+
+.hero-header {
+  font-family: Helvetica, sans-serif;
+  font-size: 40px;
+}
+
+.hero-subheader {
+  font-family: Helvetica, sans-serif;
+  font-size: 20px;
+  margin: 20px;
+}
+
+.hero-button {
+    background-color: black;
+    color: white;
+    height: 40px;
+    width: 150px;
+    font-family: Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    align-items: center;
+    height: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: black;
+    color:white;
+    margin-top: 20px;
+}
+
+.hero-button:hover {
+    background-color:  rgb(104,220,93);
+    border: 1px solid  rgb(104,220,93);
+    color: black;
 }

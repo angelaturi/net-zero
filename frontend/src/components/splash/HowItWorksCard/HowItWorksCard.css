@@ -1,0 +1,9 @@
+.how-it-works-card-container {
+    margin: 30px;
+    width: 300px;
+
+}
+.how-it-works-card-header {
+    font-size: 25px;
+    font-weight: bold;
+}
