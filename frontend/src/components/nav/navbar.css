@@ -72,7 +72,7 @@
     color: rgb(104,220,93);
 }
 
-.events-button-header {
+.pledges-button-header {
     font-family: Helvetica, sans-serif;
     font-weight: bold;
     cursor: pointer;
@@ -99,7 +99,7 @@
     margin-top: 12px;
 }
 
-.events-button-header:hover,
+.pledges-button-header:hover,
 .profile-button-header:hover {
      color: rgb(104,220,93);
 }
