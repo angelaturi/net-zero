@@ -67,6 +67,15 @@ main{
 
 .links{
     display: flex;
+   border-bottom: 1px solid darkgray;
+   padding-bottom: 10px;
+}
+
+.dates{
+    
+    display: flex;
+    justify-content: space-between;
+
 }
 
 .pledge-title {
@@ -89,6 +98,7 @@ font-size: 1rem;
     color: blue;
 }
 
+<<<<<<< HEAD
 .pledges-index-title {
     font-family: Helvetica, sans-serif;
     font-size: 36px;
@@ -112,3 +122,8 @@ font-size: 1rem;
     border: 1px solid  rgb(104,220,93);
 
 }
+=======
+
+
+
+>>>>>>> 6a8d82c8c90fedfb6fddb4aa8ba41a3714ac1799

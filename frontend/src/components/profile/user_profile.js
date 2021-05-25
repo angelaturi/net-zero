@@ -3,16 +3,41 @@ import Completed from "./Completed";
 import Calendar from "react-calendar";
 import Pending from "./Pending";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
+import './User_profile.css'
 
 const UserProfile = () => {
   const [page, setPage] = useState("completed");
   const [value, onChange] = useState(new Date());
+  const [showCalendar, setShowCalendar] = useState(false)
+
+     let d = new Date();
+     let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+     let months = [
+       "January",
+       "February",
+       "March",
+       "April",
+       "May",
+       "June",
+       "July",
+       "August",
+       "September",
+       "October",
+       "November",
+       "December",
+     ];
+     const finalDate = `${days[d.getDay()]}, ${
+       months[d.getMonth()]
+     } ${d.getDate()}`;
+
+
+     console.log(finalDate)
 
   return (
-    <div>
+    <div className="profile-main">
       <div className="dates">
-        <p>TUESDAY, 25 MAY</p>
-        <CalendarTodayIcon />
+        <p>{finalDate}</p>
+        <CalendarTodayIcon onClick={() => setShowCalendar(!showCalendar)} />
       </div>
       <div className="links">
         <p onClick={() => setPage("pending")}>Pending</p>
@@ -21,8 +46,12 @@ const UserProfile = () => {
 
       <div>{page === "completed" ? <Completed /> : <Pending />}</div>
 
-      <div>
-        <Calendar onChange={onChange} value={value} />
+      <div className="calendar">
+        {showCalendar ? (
+          <Calendar  onChange={onChange} value={value} />
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
@@ -30,23 +59,5 @@ const UserProfile = () => {
 
 export default UserProfile;
 
-// render() {
-//     let d = new Date();
-//     let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
-//     let months = [
-//       "January",
-//       "February",
-//       "March",
-//       "April",
-//       "May",
-//       "June",
-//       "July",
-//       "August",
-//       "September",
-//       "October",
-//       "November",
-//       "December",
-//     ];
-//     const finalDate = `${days[d.getDay()]}, ${
-//       months[d.getMonth()]
-//     } ${d.getDate()}`;
+
+ 
