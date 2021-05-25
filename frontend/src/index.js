@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -17,6 +18,8 @@ ReactDOM.render(
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 =======
+=======
+>>>>>>> 4dc78ab569ac93f6cf185d67d46bfa2eca0f8207
 // src/index.js
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -62,5 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(<Root store={store} />, root);
 });
 
+<<<<<<< HEAD
+window.axios = axios;
+>>>>>>> 4dc78ab569ac93f6cf185d67d46bfa2eca0f8207
+=======
 window.axios = axios;
 >>>>>>> 4dc78ab569ac93f6cf185d67d46bfa2eca0f8207
