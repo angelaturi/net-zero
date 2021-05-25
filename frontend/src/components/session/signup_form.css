@@ -1,0 +1,43 @@
+.signup-form-container {
+    position: relative;
+    margin: 200px 0 100px 40%;
+
+}
+
+.signup-form-header {
+    font-size: 28px;
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.signup-email-input,
+.signup-handle-input,
+.signup-password-input {
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 12px;
+    color: black;
+    border: 1px solid lightgray;
+    width: 360px;
+    height: 40px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: normal;
+    justify-content: normal;
+    align-items: center;
+    text-align: left;
+    margin-top: 10px;
+
+}
+
+.signup-submit-button {
+    background-color: black;
+    color: white;
+    height: 40px;
+    width: 360px;
+    margin-top: 10px;
+}
+
+.signup-submit-button:hover {
+    background-color:  rgb(104,220,93);
+    border: 1px solid  rgb(104,220,93);
+}

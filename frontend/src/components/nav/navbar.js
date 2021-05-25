@@ -18,17 +18,25 @@ class NavBar extends React.Component {
   getLinks() {
       if (this.props.loggedIn) {
         return (
-            <div>
-                <Link to={'/events'}>Events</Link>
-                <Link to={'/profile'}>Profile</Link>
-                <button onClick={this.logoutUser}>Logout</button>
+            <div className="header">
+              <nav className="main-header">
+                <div className="top-header"> 
+                <Link to={'/events'} className="events-button-header" style={{ textDecoration: 'none' }}>Pledges</Link>
+                <Link to={'/profile'} className="profile-button-header" style={{ textDecoration: 'none' }}>Profile</Link>
+                <button className="navbar-logout-button" onClick={this.logoutUser}>Logout</button>
+                </div>
+              </nav>
             </div>
         );
       } else {
         return (
-            <div>
-                <Link to={'/signup'}>Signup</Link>
-                <Link to={'/login'}>Login</Link>
+            <div className="header">
+              <nav className="main-header">
+                <div className="top-header"> 
+                <div><Link to={'/signup'} className="signup-button-header" style={{ textDecoration: 'none' }}>Signup</Link></div>
+                <div><Link to={'/login'} className="login-button-header" style={{ textDecoration: 'none' }}>Login</Link></div>
+                </div>
+                </nav>
             </div>
         );
       }
@@ -37,7 +45,7 @@ class NavBar extends React.Component {
   render() {
       return (
         <div>
-            <h1>NetZero</h1>
+            <div className="logo-placeholder">NETZERO</div>
             { this.getLinks() }
         </div>
       );
