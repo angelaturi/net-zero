@@ -29,11 +29,17 @@
 
 }
 
+.signup-email-input:hover,
+.signup-handle-input:hover,
+.signup-password-input:hover {
+    border: 1px solid rgb(104,220,93);
+}
+
 .signup-submit-button {
     background-color: black;
     color: white;
     height: 40px;
-    width: 360px;
+    width: 367px;
     margin-top: 10px;
     font-family: Helvetica, sans-serif;
     font-size: 14px;

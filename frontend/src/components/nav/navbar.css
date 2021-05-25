@@ -1,9 +1,9 @@
 .header {
     position: fixed;
     top: 0;
-    left: 10px;
+    /* left: 10px; */
     width: 100%;
-    /* z-index: 999; */
+    z-index: 999;
     height: 59px;
     overflow: hidden;
     -webkit-transition: height 0.3s;
@@ -21,6 +21,7 @@
 
 .logo-placeholder:hover {
     color: rgb(104,220,93);
+    text-shadow: 1px 1px rgba(51, 51, 51, 0.363);
 }
 
 .main-header {
@@ -76,6 +77,7 @@
 .login-button-header:hover,
 .signup-button-header:hover {
     color: rgb(104,220,93);
+    /* text-shadow: 1px 1px rgba(51, 51, 51, 0.527); */
 }
 
 .events-button-header {
@@ -97,12 +99,14 @@
     font-weight: bold;
     cursor: pointer;
     align-items: center;
+    height: 40px;
     padding-left: 20px;
     padding-right: 20px;
     color: black;
     position: fixed;
-    right: 150px;
+    right: 30px;
     margin-top: 12px;
+    right: 150px;
 }
 
 .events-button-header:hover,

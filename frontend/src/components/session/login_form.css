@@ -28,10 +28,13 @@
     align-items: center;
     text-align: left;
     margin-top: 10px;
-
-
 }
 
+.login-email-input:hover,
+.login-password-input:hover {
+    border: 1px solid rgb(104,220,93);
+
+}
 
 
 .login-submit-button {

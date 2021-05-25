@@ -4,6 +4,12 @@
 
 }
 .how-it-works-card-header {
+    /* margin-top: 50px; */
     font-size: 25px;
     font-weight: bold;
+}
+
+.how-it-works-card-header::selection {
+  background-color: rgb(104,220,93);
+  opacity: 80%;
 }

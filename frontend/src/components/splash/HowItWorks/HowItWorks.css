@@ -8,12 +8,22 @@
 
 .how-it-works-title {
   font-size: 32px;
+  margin-top: 50px;
+}
 
+.how-it-works-title::selection {
+  background-color: rgb(104,220,93);
+    opacity: 80%;
 }
 
 .how-it-works-subtitle {
   font-size: 18px;
   margin-top: 20px;
+}
+
+.how-it-works-subtitle::selection {
+  background-color: rgb(104,220,93);
+  opacity: 80%;
 }
 
 .step-container {
