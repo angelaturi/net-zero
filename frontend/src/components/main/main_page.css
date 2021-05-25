@@ -1,0 +1,51 @@
+body{
+    background-color: lightgray;
+}
+
+.item1{
+    display: flex;
+}
+
+.pledgeImg{
+    width: 100%;
+    height: 400px;
+}
+
+.pledgeImg img{
+    width: 100%;
+    height: 100%
+}
+
+.avatar{
+    margin-right: 10px;
+}
+
+.main{
+    margin: 0 auto;
+}
+
+.feedItem{
+    background-color: #fff;
+        width: 80%;
+    margin: 10vh auto;
+    padding: 20px;
+}
+
+.pledgeLink{
+    text-decoration: none;
+    color: blue;
+}
+
+.links{
+    display: flex;
+}
+
+
+.links p{
+margin-right: 10%;
+font-size: 1rem;
+}
+
+.links p:hover{
+    color: blue;
+}
