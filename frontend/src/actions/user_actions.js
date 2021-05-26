@@ -1,12 +1,11 @@
-import * as APIUtil from "../util/session_api_util";
+import * as APIUtil from "../util/user_api_util";
 import jwt_decode from "jwt-decode";
 
-export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
-export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
-export const RECEIVE_USER_LOGOUT = "RECEIVE_USER_LOGOUT";
-export const RECEIVE_USER_SIGN_IN = "RECEIVE_USER_SIGN_IN";
+export const GET_ALL_USERS = "GET_ALL_USERS";
+export const GET_ALL_USERS_SUCCESS = "GET_ALL_USERS_SUCCESS";
+export const GET_ALL_USERS_FAILURE = "GET_ALL_USERS_FAILURE";
 
-// Dispatch this when our user signs in
+/*// Dispatch this when our user signs in
 export const receiveCurrentUser = (currentUser) => ({
   type: RECEIVE_CURRENT_USER,
   currentUser,
@@ -53,18 +52,23 @@ export const logout = () => (dispatch) => {
   localStorage.removeItem("jwtToken");
   APIUtil.setAuthToken(false);
   dispatch(logoutUser());
-};
+};*/
 
-// Upon login, set the session token and dispatch the current user. Dispatch errors on failure.
-export const getAllUsers = (user) => (dispatch) =>
-  APIUtil.login(user)
+export const getAllUsersSuccess = (users) => ({
+  type: GET_ALL_USERS_SUCCESS,
+  payload: users,
+});
+
+export const getAllUsersFailure = (errors) => ({
+  type: GET_ALL_USERS_FAILURE,
+  payload: errors,
+});
+
+export const getAllUsers = () => (dispatch) =>
+  APIUtil.getAllUsers()
     .then((res) => {
-      const { token } = res.data;
-      localStorage.setItem("jwtToken", token);
-      APIUtil.setAuthToken(token);
-      const decoded = jwt_decode(token);
-      dispatch(receiveCurrentUser(decoded));
+      dispatch(getAllUsersSuccess(res.data));
     })
     .catch((err) => {
-      dispatch(receiveErrors(err.response.data));
+      dispatch(getAllUsersFailure(err.response.data));
     });

@@ -8,7 +8,7 @@ const User = require("../../models/User");
 
 // All Public Pledges
 router.get("/", (req, res) => {
-  Pledge.find({ public: true })
+  Pledge.find()
     .sort({ date: -1 })
     .then((pledges) => res.json(pledges))
     .catch((err) =>

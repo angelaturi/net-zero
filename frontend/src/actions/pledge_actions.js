@@ -1,4 +1,3 @@
-import { patchPledge, createPledge } from "../util/pledge_api_utils";
 import * as PledgeApiUtil from "../util/pledge_api_util";
 
 export const CREATE_PLEDGE = "CREATE_PLEDGE";
@@ -54,17 +53,13 @@ export const editPledgeAction = (patch, dispatch) => {
 };
 
 export const createPledgeAction = (data) => async (dispatch) => {
-  console.log("data==>>", data, "dis", dispatch);
   try {
-    const res = await createPledge(data);
-    dispatch(editPledgeSuccess(res.data));
+    const res = await PledgeApiUtil.createPledge(data);
+    dispatch(createPledgeSuccess(res.data));
   } catch (err) {
-    dispatch(editPledgeFailed(err));
+    dispatch(createPledgeFailed(err));
   }
 };
-
-
-
 
 // //constants
 

@@ -16,10 +16,9 @@ const customStyles = {
 };
 
 const Completed = ({ filter }) => {
-  const pledges = useSelector((state) => Object.values(state.pledges.all));
-  debugger 
+  const pledges = useSelector((state) => state.pledges.all);
+
   let items = pledges.filter((pledge) => pledge.state === "completed");
-  
   items = items.filter((pledge) =>
     filter === "public"
       ? pledge.public
@@ -30,16 +29,10 @@ const Completed = ({ filter }) => {
 
   const [currentItemId, setCurrentItemId] = useState("");
   const dispatch = useDispatch();
-  var subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const openModal = (id) => {
     setIsOpen(true);
     setCurrentItemId(id);
-  };
-
-  const afterOpenModal = () => {
-    // references are now sync'd and can be accessed.
-    //subtitle.style.color = "#f00";
   };
 
   const closeModal = () => {
@@ -78,20 +71,23 @@ const Completed = ({ filter }) => {
     <div id="hey">
       {renderPledges()}
 
-        <Modal
-          isOpen={modalIsOpen}
-          onAfterOpen={afterOpenModal}
-          onRequestClose={closeModal}
-          style={customStyles}
-          contentLabel="Example Modal"
-        >
-          <div className="profile-modal-title">Confirmation</div>
-          <button className="profile-modal-button" onClick={() => removeItem()}>Remove</button>
-          <button className="profile-modal-button">Edit</button>
-          <button className="x-modal-button" onClick={closeModal}>X</button>
-        </Modal>
-      </div>
-    );
-}
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <div className="profile-modal-title">Confirmation</div>
+        <button className="profile-modal-button" onClick={() => removeItem()}>
+          Remove
+        </button>
+        <button className="profile-modal-button">Edit</button>
+        <button className="x-modal-button" onClick={closeModal}>
+          X
+        </button>
+      </Modal>
+    </div>
+  );
+};
 
 export default Completed;

@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import Calendar from "react-calendar";
+import { useDispatch } from "react-redux";
 import Completed from "./Completed";
 import Pending from "./Pending";
 import PledgeCategories from "./PledgeCategories";
 import NewPledge from "./NewPledge";
 import Sidebar from "./Sidebar";
+import { fetchPledges } from "../../actions/pledge_actions";
 
 import "./User_profile.css";
 
@@ -18,6 +20,12 @@ const UserProfile = () => {
   const [showAddPledgeModal, setShowAddPledgeModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [filter, setFilter] = useState("all");
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchPledges());
+  }, []);
 
   let d = new Date();
   let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
@@ -43,6 +51,7 @@ const UserProfile = () => {
 
   const toggleCategoriesModal = () => setShowCategoriesModal((prev) => !prev);
 
+
   return (
     <div className="profile-main">
       <Sidebar setFilter={setFilter} />
@@ -56,8 +65,7 @@ const UserProfile = () => {
 
       <NewPledge
         showAddPledgeModal={showAddPledgeModal}
-        // toggleCategoriesModal={toggleCategoriesModal}
-        // setSelectedCategory={setSelectedCategory}
+        selectedCategory={selectedCategory}
         toggleAddPledgeModal={toggleAddPledgeModal}
         filter={selectedCategory}
       />
@@ -92,6 +100,3 @@ const UserProfile = () => {
 };
 
 export default UserProfile;
-
-
- 

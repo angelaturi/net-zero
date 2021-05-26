@@ -20,7 +20,6 @@ const Pending = ({ filter }) => {
   const [currentItemId, setCurrentItemId] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
-
   let items = pledges.filter((pledge) => pledge.state === "pending");
 
   items = items.filter((pledge) =>

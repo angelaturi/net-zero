@@ -45,16 +45,19 @@ const DEFAULT_PLEDGES = [
 
 const initialState = DEFAULT_PLEDGES;
 
-const PledgesReducer = (state = { all: {}, user: {}, new: undefined}, action) => {
+const PledgesReducer = (
+  state = { all: [], user: {}, new: undefined },
+  action
+) => {
   Object.freeze(state);
   const { type, payload } = action;
   let newState = Object.assign({}, state);
-  switch(action.type) {
+  switch (action.type) {
     case RECEIVE_PLEDGES:
       newState.all = action.pledges.data;
       return newState;
     case RECEIVE_PLEDGE:
-      newState.show = action.pledge.data
+      newState.show = action.pledge.data;
       return newState;
     case RECEIVE_USER_PLEDGES:
       newState.user = action.pledges.data;
@@ -63,7 +66,7 @@ const PledgesReducer = (state = { all: {}, user: {}, new: undefined}, action) =>
       newState.new = action.pledge.data;
       return newState;
     case REMOVE_PLEDGE:
-      delete newState.all[action.pledgeId]
+      delete newState.all[action.pledgeId];
       return newState;
     case EDIT_PLEDGE_SUCCESS:
       const { id, ...rest } = payload;
@@ -77,7 +80,7 @@ const PledgesReducer = (state = { all: {}, user: {}, new: undefined}, action) =>
     case CREATE_PLEDGE_SUCCESS: {
       return {
         ...state,
-        pledges: state.data.concat(payload),
+        all: [payload, ...state.all],
       };
     }
     default:
