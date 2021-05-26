@@ -1,0 +1,83 @@
+.hero {
+  height: 100vh;
+  min-height: 550px;
+  background-image: url(https://uploads-ssl.webflow.com/5d3aa39…/5ec78d5…_1-min.jpg);
+  background-position: 60% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.hero-image {
+  display: fixed;
+  width: 100%;
+  height:100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  vertical-align: baseline;
+  /* overflow-x: hidden; */
+}
+
+.hero-box {
+  margin-top: 300px;
+  text-align: center;
+  position: relative;
+}
+
+
+.hero-header {
+  position: relative;
+  font-family: Helvetica, sans-serif;
+  font-size: 40px;
+  top: -750px;
+  color:white;
+  font-weight: bold;
+  /* background-color: black; */
+  text-shadow: 2px 2px black;
+}
+
+.hero-header::selection {
+  background-color: rgb(104,220,93);
+}
+
+.hero-subheader {
+  position: relative;
+  font-family: Helvetica, sans-serif;
+  font-size: 20px;
+  margin: 20px;
+  top: -730px;
+  color:white;
+  font-weight: bold;
+  /* background-color: black; */
+    text-shadow: 2px 2px black;
+}
+
+.hero-subheader::selection {
+  background-color: rgb(104,220,93);
+}
+
+.hero-button {
+    background-color: black;
+    color: white;
+    height: 40px;
+    width: 150px;
+    font-family: Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    align-items: center;
+    height: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: black;
+    color:white;
+    margin-top: 20px;
+    position: relative;
+    top: -720px;
+}
+
+.hero-button:hover {
+    background-color:  rgb(104,220,93);
+    border: 1px solid  rgb(104,220,93);
+    color: black;
+}

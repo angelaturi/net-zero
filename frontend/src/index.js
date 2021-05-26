@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // src/index.js
 import React from "react";
 import ReactDOM from "react-dom";
@@ -12,6 +13,35 @@ import axios from "axios";
 import { fetchPledges } from "./actions/pledge_actions";
 
 document.addEventListener("DOMContentLoaded", () => {
+=======
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from '../src/components/app';
+import Root from './components/root';
+import configureStore from './store/store';
+import jwt_decode from 'jwt-decode';
+import { setAuthToken } from './util/session_api_util';
+import { logout } from './actions/session_actions';
+import axios from 'axios';
+import "react-calendar/dist/Calendar.css";
+
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <App />
+//   </React.StrictMode>,
+//   document.getElementById('root')
+// );
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+// src/index.js
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+
+document.addEventListener('DOMContentLoaded', () => {
+>>>>>>> origin
   let store;
 
   // If a returning user has a session token stored in localStorage

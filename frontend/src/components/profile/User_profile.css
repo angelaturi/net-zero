@@ -1,0 +1,28 @@
+.calendar{
+    position: absolute;
+    top: 10%;
+    width: 30%;
+    right: 0;
+}
+
+.profile-main{
+    padding: 20px;
+}
+
+.item ul{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.item{
+    display: flex;
+    border-bottom: 1px solid darkgray;
+}
+
+.check{
+    color: blue;
+    align-self: center;
+    font-size: 2rem;
+}
+

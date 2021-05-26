@@ -1,0 +1,37 @@
+.how-it-works-section {
+  font-family: Helvetica, sans-serif;
+  /* width: 80%; */
+  margin: 30px;
+    text-align: center;
+
+}
+
+.how-it-works-title {
+  font-size: 32px;
+  margin-top: 50px;
+}
+
+.how-it-works-title::selection {
+  background-color: rgb(104,220,93);
+    opacity: 80%;
+}
+
+.how-it-works-subtitle {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.how-it-works-subtitle::selection {
+  background-color: rgb(104,220,93);
+  opacity: 80%;
+}
+
+.step-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  text-align: center;
+  margin-top: 100px;
+}
+
+
