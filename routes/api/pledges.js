@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const mongoose = require("mongoose");
 const passport = require("passport");
 
 const Pledge = require("../../models/Pledge");
@@ -42,25 +41,24 @@ router.get("/:id", (req, res) => {
 router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    const { errors, isValid } = validatePledgeInput(req.body);
+  async (req, res) => {
+    try {
+      const { errors, isValid } = validatePledgeInput(req.body);
 
-    if (!isValid) {
-      return res.status(400).json(errors);
+      if (!isValid) {
+        return res.status(400).json(errors);
+      }
+
+      const newPledge = await Pledge.create(req.body);
+      res.json(newPledge);
+    } catch (err) {
+      console.log("an error occurred==>>", err);
+      res.status(500).send(err);
     }
-
-    const newPledge = new Pledge({
-      title: req.body.title,
-      description: req.body.description,
-      actionlist: req.body.actionlist,
-      public: req.body.public,
-      user: req.user.id,
-    });
-
-    newPledge.save().then((pledge) => res.json(pledge));
   }
 );
-// update pledge
+
+// update
 router.patch(
   "/:id",
   passport.authenticate("jwt", { session: false }),
@@ -72,9 +70,23 @@ router.patch(
     }
 
     Pledge.findOne(req.body._id).then((pledge) => {
-      // pledge.ownerId = req.body.ownerId;
-      pledge.title = req.body.title;
-      pledge.description = req.body.description;
+      const { ownerId, title, description, state } = req.body;
+
+      if (ownerId) {
+        pledge.ownerId = ownerId;
+      }
+
+      if (title) {
+        pledge.title = title;
+      }
+
+      if (description) {
+        pledge.description = description;
+      }
+
+      if (state) {
+        pledge.state = state;
+      }
 
       pledge.save().then((savedPledge) => res.json(savedPledge));
     });

@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
-
+const { Schema } = require("mongoose");
 const PledgeSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: "users" },
 
@@ -51,9 +50,18 @@ const PledgeSchema = new Schema({
       },
     },
   ],
+  state: {
+    type: String,
+    required: true,
+    default: "pending",
+  },
   date: {
     type: Date,
     default: Date.now,
+  },
+  category: {
+    type: String,
+    required: true,
   },
 });
 

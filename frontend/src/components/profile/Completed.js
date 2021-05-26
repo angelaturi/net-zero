@@ -1,8 +1,8 @@
-
-import React, {useState} from 'react'
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import Modal from "react-modal";
-
+import { editPledgeAction } from "../../actions/pledge_actions";
 
 const customStyles = {
   content: {
@@ -15,75 +15,68 @@ const customStyles = {
   },
 };
 
+const Completed = ({ filter }) => {
+  const pledges = useSelector((state) => state.pledges);
 
+  let items = pledges.filter((pledge) => pledge.state === "completed");
+  
+  items = items.filter((pledge) =>
+    filter === "public"
+      ? pledge.public
+      : filter === "private"
+      ? !pledge.public
+      : true
+  );
 
-const Completed = () => {
+  const [currentItemId, setCurrentItemId] = useState("");
+  const dispatch = useDispatch();
+  var subtitle;
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const openModal = (id) => {
+    setIsOpen(true);
+    setCurrentItemId(id);
+  };
 
-    const [items, setItems] = useState([
+  const afterOpenModal = () => {
+    // references are now sync'd and can be accessed.
+    //subtitle.style.color = "#f00";
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  const renderPledges = () => {
+    return items.map((pledge) => (
+      <div className="item" key={pledge.id}>
+        <CheckCircleIcon
+          className="check"
+          onClick={() => openModal(pledge.id)}
+        />
+        <ul>
+          <li>{pledge.title}</li>
+          <li>{pledge.description}</li>
+        </ul>
+      </div>
+    ));
+  };
+
+  const removeItem = () => {
+    //  const filteredItems = items.filter(item => item.id !== currentItemId)
+    //  setItems(filteredItems)
+    editPledgeAction(
       {
-        id: "1",
-        title: "Use the dishwasher",
-        description:
-          "Dishwashers use ½ the energy and ⅓rd of the water as handwashing. Finally, the perfect excuse for not doing the dishes.",
+        id: currentItemId,
+        state: "pending",
       },
-      {
-        id: "2",
-        title: "Use the dishwasher",
-        description:
-          "Dishwashers use ½ the energy and ⅓rd of the water as handwashing. Finally, the perfect excuse for not doing the dishes.",
-      },
-      {
-        id: "3",
-        title: "Use the dishwasher",
-        description:
-          "Dishwashers use ½ the energy and ⅓rd of the water as handwashing. Finally, the perfect excuse for not doing the dishes.",
-      },
-      {
-        id: "4",
-        title: "Use the dishwasher",
-        description:
-          "Dishwashers use ½ the energy and ⅓rd of the water as handwashing. Finally, the perfect excuse for not doing the dishes.",
-      },
-    ]);
-    const [currentItemId, setCurrentItemId] = useState("")
+      dispatch
+    );
+    closeModal();
+  };
 
-      var subtitle;
-      const [modalIsOpen, setIsOpen] = React.useState(false);
-      const openModal = (id) => {
-        setIsOpen(true);
-        setCurrentItemId(id)
-      }
-
-      const afterOpenModal = () => {
-        // references are now sync'd and can be accessed.
-        //subtitle.style.color = "#f00";
-      }
-
-      const closeModal = () => {
-        setIsOpen(false);
-      }
-
-     const renderPledges = () => {
-       return items.map((pledge) => (
-         <div className="item" key={pledge.id} >
-           <CheckCircleIcon className="check" onClick={() => openModal(pledge.id)}/>
-           <ul>
-             <li>Mediate</li>
-             <li>1 Current Stick</li>
-           </ul>
-         </div>
-       ));
-     };
-
-     const removeItem = () => {
-         const filteredItems = items.filter(item => item.id !== currentItemId)
-         setItems(filteredItems)
-        closeModal()
-     }
-    
-    return (
-      <div id="hey">
-        {renderPledges()}
+  return (
+    <div id="hey">
+      {renderPledges()}
 
         <Modal
           isOpen={modalIsOpen}
@@ -101,4 +94,4 @@ const Completed = () => {
     );
 }
 
-export default Completed
+export default Completed;

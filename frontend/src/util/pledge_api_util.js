@@ -23,3 +23,7 @@ export const updatePledge = (data) => {
 export const deletePledge = (id) => {
   return axios.delete(`/api/pledges/${id}`);
 };
+
+export const patchPledge = ({ id, ...rest }) => {
+  return axios.patch(`/api/pledges/${id}`, rest);
+};

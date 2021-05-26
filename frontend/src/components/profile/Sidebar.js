@@ -1,6 +1,6 @@
-import React from 'react'
-import './Sidebar.css'
+import React from "react";
 import Avatar from "@material-ui/core/Avatar";
+import "./Sidebar.css";
 
 const Sidebar = () => {
     return (
@@ -11,14 +11,14 @@ const Sidebar = () => {
             alt="Remy Sharp"
             src="../../assets/bill_gates.jpg"
           />
-          <ul>
-           <div className="sidebar-title">Today's Pledges</div>
-            <li>Mediate</li>
-            <li>1 Current Stick</li>
-          </ul>
-        </div>
+          </div>
+      <div>
+      <p onClick={() => setFilter("private")}>Private pledges</p>
+      <p onClick={() => setFilter("public")}>Public pledges</p>
+      <p onClick={() => setFilter("all")}>All pledges</p>
       </div>
-    );
-}
+    </div>
+  );
+};
 
-export default Sidebar
+export default Sidebar;
