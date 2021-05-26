@@ -80,11 +80,7 @@
     /* text-shadow: 1px 1px rgba(51, 51, 51, 0.527); */
 }
 
-<<<<<<< HEAD
-.pledges-button-header {
-=======
 .feed-button-header {
->>>>>>> origin
     font-family: Helvetica, sans-serif;
     font-weight: bold;
     cursor: pointer;
@@ -113,13 +109,8 @@
     right: 150px;
 }
 
-<<<<<<< HEAD
-.pledges-button-header:hover,
-.profile-button-header:hover {
-=======
 .feed-button-header:hover,
 .my-pledges-button-header:hover {
->>>>>>> origin
      color: rgb(104,220,93);
 }
 

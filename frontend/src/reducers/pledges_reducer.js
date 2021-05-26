@@ -1,5 +1,6 @@
 import {
   RECEIVE_PLEDGES,
+  RECEIVE_PLEDGE,
   RECEIVE_USER_PLEDGES,
   RECEIVE_NEW_PLEDGE,
   REMOVE_PLEDGE
@@ -11,6 +12,9 @@ const PledgesReducer = (state = { all: {}, user: {}, new: undefined}, action) =>
   switch(action.type) {
     case RECEIVE_PLEDGES:
       newState.all = action.pledges.data;
+      return newState;
+    case RECEIVE_PLEDGE:
+      newState.show = action.pledge.data
       return newState;
     case RECEIVE_USER_PLEDGES:
       newState.user = action.pledges.data;

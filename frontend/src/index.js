@@ -1,19 +1,3 @@
-<<<<<<< HEAD
-// src/index.js
-import React from "react";
-import ReactDOM from "react-dom";
-import Root from "./components/root";
-import configureStore from "./store/store";
-import jwt_decode from "jwt-decode";
-import { setAuthToken } from "./util/session_api_util";
-import { logout } from "./actions/session_actions";
-import axios from "axios";
-
-//test imports
-import { fetchPledges } from "./actions/pledge_actions";
-
-document.addEventListener("DOMContentLoaded", () => {
-=======
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -25,6 +9,7 @@ import { setAuthToken } from './util/session_api_util';
 import { logout } from './actions/session_actions';
 import axios from 'axios';
 import "react-calendar/dist/Calendar.css";
+import { fetchPledge } from './actions/pledge_actions';
 
 // ReactDOM.render(
 //   <React.StrictMode>
@@ -41,7 +26,6 @@ import "react-calendar/dist/Calendar.css";
 // import ReactDOM from 'react-dom';
 
 document.addEventListener('DOMContentLoaded', () => {
->>>>>>> origin
   let store;
 
   // If a returning user has a session token stored in localStorage
@@ -75,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
   //testing
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  window.fetchPledges = fetchPledges;
+  window.fetchPledge = fetchPledge;
 
   // Render our root component and pass in the store as a prop
   const root = document.getElementById("root");

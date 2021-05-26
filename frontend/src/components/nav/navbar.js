@@ -21,14 +21,9 @@ class NavBar extends React.Component {
             <div className="header">
               <nav className="main-header">
                 <div className="top-header"> 
-<<<<<<< HEAD
-                <Link to={'/pledges'} className="pledges-button-header" style={{ textDecoration: 'none' }}>Pledges</Link>
-                <Link to={'/profile'} className="profile-button-header" style={{ textDecoration: 'none' }}>Profile</Link>
-=======
                   <Link to={'/'} style={{ textDecoration: 'none' }} className="logo-placeholder"> NETZERO </Link>
                 <Link to={'/home'} className="feed-button-header" style={{ textDecoration: 'none' }}>Feed</Link>
                 <Link to={'/profile'} className="my-pledges-button-header" style={{ textDecoration: 'none' }}>My Pledges</Link>
->>>>>>> origin
                 <button className="navbar-logout-button" onClick={this.logoutUser}>Logout</button>
                 </div>
               </nav>

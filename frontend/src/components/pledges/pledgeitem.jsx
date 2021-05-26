@@ -1,15 +1,15 @@
 import React from 'react';
-import Link from 'react-router-dom'
+import {Link} from 'react-router-dom';
 
 class PledgeItem extends React.Component {
     render() {
-        debugger
+        
         // let { pledge } = this.props.pledge;
         return(
             <div>
                 <h3>{this.props.pledge.title}</h3>
                 <p>{this.props.pledge.description}</p>
-                <a href="#">View Pledge</a>
+                <Link to={`/pledges/${this.props.pledge._id}`}>View Pledge</Link>
             </div>
         )
     }

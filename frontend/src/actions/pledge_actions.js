@@ -27,9 +27,9 @@ export const receiveUserPledges = (pledges) => ({
   pledges,
 });
 
-export const receivePledge = (pledges) => ({
+export const receivePledge = (pledge) => ({
     type: RECEIVE_PLEDGE,
-    pledges,
+    pledge,
   });
 
 export const receiveNewPledge = (pledge) => ({

@@ -19,11 +19,7 @@ class LoginForm extends React.Component {
   // Once the user has been authenticated, redirect to the Tweets page
   componentWillReceiveProps(nextProps) {
     if (nextProps.currentUser === true) {
-<<<<<<< HEAD
-      this.props.history.push('/pledges');
-=======
       this.props.history.push('/home');
->>>>>>> origin
     }
 
     // Set or clear errors
