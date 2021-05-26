@@ -8,7 +8,7 @@ const User_profile_container = () => {
     return (
         <div>
             <User_profile />
-            <Sidebar />
+            {/* <Sidebar /> */}
         </div>
     )
 }
