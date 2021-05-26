@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
+  pledges: [{ type: Schema.Types.ObjectId, ref: "Pledge" }],
   handle: {
     type: String,
     required: true,

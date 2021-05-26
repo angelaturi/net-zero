@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const PledgeSchema = new Schema({
-  ownerId: { type: Schema.Types.ObjectId, ref: "users" },
+  user: { type: Schema.Types.ObjectId, ref: "users" },
 
   title: {
     type: String,
@@ -12,22 +12,45 @@ const PledgeSchema = new Schema({
     type: String,
     required: true,
   },
-  //   address: {
-  //     type: String,
-  //     required: true,
-  //   },
-  //   city: {
-  //     type: String,
-  //     required: true,
-  //   },
-  //   state: {
-  //     type: String,
-  //     required: true,
-
-  //   image: {
-  //     type: String,
-  //     required: false,
-  //   },
+  actionlist: {
+    type: Array,
+  },
+  public: {
+    type: Boolean,
+    required: true,
+    default: true,
+  },
+  comments: [
+    {
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: "users",
+      },
+      text: {
+        type: String,
+        required: true,
+      },
+      name: {
+        type: String,
+      },
+      date: {
+        type: Date,
+        default: Date.now,
+      },
+    },
+  ],
+  follows: [
+    {
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: "users",
+      },
+      count: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
   date: {
     type: Date,
     default: Date.now,
