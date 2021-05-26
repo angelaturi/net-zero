@@ -4,6 +4,10 @@ export const getPledges = () => {
   return axios.get("/api/pledges");
 };
 
+export const getPledge = (id) => {
+  return axios.get(`/api/pledges/${id}`);
+}
+
 export const getUserPledges = (id) => {
   return axios.get(`/api/pledges/user/${id}`);
 };

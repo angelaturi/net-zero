@@ -2,6 +2,7 @@ import {
   RECEIVE_PLEDGES,
   RECEIVE_USER_PLEDGES,
   RECEIVE_NEW_PLEDGE,
+  REMOVE_PLEDGE
 } from "../actions/pledge_actions";
 
 const PledgesReducer = (state = { all: {}, user: {}, new: undefined}, action) => {
@@ -15,7 +16,10 @@ const PledgesReducer = (state = { all: {}, user: {}, new: undefined}, action) =>
       newState.user = action.pledges.data;
       return newState;
     case RECEIVE_NEW_PLEDGE:
-      newState.new = action.pledge.data
+      newState.new = action.pledge.data;
+      return newState;
+    case REMOVE_PLEDGE:
+      delete newState.all[action.pledgeId]
       return newState;
     default:
       return state;
