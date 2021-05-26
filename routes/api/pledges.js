@@ -7,9 +7,9 @@ const Pledge = require("../../models/Pledge");
 const validatePledgeInput = require("../../validation/pledge");
 const User = require("../../models/User");
 
-// All Pledges
+// All Public Pledges
 router.get("/", (req, res) => {
-  Pledge.find()
+  Pledge.find({ public: true })
     .sort({ date: -1 })
     .then((pledges) => res.json(pledges))
     .catch((err) =>
@@ -52,10 +52,9 @@ router.post(
     const newPledge = new Pledge({
       title: req.body.title,
       description: req.body.description,
-      //   address: req.body.address,
-      //   city: req.body.city,
-      //   state: req.body.state,
-      // ownerId: req.user.id,
+      actionlist: req.body.actionlist,
+      public: req.body.public,
+      user: req.user.id,
     });
 
     newPledge.save().then((pledge) => res.json(pledge));

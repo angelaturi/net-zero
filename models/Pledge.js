@@ -12,6 +12,14 @@ const PledgeSchema = new Schema({
     type: String,
     required: true,
   },
+  actionlist: {
+    type: Array,
+  },
+  public: {
+    type: Boolean,
+    required: true,
+    default: true,
+  },
   comments: [
     {
       user: {
