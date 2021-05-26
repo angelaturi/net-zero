@@ -9,6 +9,7 @@ import { setAuthToken } from './util/session_api_util';
 import { logout } from './actions/session_actions';
 import axios from 'axios';
 import "react-calendar/dist/Calendar.css";
+import { fetchPledge } from './actions/pledge_actions';
 
 // ReactDOM.render(
 //   <React.StrictMode>
@@ -29,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // If a returning user has a session token stored in localStorage
   if (localStorage.jwtToken) {
-
     // Set the token as a common header for all axios requests
     setAuthToken(localStorage.jwtToken);
 
@@ -37,7 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const decodedUser = jwt_decode(localStorage.jwtToken);
 
     // Create a preconfigured state we can immediately add to our store
-    const preloadedState = { session: { isAuthenticated: true, user: decodedUser } };
+    const preloadedState = {
+      session: { isAuthenticated: true, user: decodedUser },
+    };
 
     store = configureStore(preloadedState);
 
@@ -47,14 +49,20 @@ document.addEventListener('DOMContentLoaded', () => {
     if (decodedUser.exp < currentTime) {
       // Logout the user and redirect to the login page
       store.dispatch(logout());
-      window.location.href = '/login';
+      window.location.href = "/login";
     }
   } else {
     // If this is a first time user, start with an empty store
     store = configureStore({});
   }
+
+  //testing
+  window.getState = store.getState;
+  window.dispatch = store.dispatch;
+  window.fetchPledge = fetchPledge;
+
   // Render our root component and pass in the store as a prop
-  const root = document.getElementById('root');
+  const root = document.getElementById("root");
 
   ReactDOM.render(<Root store={store} />, root);
 });
