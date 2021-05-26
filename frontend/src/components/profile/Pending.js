@@ -16,7 +16,7 @@ const customStyles = {
 };
 
 const Pending = ({ filter }) => {
-  const pledges = useSelector((state) => state.pledges);
+  const pledges = useSelector((state) => Object.values(state.pledges.all));
   const [currentItemId, setCurrentItemId] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();

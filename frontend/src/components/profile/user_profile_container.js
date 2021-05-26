@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import Sidebar from './Sidebar'
-import User_profile from './user_profile'
+import UserProfile from './user_profile'
 
 const UserProfileContainer = () => {
 
@@ -10,7 +10,7 @@ const UserProfileContainer = () => {
             <div className="my-pledges-title">My Pledges</div> 
             <div className="profile-container">
                 <Sidebar />
-                <User_profile />
+                <UserProfile />
             </div>
         </div>
     )

@@ -16,8 +16,8 @@ const customStyles = {
 };
 
 const Completed = ({ filter }) => {
-  const pledges = useSelector((state) => state.pledges);
-
+  const pledges = useSelector((state) => Object.values(state.pledges.all));
+  debugger 
   let items = pledges.filter((pledge) => pledge.state === "completed");
   
   items = items.filter((pledge) =>

@@ -2,7 +2,7 @@ import React from "react";
 import Avatar from "@material-ui/core/Avatar";
 import "./Sidebar.css";
 
-const Sidebar = () => {
+const Sidebar = ({ setFilter }) => {
     return (
       <div>
         <div className="userInfo">

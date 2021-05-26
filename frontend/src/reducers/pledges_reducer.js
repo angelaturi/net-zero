@@ -47,6 +47,7 @@ const initialState = DEFAULT_PLEDGES;
 
 const PledgesReducer = (state = { all: {}, user: {}, new: undefined}, action) => {
   Object.freeze(state);
+  const { type, payload } = action;
   let newState = Object.assign({}, state);
   switch(action.type) {
     case RECEIVE_PLEDGES:
