@@ -1,7 +1,7 @@
 .header {
     position: fixed;
     top: 0;
-    left: 10px;
+    /* left: 10px; */
     width: 100%;
     z-index: 999;
     height: 59px;
@@ -12,9 +12,16 @@
 }
 
 .logo-placeholder {
+    cursor: pointer;
     font-family: Helvetica, sans-serif;
     font-weight: bold;
     font-size: 40px;
+    color: black;
+}
+
+.logo-placeholder:hover {
+    color: rgb(104,220,93);
+    text-shadow: 1px 1px rgba(51, 51, 51, 0.363);
 }
 
 .main-header {
@@ -26,7 +33,7 @@
     height: 59px;
     border-bottom: .5px solid lightgray;
     z-index: 999;
-    /* background-color: white; */
+    background-color: white;
     align-items:center;
 }
 
@@ -70,9 +77,10 @@
 .login-button-header:hover,
 .signup-button-header:hover {
     color: rgb(104,220,93);
+    /* text-shadow: 1px 1px rgba(51, 51, 51, 0.527); */
 }
 
-.events-button-header {
+.feed-button-header {
     font-family: Helvetica, sans-serif;
     font-weight: bold;
     cursor: pointer;
@@ -81,26 +89,28 @@
     padding-right: 20px;
     color: black;
     position: fixed;
-    right: 230px;
+    right: 260px;
     margin-top: 12px;
 
 }
 
-.profile-button-header {
+.my-pledges-button-header {
     font-family: Helvetica, sans-serif;
     font-weight: bold;
     cursor: pointer;
     align-items: center;
+    height: 40px;
     padding-left: 20px;
     padding-right: 20px;
     color: black;
     position: fixed;
+    right: 30px;
+    margin-top: 12px;
     right: 150px;
-    margin-top: 12px;
 }
 
-.events-button-header:hover,
-.profile-button-header:hover {
+.feed-button-header:hover,
+.my-pledges-button-header:hover {
      color: rgb(104,220,93);
 }
 
@@ -126,4 +136,5 @@
 .navbar-logout-button:hover {
     background-color:  rgb(104,220,93);
     border: 1px solid  rgb(104,220,93);
+    color: black;
 }

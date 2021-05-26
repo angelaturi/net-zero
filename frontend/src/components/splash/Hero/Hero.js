@@ -2,12 +2,15 @@ import "./Hero.css";
 
 const Hero = () => (
   <section className="hero">
-    <h1>Build Golden Habits, Unlock your Potential</h1>
-    <h4>
-      Focus on what truly matters with Habitify. Build the best version of
+      <img className="hero-image" src="https://netzero-prod.s3.ca-central-1.amazonaws.com/shutterstock-1677523960.jpeg" />
+    <div className="hero-box">
+    <div className="hero-header">Build Golden Habits, Unlock your Potential</div>
+    <div className="hero-subheader">
+      Focus on what truly matters with NETZERO. Build the best version of
       yourself by mastering your habits.
-    </h4>
-    <button>Get Started</button>
+    </div>
+    <button className="hero-button">Get Started</button>
+    </div>
   </section>
 );
 

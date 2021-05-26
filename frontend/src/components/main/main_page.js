@@ -3,7 +3,7 @@ import Avatar from "@material-ui/core/Avatar";
 import { Link } from "react-router-dom";
 import './main_page.css'
 
-const Main_page = () => {
+const MainPage = () => {
 
 //   User id
 // Title
@@ -58,37 +58,42 @@ const Main_page = () => {
             alt="Remy Sharp"
             src="../../assets/bill_gates.jpg"
           />
-          <p>
+          <div className="pledge-index-text">
             Rob mii made a pledge Jubril's{" "}
             <Link className="pledgeLink" to="#">
               Pledge
             </Link>
-          </p>
+          </div>
         </div>
         <div>
           <p>2 hrs</p>
         </div>
 
         <div className="title">
-          <p>{pledge.title}</p>
+          <div className="pledge-title">{pledge.title}</div>
         </div>
 
-        <div className="pledgeImg">
+        {/* <div className="pledgeImg">
           <img src="../../assets/shower.jpg" alt="img" />
-        </div>
+        </div> */}
 
         <div className="description">
-          <p>{pledge.description}</p>
+          <div className="pledge-description">{pledge.description}</div>
         </div>
+
+        <button className="follow-button"> + </button>
       </div>
     ));
     
   }
   return (
     <div className="main">
+      <div className="pledges-container">
+        <div className="pledges-index-title">Categories / sorting goes here(?)</div>
     {renderPledges()}
+    </div>
     </div>
   );
 };
 
-export default Main_page;
+export default MainPage;

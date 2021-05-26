@@ -1,9 +1,9 @@
 import "./HowItWorksCard.css";
 
 const HowItWorksCard = ({ image, header, description }) => (
-  <div>
+  <div className="how-it-works-card-container">
     <img src={image} />
-    <h2>{header}</h2>
+    <div className="how-it-works-card-header">{header}</div>
     <p>{description}</p>
   </div>
 );
