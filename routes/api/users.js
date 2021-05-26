@@ -17,7 +17,7 @@ router.get(
   "/:userId/pledges",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    Pledge.find({ ownerId: req.params.userId })
+    Pledge.find({ user: req.params.userId })
       .then((pledges) => res.json(pledges))
       .catch((err) => res.status(400).json(err));
   }

@@ -1,4 +1,9 @@
 import {
+  RECEIVE_PLEDGES,
+  RECEIVE_PLEDGE,
+  RECEIVE_USER_PLEDGES,
+  RECEIVE_NEW_PLEDGE,
+  REMOVE_PLEDGE,
   EDIT_PLEDGE_SUCCESS,
   CREATE_PLEDGE_SUCCESS,
 } from "../actions/pledge_actions";
@@ -40,12 +45,27 @@ const DEFAULT_PLEDGES = [
 
 const initialState = DEFAULT_PLEDGES;
 
-export default function (state = initialState, action) {
-  const { type, payload } = action;
-  switch (type) {
+const PledgesReducer = (state = { all: {}, user: {}, new: undefined}, action) => {
+  Object.freeze(state);
+  let newState = Object.assign({}, state);
+  switch(action.type) {
+    case RECEIVE_PLEDGES:
+      newState.all = action.pledges.data;
+      return newState;
+    case RECEIVE_PLEDGE:
+      newState.show = action.pledge.data
+      return newState;
+    case RECEIVE_USER_PLEDGES:
+      newState.user = action.pledges.data;
+      return newState;
+    case RECEIVE_NEW_PLEDGE:
+      newState.new = action.pledge.data;
+      return newState;
+    case REMOVE_PLEDGE:
+      delete newState.all[action.pledgeId]
+      return newState;
     case EDIT_PLEDGE_SUCCESS:
       const { id, ...rest } = payload;
-
       const pledge = state.find((pledge) => pledge.id === id);
       const updatedPledge = {
         ...pledge,
@@ -53,15 +73,15 @@ export default function (state = initialState, action) {
       };
       const pledgesWithoutCurrent = state.filter((pledge) => pledge.id !== id);
       return [...pledgesWithoutCurrent, updatedPledge];
-
     case CREATE_PLEDGE_SUCCESS: {
       return {
         ...state,
         pledges: state.data.concat(payload),
       };
     }
-
     default:
       return state;
   }
-}
+};
+
+export default PledgesReducer;

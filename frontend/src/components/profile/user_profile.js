@@ -10,7 +10,7 @@ import Sidebar from "./Sidebar";
 
 import "./User_profile.css";
 
-const User_profile = () => {
+const UserProfile = () => {
   const [page, setPage] = useState("completed");
   const [value, onChange] = useState(new Date());
   const [showCalendar, setShowCalendar] = useState(false);
@@ -91,4 +91,7 @@ const User_profile = () => {
   );
 };
 
-export default User_profile;
+export default UserProfile;
+
+
+ 

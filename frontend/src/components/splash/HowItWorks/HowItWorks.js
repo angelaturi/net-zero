@@ -27,12 +27,12 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section>
-      <h1>How it works?</h1>
-      <h6>
+    <section className="how-it-works-section">
+      <div className="how-it-works-title">How it works?</div>
+      <div className="how-it-works-subtitle">
         Habit building in its essential steps: choose a habit, actually remember
         to do it, and track your development.
-      </h6>
+      </div>
       <div className="step-container">
         {howItWorksState.map(({ imageUrl, header, description, id }) => (
           <HowItWorksCard

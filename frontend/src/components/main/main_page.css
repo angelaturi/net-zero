@@ -1,5 +1,5 @@
-body{
-    background-color: lightgray;
+main{
+    /* background-color: lightgray; */
 }
 
 .item1{
@@ -16,24 +16,53 @@ body{
     height: 100%
 }
 
+.pledge-index-text {
+    font-family: Helvetica, sans-serif;
+    margin-top: 10px;
+
+}
+
 .avatar{
     margin-right: 10px;
 }
 
 .main{
-    margin: 0 auto;
+    margin: 0px auto;
+
+}
+
+.pledges-container {
+    margin-top: 20vh;
+    display:flex;
+    flex-direction: column;
 }
 
 .feedItem{
     background-color: #fff;
-        width: 80%;
-    margin: 10vh auto;
+    width: 50%;
+    margin: 5vh auto;
     padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    transition: transform .2s;
+}
+
+/* @keyframes up-bump {
+  0% { padding-top: 0.7em; }
+  50% { padding-top: 0.2em; }
+  100% { padding-top: 0.5em; }
+} */
+
+.feedItem:hover {
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(53, 248, 63, 0.356);
+    transform: scale(1.05);
+    /* animation: up-bump 0.2s ease; */
 }
 
 .pledgeLink{
     text-decoration: none;
-    color: blue;
+    color: rgb(24, 124, 15);;
 }
 
 .links{
@@ -49,6 +78,16 @@ body{
 
 }
 
+.pledge-title {
+    font-family: Helvetica, sans-serif;
+    font-size: 28px;
+}
+
+.pledge-description {
+    margin-top: 15px;
+    color: gray;
+}
+
 
 .links p{
 margin-right: 10%;
@@ -59,6 +98,26 @@ font-size: 1rem;
     color: blue;
 }
 
+.pledges-index-title {
+    font-family: Helvetica, sans-serif;
+    font-size: 36px;
+    text-align: center;
+}
 
+.follow-button {
+    background-color: black;
+    color: white;
+    width: 50px;
+    height: 30px;
+    margin-top: 25px;
+    position: fixed;
+    top: 0px;
+    right: 20px;
+    font-size: 20px;
+}
 
+.follow-button:hover {
+    background-color:  rgb(104,220,93);
+    border: 1px solid  rgb(104,220,93);
 
+}
