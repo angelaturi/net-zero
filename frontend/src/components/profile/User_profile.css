@@ -1,3 +1,17 @@
+.my-pledges-title {
+    font-family: Helvetica, sans-serif;
+    font-size: 40px;
+    position: relative;
+    top: 100px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.profile-container {
+    display: flex;
+    margin-top: 50px;
+}
+
 .calendar{
     position: absolute;
     top: 10%;
@@ -5,8 +19,22 @@
     right: 0;
 }
 
+.dates {
+    margin-bottom: 20px;
+}
+
+.dates-text {
+    font-family: Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
 .profile-main{
+    display: grid;
     padding: 20px;
+    position: relative;
+    width: 60%;
+    margin: 100px 100px 100px 200px;
 }
 
 .item ul{
@@ -18,11 +46,25 @@
 .item{
     display: flex;
     border-bottom: 1px solid darkgray;
+    transition: transform .2s;
+}
+
+.item:hover {
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(53, 248, 63, 0.356);
+    transform: scale(1.05);
 }
 
 .check{
-    color: blue;
+    color:rgb(104,220,93);
     align-self: center;
     font-size: 2rem;
 }
 
+.profile-modal-title {
+    font-family: Helvetica, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}

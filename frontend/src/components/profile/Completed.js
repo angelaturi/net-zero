@@ -92,10 +92,10 @@ const Completed = () => {
           style={customStyles}
           contentLabel="Example Modal"
         >
-          <h2>Confirmation</h2>
-          <button onClick={() => removeItem()}>remove</button>
-          <button >enter log manually</button>
-          <button onClick={closeModal}>cancel</button>
+          <div className="profile-modal-title">Confirmation</div>
+          <button className="profile-modal-button" onClick={() => removeItem()}>Remove</button>
+          <button className="profile-modal-button">Edit</button>
+          <button className="x-modal-button" onClick={closeModal}>X</button>
         </Modal>
       </div>
     );

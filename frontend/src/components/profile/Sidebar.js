@@ -7,11 +7,12 @@ const Sidebar = () => {
       <div>
         <div className="userInfo">
           <Avatar
-            className="avatar"
+            className="avatar-profile"
             alt="Remy Sharp"
             src="../../assets/bill_gates.jpg"
           />
           <ul>
+           <div className="sidebar-title">Today's Pledges</div>
             <li>Mediate</li>
             <li>1 Current Stick</li>
           </ul>

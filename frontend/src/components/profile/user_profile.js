@@ -36,7 +36,7 @@ const UserProfile = () => {
   return (
     <div className="profile-main">
       <div className="dates">
-        <p>{finalDate}</p>
+        <div className="dates-text">{finalDate}</div>
         <CalendarTodayIcon onClick={() => setShowCalendar(!showCalendar)} />
       </div>
       <div className="links">

@@ -6,9 +6,12 @@ const UserProfileContainer = () => {
 
 
     return (
-        <div>
-            <User_profile />
-            <Sidebar />
+        <div> 
+            <div className="my-pledges-title">My Pledges</div> 
+            <div className="profile-container">
+                <Sidebar />
+                <User_profile />
+            </div>
         </div>
     )
 }
