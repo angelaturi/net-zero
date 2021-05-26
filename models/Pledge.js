@@ -12,22 +12,37 @@ const PledgeSchema = new Schema({
     type: String,
     required: true,
   },
-  //   address: {
-  //     type: String,
-  //     required: true,
-  //   },
-  //   city: {
-  //     type: String,
-  //     required: true,
-  //   },
-  //   state: {
-  //     type: String,
-  //     required: true,
-
-  //   image: {
-  //     type: String,
-  //     required: false,
-  //   },
+  comments: [
+    {
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: "users",
+      },
+      text: {
+        type: String,
+        required: true,
+      },
+      name: {
+        type: String,
+      },
+      date: {
+        type: Date,
+        default: Date.now,
+      },
+    },
+  ],
+  follows: [
+    {
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: "users",
+      },
+      count: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
   date: {
     type: Date,
     default: Date.now,
