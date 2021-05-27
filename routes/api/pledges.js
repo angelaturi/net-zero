@@ -35,6 +35,7 @@ const upload = require("../../services/ImageUpload");
 // All Public Pledges
 router.get("/", (req, res) => {
   Pledge.find()
+    .populate("user", "name")
     .sort({ date: -1 })
     .then((pledges) => res.json(pledges))
     .catch((err) =>
@@ -45,6 +46,7 @@ router.get("/", (req, res) => {
 // Pledges by user
 router.get("/user/:user_id", (req, res) => {
   Pledge.find({ user: req.params.user_id })
+    .populate("user", "name")
     .sort({ date: -1 })
     .then((pledges) => res.json(pledges))
     .catch((err) =>
@@ -57,6 +59,7 @@ router.get("/user/:user_id", (req, res) => {
 // Pledges by id
 router.get("/:id", (req, res) => {
   Pledge.findById(req.params.id)
+    .populate("user", "name")
     .then((pledge) => res.json(pledge))
     .catch((err) =>
       res.status(404).json({ nopledgefound: "No pledge found with that ID" })
