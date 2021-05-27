@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import PledgeItem from './pledgeitem';
+import {Link} from 'react-router-dom';
+
 
 class PledgeIndex extends React.Component {
     constructor(props) {
@@ -9,6 +10,14 @@ class PledgeIndex extends React.Component {
         this.state = {
             pledges: []
         }
+        this.handleFollow = this.handleFollow.bind(this);
+    }
+
+    handleFollow(pledgeId) {
+        //add userId to pledge follow array
+        this.props.followPledge(pledgeId);
+        //update state
+
     }
 
     componentWillMount() {
@@ -27,7 +36,13 @@ class PledgeIndex extends React.Component {
                 <div>
                     <h2>Pledges</h2>
                     {this.state.pledges.map(pledge => (
-                        <PledgeItem key={pledge._id} pledge={pledge} />
+                    <div>
+                        <h3>{pledge.title}</h3>
+                        <p>{pledge.description}</p>
+                        <p>{pledge.follows.length} followers!</p>
+                        <Link to={`/pledges/${pledge._id}`}>View Pledge</Link>
+                        <button onClick={() => this.handleFollow(pledge._id)}>Follow Pledge</button>
+                    </div>
                     ))}
                 </div>
             )

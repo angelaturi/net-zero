@@ -162,11 +162,10 @@ router.post(
   (req, res) => {
     Pledge.findById(req.params.id)
       .then((pledge) => {
-        const newFollow = {
-          count: req.body.count,
-        };
-
-        pledge.follows.unshift(newFollow);
+  
+        if (!pledge.follows.includes(req.user.id)) {
+          pledge.follows.push(req.user.id);
+        }
 
         pledge.save().then((pledge) => res.json(pledge));
       })

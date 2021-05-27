@@ -38,18 +38,8 @@ const PledgeSchema = new Schema({
       },
     },
   ],
-  follows: [
-    {
-      user: {
-        type: Schema.Types.ObjectId,
-        ref: "users",
-      },
-      count: {
-        type: String,
-        required: true,
-      },
-    },
-  ],
+  follows: [{ type: Schema.Types.ObjectId, ref: "users" }],
+  
   state: {
     type: String,
     required: true,

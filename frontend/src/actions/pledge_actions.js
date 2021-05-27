@@ -119,3 +119,9 @@ export const deletePledge = (id) => (dispatch) =>
   PledgeApiUtil.deletePledge(id)
     .then((pledge) => dispatch(removePledge(pledge)))
     .catch((err) => console.log(err));
+
+
+export const followPledge = (pledgeId) => (dispatch) => 
+  PledgeApiUtil.followPledge(pledgeId)
+    .then((pledge) => dispatch(receivePledge(pledge)))
+    .catch((err) => console.log(err));

@@ -14,6 +14,7 @@ const MainPage = () => {
 
   const users = useSelector((state) => state.users.data);
   const dispatch = useDispatch();
+  
 
   useEffect(() => {
     dispatch(getAllUsers());

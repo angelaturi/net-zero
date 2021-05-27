@@ -57,7 +57,13 @@ const PledgesReducer = (
       newState.all = action.pledges.data;
       return newState;
     case RECEIVE_PLEDGE:
-      newState.show = action.pledge.data;
+      newState.all.forEach((pledge, idx) => {
+        
+        if (pledge._id === action.pledge.data._id) {
+          
+          newState.all[idx] = action.pledge.data;
+        }
+      })
       return newState;
     case RECEIVE_USER_PLEDGES:
       newState.user = action.pledges.data;

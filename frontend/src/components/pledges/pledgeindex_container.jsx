@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchPledges } from '../../actions/pledge_actions';
+import { fetchPledges,followPledge } from '../../actions/pledge_actions';
 import PledgeIndex from './pledgeindex';
 
 const mapStateToProps = (state) => {
@@ -10,7 +10,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchPledges: () => dispatch(fetchPledges())
+        fetchPledges: () => dispatch(fetchPledges()),
+        followPledge: (pledgeId) => dispatch(followPledge(pledgeId))
     };
 };
 

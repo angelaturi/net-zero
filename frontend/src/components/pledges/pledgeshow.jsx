@@ -22,13 +22,11 @@ class PledgeShow extends React.Component {
                     <p>{this.props.currentPledge.date}</p>
                     <button>Follow Pledge</button>
                     <h2>Followers</h2> 
-    
                 </div>
             )
         } else {
             return (
                 <div>
-
                 </div>
             )
         }

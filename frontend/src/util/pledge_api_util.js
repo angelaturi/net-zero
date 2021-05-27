@@ -4,26 +4,30 @@ export const getPledges = () => {
   return axios.get("/api/pledges");
 };
 
-export const getPledge = (id) => {
-  return axios.get(`/api/pledges/${id}`);
+export const getPledge = (pledgeId) => {
+  return axios.get(`/api/pledges/${pledgeId}`);
 }
 
-export const getUserPledges = (id) => {
-  return axios.get(`/api/pledges/user/${id}`);
+export const getUserPledges = (userId) => {
+  return axios.get(`/api/pledges/user/${userId}`);
 };
 
-export const createPledge = (data) => {
-  return axios.post(`/api/pledges/`, data);
+export const createPledge = (pledge) => {
+  return axios.post(`/api/pledges/`, pledge);
 };
 
-export const updatePledge = (data) => {
-  return axios.patch(`/api/pledges/${data.id}`, data);
+export const updatePledge = (pledge) => {
+  return axios.patch(`/api/pledges/${pledge.id}`, pledge);
 };
 
-export const deletePledge = (id) => {
-  return axios.delete(`/api/pledges/${id}`);
+export const deletePledge = (pledgeId) => {
+  return axios.delete(`/api/pledges/${pledgeId}`);
 };
 
-export const patchPledge = ({ id, ...rest }) => {
-  return axios.patch(`/api/pledges/${id}`, rest);
+export const patchPledge = ({ pledgeId, ...rest }) => {
+  return axios.patch(`/api/pledges/${pledgeId}`, rest);
 };
+
+export const followPledge = (pledgeId) => {
+  return axios.post(`/api/pledges/follow/${pledgeId}`);
+}
