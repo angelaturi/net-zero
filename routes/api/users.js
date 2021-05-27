@@ -9,12 +9,35 @@ const Pledge = require("../../models/Pledge");
 
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
+const upload = require("../../services/ImageUpload");
+// const multer = require("multer");
+// const AWS = require("aws-sdk");
+// const uuidv4 = require("uuid").v4;
+// const fs = require("fs");
 
-// router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
+// const upload = multer();
+
+// const s3 = new AWS.S3({
+//   accessKeyId: keys.accessKeyId,
+//   secretAccessKey: keys.secretAccessKey,
+// });
+
+// const uploadImage = (file) => {
+//   const params = {
+//     Bucket: keys.S3Bucket,
+//     Key: uuidv4(),
+//     Body: file.buffer,
+//     ContentType: file.mimetype,
+//     ACL: "public-read",
+//   };
+//   const uploadPhoto = s3.upload(params).promise();
+//   return uploadPhoto;
+// };
 
 //Users Pledges
 router.get(
   "/:userId/pledges",
+  upload.single("file"),
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     Pledge.find({ user: req.params.userId })
@@ -122,6 +145,48 @@ router.get(
       handle: req.user.handle,
       email: req.user.email,
     });
+  }
+);
+
+// Edit profile and add photo
+router.put(
+  "/:id",
+  upload.single("image"),
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    const { errors, isValid } = validateRegisterInput(req.body);
+
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
+
+    if (req.file === undefined) {
+      User.findOne({ email: req.body.email })
+        .then((user) => {
+          user.handle = req.body.handle;
+          user.name = req.body.name;
+          user.image = "";
+
+          user
+            .save()
+            .then((savedUser) => res.json(savedUser))
+            .catch((err) => res.json(err));
+        })
+        .catch((err) => res.status(400).json(err));
+    } else {
+      User.findOne({ email: req.body.email })
+        .then((user) => {
+          user.handle = req.body.handle;
+          user.name = req.body.name;
+          user.image = req.file.location;
+
+          user
+            .save()
+            .then((savedUser) => res.json(savedUser))
+            .catch((err) => res.json(err));
+        })
+        .catch((err) => res.status(400).json(err));
+    }
   }
 );
 

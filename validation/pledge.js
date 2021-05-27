@@ -10,7 +10,9 @@ module.exports = function validatePledgeInput(data) {
   // data.address = validText(data.address) ? data.address : "";
   // data.state = validText(data.state) ? data.state : "";
   // data.city = validText(data.city) ? data.city : "";
+  // data.ownerId = validText(data.ownerId) ? data.ownerId : "";
 
+  // if (Validator.isEmpty(data.ownerId)) {
   //   errors.user = "Owner id required.";
   // }
 
@@ -27,9 +29,9 @@ module.exports = function validatePledgeInput(data) {
     errors.description = "Description field is required.";
   }
 
-  if (!Validator.isLength(data.description, { min: 8, max: 100 })) {
+  if (!Validator.isLength(data.description, { min: 8, max: 1000 })) {
     errors.description =
-      "Description field should be minimum 8 characters and maximum 100 characters.";
+      "Description field should be minimum 8 characters and maximum 1000 characters.";
   }
 
   // if (Validator.isEmpty(data.state)) {

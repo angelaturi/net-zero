@@ -2,10 +2,36 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const passport = require("passport");
-
+const keys = require("../../config/keys");
 const Pledge = require("../../models/Pledge");
 const validatePledgeInput = require("../../validation/pledge");
 const User = require("../../models/User");
+
+const upload = require("../../services/ImageUpload");
+
+// const multer = require("multer");
+// const AWS = require("aws-sdk");
+// const uuidv4 = require("uuid").v4;
+// const fs = require("fs");
+
+// const upload = multer();
+
+// const s3 = new AWS.S3({
+//   accessKeyId: keys.accessKeyId,
+//   secretAccessKey: keys.secretAccessKey,
+// });
+
+// const uploadImage = (file) => {
+//   const params = {
+//     Bucket: keys.S3Bucket,
+//     Key: uuidv4(),
+//     Body: file.buffer ? file.buffer : null,
+//     ContentType: file.mimetype,
+//     ACL: "public-read",
+//   };
+//   const uploadPhoto = s3.upload(params).promise();
+//   return uploadPhoto;
+// };
 
 // All Public Pledges
 router.get("/", (req, res) => {
@@ -41,6 +67,7 @@ router.get("/:id", (req, res) => {
 //create pledge
 router.post(
   "/",
+  upload.single("image"),
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     const { errors, isValid } = validatePledgeInput(req.body);
@@ -49,15 +76,22 @@ router.post(
       return res.status(400).json(errors);
     }
 
+    // uploadImage(req.file).then((data) => {
+    //   const uploadedImageURL = data.Location;
+
     const newPledge = new Pledge({
       title: req.body.title,
       description: req.body.description,
       actionlist: req.body.actionlist,
       public: req.body.public,
+      image: req.file ? req.file.location : "",
       user: req.user.id,
     });
 
-    newPledge.save().then((pledge) => res.json(pledge));
+    newPledge
+      .save()
+      .then((pledge) => res.json(pledge))
+      .catch((err) => res.json(err));
   }
 );
 // update pledge
@@ -152,6 +186,7 @@ router.post(
       .then((pledge) => {
         const newFollow = {
           count: req.body.count,
+          user: req.user.id,
         };
 
         pledge.follows.unshift(newFollow);

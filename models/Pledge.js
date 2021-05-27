@@ -51,6 +51,10 @@ const PledgeSchema = new Schema({
       },
     },
   ],
+  image: {
+    type: String,
+    required: false,
+  },
   date: {
     type: Date,
     default: Date.now,
