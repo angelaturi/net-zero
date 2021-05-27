@@ -70,6 +70,7 @@ const UserProfile = () => {
 
   return (
     <div className="profile-main">
+      <AddCircleIcon onClick={toggleCategoriesModal} />
       <Sidebar setFilter={setFilter} />
 
       <PledgeCategories
@@ -91,8 +92,8 @@ const UserProfile = () => {
           selectedPledge={selectedPledge}
           showEditPledgeModal={showEditPledgeModal}
           toggleEditPledgeModal={toggleEditPledgeModal}
-        />
-      )}
+          />
+          )}
 
       <div className="dates">
         <div className="dates-text">{finalDate}</div>
@@ -122,7 +123,6 @@ const UserProfile = () => {
         )}
       </div>
 
-      <AddCircleIcon onClick={toggleCategoriesModal} />
     </div>
   );
 };

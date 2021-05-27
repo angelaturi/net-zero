@@ -36,12 +36,12 @@ class PledgeIndex extends React.Component {
                 <div>
                     <h2>Pledges</h2>
                     {this.state.pledges.map(pledge => (
-                    <div>
-                        <h3>{pledge.title}</h3>
-                        <p>{pledge.description}</p>
+                    <div className="feedItem">
+                        <div className="pledge-title">{pledge.title}</div>
+                        <div className="pledge-description">{pledge.description}</div>
                         <p>{pledge.follows.length} followers!</p>
                         <Link to={`/pledges/${pledge._id}`}>View Pledge</Link>
-                        <button onClick={() => this.handleFollow(pledge._id)}>Follow Pledge</button>
+                        <button className="follow-button" onClick={() => this.handleFollow(pledge._id)}>Follow Pledge</button>
                     </div>
                     ))}
                 </div>
