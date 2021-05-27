@@ -18,6 +18,7 @@ const UserProfile = () => {
   const [showCalendar, setShowCalendar] = useState(false);
   const [showCategoriesModal, setShowCategoriesModal] = useState(false);
   const [showAddPledgeModal, setShowAddPledgeModal] = useState(false);
+  const [showEditPledgeModal, setShowEditPledgeModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [filter, setFilter] = useState("all");
 
@@ -28,7 +29,7 @@ const UserProfile = () => {
   }, []);
 
   let d = new Date();
-  let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+  let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   let months = [
     "January",
     "February",
@@ -51,6 +52,7 @@ const UserProfile = () => {
 
   const toggleCategoriesModal = () => setShowCategoriesModal((prev) => !prev);
 
+  const toggleEditPledgeModal = (pled) => setShowEditPledgeModal((prev) => !prev);
 
   return (
     <div className="profile-main">
@@ -82,7 +84,7 @@ const UserProfile = () => {
         {page === "completed" ? (
           <Completed filter={filter} />
         ) : (
-          <Pending filter={filter} />
+        <Pending toggleEditPledgeModal={toggleEditPledgeModal} filter={filter} />
         )}
       </div>
 

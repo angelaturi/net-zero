@@ -69,14 +69,10 @@ const PledgesReducer = (
       delete newState.all[action.pledgeId];
       return newState;
     case EDIT_PLEDGE_SUCCESS:
-      const { id, ...rest } = payload;
-      const pledge = state.find((pledge) => pledge.id === id);
-      const updatedPledge = {
-        ...pledge,
-        ...rest,
-      };
-      const pledgesWithoutCurrent = state.filter((pledge) => pledge.id !== id);
-      return [...pledgesWithoutCurrent, updatedPledge];
+      const pledgesWithoutCurrent = state.all.filter(
+        (pledge) => pledge._id !== payload._id
+      );
+      return { all: [payload, ...pledgesWithoutCurrent] };
     case CREATE_PLEDGE_SUCCESS: {
       return {
         ...state,

@@ -26,8 +26,8 @@ const Completed = ({ filter }) => {
       ? !pledge.public
       : true
   );
+  const [currentItemId, setCurrentItemId] = useState(null);
 
-  const [currentItemId, setCurrentItemId] = useState("");
   const dispatch = useDispatch();
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const openModal = (id) => {
@@ -44,7 +44,7 @@ const Completed = ({ filter }) => {
       <div className="item" key={pledge.id}>
         <CheckCircleIcon
           className="check"
-          onClick={() => openModal(pledge.id)}
+          onClick={() => openModal(pledge._id)}
         />
         <ul>
           <li>{pledge.title}</li>
@@ -55,8 +55,6 @@ const Completed = ({ filter }) => {
   };
 
   const removeItem = () => {
-    //  const filteredItems = items.filter(item => item.id !== currentItemId)
-    //  setItems(filteredItems)
     editPledgeAction(
       {
         id: currentItemId,
