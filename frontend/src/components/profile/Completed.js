@@ -75,11 +75,10 @@ const Completed = ({ filter }) => {
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <div className="profile-modal-title">Confirmation</div>
+        <div className="profile-modal-title"></div>
         <button className="profile-modal-button" onClick={() => removeItem()}>
-          Remove
+          Remove from Completed
         </button>
-        <button className="profile-modal-button">Edit</button>
         <button className="x-modal-button" onClick={closeModal}>
           X
         </button>
