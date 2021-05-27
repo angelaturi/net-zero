@@ -1,8 +1,9 @@
 import { connect } from "react-redux";
-import { fetchPledge } from "../../actions/pledge_actions";
+import { showPledge, followPledge } from "../../actions/pledge_actions";
 import PledgeShow from "./pledgeshow";
 
 const mapStateToProps = (state, ownProps) => {
+
   return {
       currentUser: state.session.user,
       currentPledge: state.pledges.show
@@ -12,7 +13,8 @@ const mapStateToProps = (state, ownProps) => {
 //need to add follow pledge functionality
 const mapDispatchToProps = (dispatch) => {
   return {
-      fetchPledge: (pledgeId) => dispatch(fetchPledge(pledgeId)),
+      showPledge: (pledgeId) => dispatch(showPledge(pledgeId)),
+      followPledge: (pledgeId) => dispatch(followPledge(pledgeId))
   };
 };
 

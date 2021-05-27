@@ -14,6 +14,7 @@ export const RECEIVE_PLEDGES = "RECEIVE_PLEDGES";
 export const RECEIVE_PLEDGE = "RECEIVE_PLEDGE";
 export const RECEIVE_USER_PLEDGES = "RECEIVE_USER_PLEDGES";
 export const REMOVE_PLEDGE = "REMOVE_PLEDGE";
+export const SHOW_PLEDGE = "SHOW_PLEDGE";
 
 export const editPledge = () => ({
   type: EDIT_PLEDGE,
@@ -76,6 +77,11 @@ export const receivePledge = (pledge) => ({
   pledge,
 });
 
+export const showPledgeAction = (pledge) => ({
+  type: SHOW_PLEDGE,
+  pledge,
+});
+
 export const receiveNewPledge = (pledge) => ({
   type: RECEIVE_NEW_PLEDGE,
   pledge,
@@ -117,8 +123,12 @@ export const deletePledge = (id) => (dispatch) =>
     .then(() => dispatch(removePledge(id)))
     .catch((err) => console.log(err));
 
-
-export const followPledge = (pledgeId) => (dispatch) => 
+export const followPledge = (pledgeId) => (dispatch) =>
   PledgeApiUtil.followPledge(pledgeId)
     .then((pledge) => dispatch(receivePledge(pledge)))
+    .catch((err) => console.log(err));
+
+export const showPledge = (pledgeId) => (dispatch) =>
+  PledgeApiUtil.getPledge(pledgeId)
+    .then((pledge) => dispatch(showPledgeAction(pledge)))
     .catch((err) => console.log(err));

@@ -40,6 +40,7 @@ class PledgeIndex extends React.Component {
                         <h3>{pledge.title}</h3>
                         <p>{pledge.description}</p>
                         <p>{pledge.follows.length} followers!</p>
+                        <p>{pledge.category}</p> 
                         <Link to={`/pledges/${pledge._id}`}>View Pledge</Link>
                         <button onClick={() => this.handleFollow(pledge._id)}>Follow Pledge</button>
                     </div>
