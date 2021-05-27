@@ -59,6 +59,7 @@ router.get("/user/:user_id", (req, res) => {
 // Pledges by id
 router.get("/:id", (req, res) => {
   Pledge.findById(req.params.id)
+    .populate("user", "name")
     .then((pledge) => res.json(pledge))
     .catch((err) =>
       res.status(404).json({ nopledgefound: "No pledge found with that ID" })
