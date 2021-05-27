@@ -66,7 +66,7 @@ const Completed = ({ filter }) => {
   };
 
   return (
-    <div id="hey">
+    <div id="completed-pledges">
       {renderPledges()}
 
       <Modal

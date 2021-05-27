@@ -54,11 +54,11 @@ const Pending = ({ filter, toggleEditPledgeModal }) => {
         key={pledge._id}
       >
         <RadioButtonUncheckedIcon className="check" />
-        <ul>
+        <ul className="ul-pending-pledges">
           <li>{pledge.title}</li>
-          <li>{pledge.description}</li>
+          <li className="pending-pledge-description">{pledge.description}</li>
         </ul>
-        <button onClick={deletePledge}>Delete</button>
+        <button className="follow-button-pledge-page" onClick={deletePledge}>Delete</button>
       </div>
     ));
   };
@@ -75,7 +75,7 @@ const Pending = ({ filter, toggleEditPledgeModal }) => {
   };
 
   return (
-    <div id="hey">
+    <div id="pending-pledges">
       {renderPledges()}
       <Modal
         isOpen={modalIsOpen}

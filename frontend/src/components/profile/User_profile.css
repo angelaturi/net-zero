@@ -145,3 +145,31 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+.follow-button-pledge-page {
+    background-color: black;
+    color: white;
+    width: 60px;
+    height: 30px;
+    margin-top: 25px;
+    position: fixed;
+    top: 0px;
+    right: 20px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.follow-button-pledge-page:hover {
+    background-color:  rgb(104,220,93);
+    border: 1px solid  rgb(104,220,93);
+}
+
+.ul-pending-pledges {
+    width: 70%;
+}
+
+.pending-pledge-description {
+    color: gray;
+    font-size: 14px;
+    margin-top: 5px;
+}
