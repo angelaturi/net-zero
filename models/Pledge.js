@@ -38,8 +38,12 @@ const PledgeSchema = new Schema({
       },
     },
   ],
+  image: {
+    type: String,
+    required: false,
+  },
   follows: [{ type: Schema.Types.ObjectId, ref: "users" }],
-  
+
   state: {
     type: String,
     required: true,
@@ -51,7 +55,6 @@ const PledgeSchema = new Schema({
   },
   category: {
     type: String,
-    required: true,
   },
 });
 
