@@ -75,27 +75,29 @@ const AddPledge = ({
         onRequestClose={toggleAddPledgeModal}
         style={customStyles}
       >
-        <button onClick={toggleAddPledgeModal}>close</button>
+        <button className="x-modal-button" onClick={toggleAddPledgeModal}>X</button>
 
         <form onSubmit={handleCreatePledge}>
-          Title:{" "}
-          <input name="title" value={title} onChange={handleInputChange} />{" "}
+          <div className="create-pledge-titles"> Title:{" "}</div>
+          <input className="create-pledge-input" name="title" value={title} onChange={handleInputChange} />{" "}
           <br />
-          Description:{" "}
+          <div className="create-pledge-titles"> Description:{" "}</div>
           <input
+            className="create-pledge-input"
             name="description"
             value={description}
             onChange={handleInputChange}
           />
           <br />
-          Public:{" "}
+          <div className="create-pledge-titles">Public:{" "}</div>
           <input
             name="isPublic"
             type="checkbox"
             checked={isPublic}
             onChange={handleInputChange}
           />
-          <button>Save</button>
+          <br /><br />
+          <button className="login-submit-button">Save</button>
           <br />
         </form>
       </Modal>

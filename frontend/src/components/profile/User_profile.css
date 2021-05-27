@@ -30,7 +30,7 @@
 }
 
 .profile-main{
-    display: grid;
+    display: block;
     padding: 20px;
     position: relative;
     width: 60%;
@@ -66,5 +66,82 @@
     font-size: 24px;
     font-weight: bold;
     margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+
+.dropdown {
+    position: relative;
+  display: inline-block;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.dropdown-content {
+      display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  cursor: pointer;
+}
+
+.dropdown-text {
+    cursor: pointer;
+
+}
+
+.dropdown-text:hover {
+        /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.356); */
+    transform: scale(1.05);
+}
+
+.add-pledge-button {
+    position: relative;
+    top: 0px;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.add-pledge-button:hover {
+    transform: scale(1.2);
+
+}
+
+.create-pledge-input {
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 18px;
+    color: black;
+    border: 1px solid lightgray;
+    width: 360px;
+    height: 40px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: normal;
+    justify-content: normal;
+    align-items: center;
+    text-align: left;
+    margin-top: 5px;;
+}
+
+.create-pledge-titles {
+    font-family: Helvetica;
+    font-size: 16px;
+    margin-top: 10px;
+    /* margin-bottom: 20px; */
+}
+
+.category-title {
+    font-family: Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
     margin-bottom: 20px;
 }
