@@ -62,34 +62,20 @@ router.post(
 router.patch(
   "/:id",
   passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    const { errors, isValid } = validatePledgeInput(req.body);
-
-    if (!isValid) {
-      return res.status(400).json(errors);
+  async (req, res) => {
+    try {
+      const updatedPledge = await Pledge.findOneAndUpdate(
+        { _id: req.params.id },
+        req.body,
+        {
+          new: true,
+        }
+      );
+      res.send(updatedPledge);
+    } catch (err) {
+      console.log("err==>>", err);
+      res.status(500).send(err);
     }
-
-    Pledge.findOne(req.body._id).then((pledge) => {
-      const { ownerId, title, description, state } = req.body;
-
-      if (ownerId) {
-        pledge.ownerId = ownerId;
-      }
-
-      if (title) {
-        pledge.title = title;
-      }
-
-      if (description) {
-        pledge.description = description;
-      }
-
-      if (state) {
-        pledge.state = state;
-      }
-
-      pledge.save().then((savedPledge) => res.json(savedPledge));
-    });
   }
 );
 // delete pledge

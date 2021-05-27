@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Modal from "react-modal";
 import { useDispatch } from "react-redux";
-import { createPledgeAction } from "../../actions/pledge_actions";
+import { editPledgeAction } from "../../actions/pledge_actions";
 
 const customStyles = {
   content: {
@@ -28,19 +28,18 @@ const categories = [
 ];
 
 const AddPledge = ({
-  showAddPledgeModal,
-  toggleAddPledgeModal,
-  selectedCategory,
+  showEditPledgeModal,
+  toggleEditPledgeModal,
+  selectedPledge,
 }) => {
   const [formData, setFormData] = useState({
-    title: "",
-    description: "",
-    isPublic: false,
+    ...selectedPledge,
+    isPublic: selectedPledge.public,
   });
 
   const { title, description, isPublic } = formData;
   const dispatch = useDispatch();
-
+  
   const handleInputChange = (event) => {
     const { name, value, type, checked } = event.target;
     if (type === "checkbox") {
@@ -56,30 +55,27 @@ const AddPledge = ({
     }
   };
 
-  const handleCreatePledge = (e) => {
+  const handleUpdatePledge = (e) => {
     e.preventDefault();
-    dispatch(
-      createPledgeAction({
-        ...formData,
-        public: isPublic,
-        category: selectedCategory,
-      })
+    editPledgeAction(
+      { ...formData, id: formData._id, public: isPublic },
+      dispatch
     );
-    toggleAddPledgeModal();
+    toggleEditPledgeModal();
   };
 
   return (
     <div>
       <Modal
-        isOpen={showAddPledgeModal}
-        onRequestClose={toggleAddPledgeModal}
+        isOpen={showEditPledgeModal}
+        onRequestClose={toggleEditPledgeModal}
         style={customStyles}
       >
-        <button onClick={toggleAddPledgeModal}>close</button>
+        <button onClick={toggleEditPledgeModal}>close</button>
 
-        <h2>Add a Pledge</h2>
+        <h2>Edit a Pledge</h2>
 
-        <form onSubmit={handleCreatePledge}>
+        <form onSubmit={handleUpdatePledge}>
           Title:{" "}
           <input name="title" value={title} onChange={handleInputChange} />{" "}
           <br />

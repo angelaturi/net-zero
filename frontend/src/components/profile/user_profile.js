@@ -2,25 +2,29 @@ import React, { useState, useEffect } from "react";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import Calendar from "react-calendar";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Completed from "./Completed";
 import Pending from "./Pending";
 import PledgeCategories from "./PledgeCategories";
 import NewPledge from "./NewPledge";
+import EditPledge from "./EditPledge";
 import Sidebar from "./Sidebar";
 import { fetchPledges } from "../../actions/pledge_actions";
 
 import "./User_profile.css";
 
 const UserProfile = () => {
-  const [page, setPage] = useState("completed");
+  const [page, setPage] = useState("pending");
   const [value, onChange] = useState(new Date());
   const [showCalendar, setShowCalendar] = useState(false);
   const [showCategoriesModal, setShowCategoriesModal] = useState(false);
   const [showAddPledgeModal, setShowAddPledgeModal] = useState(false);
+  const [showEditPledgeModal, setShowEditPledgeModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [filter, setFilter] = useState("all");
+  const [selectedPledge, setSelectedPledge] = useState(null);
 
+  const pledges = useSelector((state) => state.pledges.all);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,7 +32,15 @@ const UserProfile = () => {
   }, []);
 
   let d = new Date();
-  let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
   let months = [
     "January",
     "February",
@@ -51,6 +63,10 @@ const UserProfile = () => {
 
   const toggleCategoriesModal = () => setShowCategoriesModal((prev) => !prev);
 
+  const toggleEditPledgeModal = (pledgeId) => {
+    if (pledgeId) setSelectedPledge(pledges.find((p) => p._id === pledgeId));
+    setShowEditPledgeModal((prev) => !prev);
+  };
 
   return (
     <div className="profile-main">
@@ -69,6 +85,15 @@ const UserProfile = () => {
         toggleAddPledgeModal={toggleAddPledgeModal}
         filter={selectedCategory}
       />
+
+      {selectedPledge && (
+        <EditPledge
+          selectedPledge={selectedPledge}
+          showEditPledgeModal={showEditPledgeModal}
+          toggleEditPledgeModal={toggleEditPledgeModal}
+        />
+      )}
+
       <div className="dates">
         <div className="dates-text">{finalDate}</div>
         <CalendarTodayIcon onClick={() => setShowCalendar(!showCalendar)} />
@@ -82,7 +107,10 @@ const UserProfile = () => {
         {page === "completed" ? (
           <Completed filter={filter} />
         ) : (
-          <Pending filter={filter} />
+          <Pending
+            toggleEditPledgeModal={toggleEditPledgeModal}
+            filter={filter}
+          />
         )}
       </div>
 

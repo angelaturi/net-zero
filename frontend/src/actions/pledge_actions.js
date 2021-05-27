@@ -40,16 +40,13 @@ export const createPledgeFailed = (err) => ({
 });
 
 export const editPledgeAction = (patch, dispatch) => {
-  dispatch(editPledgeSuccess(patch));
-  // dispatch(editPledge())
-  // patchPledge(patch)
-  //     .then(res => {
-  //         if (res.status === 200) {
-  //             dispatch(editPledgeSuccess(res.data))
-  //         } else {
-  //             dispatch(editPledgeFailed(res.data))
-  //         }
-  //     })
+  PledgeApiUtil.patchPledge(patch).then((res) => {
+    if (res.status === 200) {
+      dispatch(editPledgeSuccess(res.data));
+    } else {
+      dispatch(editPledgeFailed(res.data));
+    }
+  });
 };
 
 export const createPledgeAction = (data) => async (dispatch) => {
@@ -117,7 +114,7 @@ export const makePledge = (id) => (dispatch) =>
 
 export const deletePledge = (id) => (dispatch) =>
   PledgeApiUtil.deletePledge(id)
-    .then((pledge) => dispatch(removePledge(pledge)))
+    .then(() => dispatch(removePledge(id)))
     .catch((err) => console.log(err));
 
 

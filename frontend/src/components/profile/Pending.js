@@ -15,9 +15,8 @@ const customStyles = {
   },
 };
 
-const Pending = ({ filter }) => {
+const Pending = ({ filter, toggleEditPledgeModal }) => {
   const pledges = useSelector((state) => Object.values(state.pledges.all));
-  const [currentItemId, setCurrentItemId] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   let items = pledges.filter((pledge) => pledge.state === "pending");
@@ -30,36 +29,46 @@ const Pending = ({ filter }) => {
       : true
   );
 
-  const openModal = (id) => {
-    setIsOpen(true);
-    setCurrentItemId(id);
-  };
+  //   const openModal = (id) => {
+  //     setIsOpen(true);
+  //     setCurrentItemId(id);
+  //   };
 
   const closeModal = () => {
     setIsOpen(false);
   };
 
+  const handleEdit = (e, pledgeId) => {
+    e.preventDefault();
+    toggleEditPledgeModal(pledgeId);
+  };
+
+  const deletePledge = () => {
+      
+  }
+
   const renderPledges = () => {
     return items.map((pledge) => (
-      <div className="item" key={pledge.id}>
-        <RadioButtonUncheckedIcon
-          className="check"
-          onClick={() => openModal(pledge.id)}
-        />
+      <div
+        onClick={() => removeItem(pledge._id)}
+        onContextMenu={(e) => handleEdit(e, pledge._id)}
+        className="item"
+        key={pledge._id}
+      >
+        <RadioButtonUncheckedIcon className="check" />
         <ul>
           <li>{pledge.title}</li>
           <li>{pledge.description}</li>
         </ul>
+        <button onClick={deletePledge} >Delete</button>
       </div>
     ));
   };
 
-  const removeItem = () => {
-    //  const filteredItems = items.filter(item => item.id !== currentItemId)
-    //  setItems(filteredItems)
+  const removeItem = (id) => {
     editPledgeAction(
       {
-        id: currentItemId,
+        id,
         state: "completed",
       },
       dispatch
