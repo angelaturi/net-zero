@@ -20,7 +20,7 @@ module.exports = function validatePledgeInput(data) {
     errors.title = "Title field is required.";
   }
 
-  if (!Validator.isLength(data.title, { min: 4, max: 20 })) {
+  if (!Validator.isLength(data.title, { min: 4, max: 200 })) {
     errors.title =
       "Title field should be minimum 4 characters and maximum 20 characters.";
   }
