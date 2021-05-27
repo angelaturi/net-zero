@@ -31,3 +31,7 @@ export const patchPledge = ({ id, ...rest }) => {
 export const followPledge = (pledgeId) => {
   return axios.post(`/api/pledges/follow/${pledgeId}`);
 }
+
+export const commentOnPledge = ({pledgeId, ...comment}) => {
+  return axios.post(`/api/pledges/${pledgeId}/comments`, comment)
+}

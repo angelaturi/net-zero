@@ -129,23 +129,18 @@ router.delete("/:id", (req, res) => {
 
 //Add comment to pledge
 router.post(
-  "/comment/:id",
+  "/:id/comments/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    const { errors, isValid } = validatePledgeInput(req.body);
-
-    if (!isValid) {
-      return res.status(400).json(errors);
-    }
-
     Pledge.findById(req.params.id)
       .then((pledge) => {
         const newComment = {
-          text: req.body.text,
-          name: req.body.name,
+          authorId: req.body.authorId ? req.body.authorId : null,
+          text: req.body.text ? req.body.text : "",
+          authorName: req.body.authorName ? req.body.authorName : "",
         };
 
-        pledge.comments.unshift(newComment);
+        pledge.comments.push(newComment);
 
         pledge.save().then((pledge) => res.json(pledge));
       })

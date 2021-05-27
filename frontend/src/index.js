@@ -11,19 +11,7 @@ import axios from 'axios';
 import "react-calendar/dist/Calendar.css";
 import { fetchPledge } from './actions/pledge_actions';
 
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>,
-//   document.getElementById('root')
-// );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// src/index.js
-// import React from 'react';
-// import ReactDOM from 'react-dom';
+import { commentOnPledge } from './actions/pledge_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -60,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   window.fetchPledge = fetchPledge;
+  window.commentOnPledge = commentOnPledge;
 
   // Render our root component and pass in the store as a prop
   const root = document.getElementById("root");

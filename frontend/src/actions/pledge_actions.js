@@ -15,6 +15,7 @@ export const RECEIVE_PLEDGE = "RECEIVE_PLEDGE";
 export const RECEIVE_USER_PLEDGES = "RECEIVE_USER_PLEDGES";
 export const REMOVE_PLEDGE = "REMOVE_PLEDGE";
 export const SHOW_PLEDGE = "SHOW_PLEDGE";
+export const COMMENT_ON_PLEDGE = "COMMENT_ON_PLEDGE";
 
 export const editPledge = () => ({
   type: EDIT_PLEDGE,
@@ -62,37 +63,50 @@ export const createPledgeAction = (data) => async (dispatch) => {
 // //constants
 
 // //action creators
-export const receivePledges = (pledges) => ({
+const receivePledges = (pledges) => ({
   type: RECEIVE_PLEDGES,
   pledges,
 });
 
-export const receiveUserPledges = (pledges) => ({
+const receiveUserPledges = (pledges) => ({
   type: RECEIVE_USER_PLEDGES,
   pledges,
 });
 
-export const receivePledge = (pledge) => ({
+const receivePledge = (pledge) => ({
   type: RECEIVE_PLEDGE,
   pledge,
 });
 
-export const showPledgeAction = (pledge) => ({
+const showPledgeAction = (pledge) => ({
   type: SHOW_PLEDGE,
   pledge,
 });
 
-export const receiveNewPledge = (pledge) => ({
+const receiveNewPledge = (pledge) => ({
   type: RECEIVE_NEW_PLEDGE,
   pledge,
 });
 
-export const removePledge = (pledgeId) => ({
+const removePledge = (pledgeId) => ({
   type: REMOVE_PLEDGE,
   pledgeId,
 });
 
+// const commentOnPledgeAction = (pledgeId, comment) => ({
+//   type: COMMENT_ON_PLEDGE,
+//   pledgeId,
+//   comment
+// })
+
 // //thunk actions
+
+export const commentOnPledge = ({pledgeId, ...comment}) => (dispatch) => 
+  PledgeApiUtil.commentOnPledge({pledgeId, ...comment})
+    .then((pledge) => dispatch(showPledgeAction(pledge)))
+    .catch((err) => console.log(err));
+
+
 export const fetchPledges = () => (dispatch) =>
   PledgeApiUtil.getPledges()
     .then((pledges) => dispatch(receivePledges(pledges)))

@@ -21,15 +21,14 @@ const PledgeSchema = new Schema({
   },
   comments: [
     {
-      user: {
+      authorId: {
         type: Schema.Types.ObjectId,
         ref: "users",
       },
-      text: {
+      authorName: {
         type: String,
-        required: true,
       },
-      name: {
+      text: {
         type: String,
       },
       date: {
