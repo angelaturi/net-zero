@@ -24,8 +24,8 @@ export const deletePledge = (pledgeId) => {
   return axios.delete(`/api/pledges/${pledgeId}`);
 };
 
-export const patchPledge = ({ pledgeId, ...rest }) => {
-  return axios.patch(`/api/pledges/${pledgeId}`, rest);
+export const patchPledge = ({ id, ...rest }) => {
+  return axios.patch(`/api/pledges/${id}`, rest);
 };
 
 export const followPledge = (pledgeId) => {

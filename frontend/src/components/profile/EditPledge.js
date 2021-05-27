@@ -39,7 +39,7 @@ const AddPledge = ({
 
   const { title, description, isPublic } = formData;
   const dispatch = useDispatch();
-  
+
   const handleInputChange = (event) => {
     const { name, value, type, checked } = event.target;
     if (type === "checkbox") {

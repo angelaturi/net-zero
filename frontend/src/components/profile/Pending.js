@@ -43,9 +43,7 @@ const Pending = ({ filter, toggleEditPledgeModal }) => {
     toggleEditPledgeModal(pledgeId);
   };
 
-  const deletePledge = () => {
-      
-  }
+  const deletePledge = () => {};
 
   const renderPledges = () => {
     return items.map((pledge) => (
@@ -60,7 +58,7 @@ const Pending = ({ filter, toggleEditPledgeModal }) => {
           <li>{pledge.title}</li>
           <li>{pledge.description}</li>
         </ul>
-        <button onClick={deletePledge} >Delete</button>
+        <button onClick={deletePledge}>Delete</button>
       </div>
     ));
   };
