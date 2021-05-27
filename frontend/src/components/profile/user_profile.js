@@ -70,7 +70,6 @@ const UserProfile = () => {
 
   return (
     <div className="profile-main">
-      <Sidebar setFilter={setFilter} />
 
       <PledgeCategories
         showCategoriesModal={showCategoriesModal}
@@ -98,9 +97,11 @@ const UserProfile = () => {
         <div className="dates-text">{finalDate}</div>
         <CalendarTodayIcon onClick={() => setShowCalendar(!showCalendar)} />
       </div>
+      <AddCircleIcon className="add-pledge-button" onClick={toggleCategoriesModal} />
+      <Sidebar setFilter={setFilter} />
       <div className="links">
-        <p onClick={() => setPage("pending")}>Pending</p>
-        <p onClick={() => setPage("completed")}> Completed</p>
+        <p className="dropdown-text" onClick={() => setPage("pending")}>Pending</p>
+        <p className="dropdown-text" onClick={() => setPage("completed")}> Completed</p>
       </div>
 
       <div>
@@ -122,7 +123,6 @@ const UserProfile = () => {
         )}
       </div>
 
-      <AddCircleIcon onClick={toggleCategoriesModal} />
     </div>
   );
 };

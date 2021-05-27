@@ -5,7 +5,7 @@ import UserProfile from "./user_profile";
 const UserProfileContainer = () => {
   return (
     <div>
-      <div className="my-pledges-title">My Pledges</div>
+      <div className="my-pledges-title"></div>
       <div className="profile-container">
         <UserProfile />
       </div>

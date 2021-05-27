@@ -36,18 +36,18 @@ const PledgeCategories = ({
       onRequestClose={toggleCategoriesModal}
       style={customStyles}
     >
-      <button onClick={toggleCategoriesModal}>close</button>
-
+      <button className="x-modal-button" onClick={toggleCategoriesModal}>X</button>
+      <div className="category-title">Choose a category: </div>
       {categories.map((category, i) => (
         <div key={i}>
-          <p
+          <p className="dropdown-text"
             onClick={() => {
               setSelectedCategory(category);
               toggleCategoriesModal();
               toggleAddPledgeModal();
             }}
           >
-            {category}
+            <li>{category}</li>
           </p>
         </div>
       ))}
