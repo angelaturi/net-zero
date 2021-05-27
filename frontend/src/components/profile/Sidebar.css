@@ -29,10 +29,11 @@
 }
 
 .profile-modal-button {
-      background-color: black;
+    background-color: black;
     color: white;
     height: 40px;
-    width: 100px;
+    width: 200px;
+    font-size: 14px;
 }
 
 .profile-modal-button:hover {
