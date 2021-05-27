@@ -1,16 +1,26 @@
-import React, {useState} from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Avatar from "@material-ui/core/Avatar";
 import { Link } from "react-router-dom";
-import './main_page.css'
+
+import { getAllUsers } from "../../actions/user_actions";
+
+import "./main_page.css";
 
 const MainPage = () => {
+  //   User id
+  // Title
+  // Description
 
-//   User id
-// Title
-// Description
+  const users = useSelector((state) => state.users.data);
+  const dispatch = useDispatch();
+  
 
+  useEffect(() => {
+    dispatch(getAllUsers());
+  }, []);
 
-  const [data, setData] = useState([
+  /*const [data, setData] = useState([
     {
       name: "Jubril",
       image: "Bill_gate.jpg",
@@ -46,11 +56,10 @@ const MainPage = () => {
       description:
         "Taking a 3 minute shorter shower every day could save over 40 bathtubs of water in a year",
     },
-  ]);
+  ]);*/
 
   const renderPledges = () => {
-
-    return data.map((pledge) => (
+    return users.map((pledge) => (
       <div className="feedItem" key={pledge.id}>
         <div className="item1">
           <Avatar
@@ -84,14 +93,16 @@ const MainPage = () => {
         <button className="follow-button"> + </button>
       </div>
     ));
-    
-  }
+  };
+
   return (
     <div className="main">
       <div className="pledges-container">
-        <div className="pledges-index-title">Categories / sorting goes here(?)</div>
-    {renderPledges()}
-    </div>
+        <div className="pledges-index-title">
+          Categories / sorting goes here(?)
+        </div>
+        {renderPledges()}
+      </div>
     </div>
   );
 };

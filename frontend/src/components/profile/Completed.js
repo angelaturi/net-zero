@@ -1,8 +1,8 @@
-
-import React, {useState} from 'react'
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import Modal from "react-modal";
-
+import { editPledgeAction } from "../../actions/pledge_actions";
 
 const customStyles = {
   content: {
@@ -15,90 +15,77 @@ const customStyles = {
   },
 };
 
+const Completed = ({ filter }) => {
+  const pledges = useSelector((state) => state.pledges.all);
 
+  let items = pledges.filter((pledge) => pledge.state === "completed");
+  items = items.filter((pledge) =>
+    filter === "public"
+      ? pledge.public
+      : filter === "private"
+      ? !pledge.public
+      : true
+  );
+  const [currentItemId, setCurrentItemId] = useState(null);
 
-const Completed = () => {
+  const dispatch = useDispatch();
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const openModal = (id) => {
+    setIsOpen(true);
+    setCurrentItemId(id);
+  };
 
-    const [items, setItems] = useState([
-      {
-        id: "1",
-        title: "Use the dishwasher",
-        description:
-          "Dishwashers use ½ the energy and ⅓rd of the water as handwashing. Finally, the perfect excuse for not doing the dishes.",
-      },
-      {
-        id: "2",
-        title: "Use the dishwasher",
-        description:
-          "Dishwashers use ½ the energy and ⅓rd of the water as handwashing. Finally, the perfect excuse for not doing the dishes.",
-      },
-      {
-        id: "3",
-        title: "Use the dishwasher",
-        description:
-          "Dishwashers use ½ the energy and ⅓rd of the water as handwashing. Finally, the perfect excuse for not doing the dishes.",
-      },
-      {
-        id: "4",
-        title: "Use the dishwasher",
-        description:
-          "Dishwashers use ½ the energy and ⅓rd of the water as handwashing. Finally, the perfect excuse for not doing the dishes.",
-      },
-    ]);
-    const [currentItemId, setCurrentItemId] = useState("")
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
-      var subtitle;
-      const [modalIsOpen, setIsOpen] = React.useState(false);
-      const openModal = (id) => {
-        setIsOpen(true);
-        setCurrentItemId(id)
-      }
-
-      const afterOpenModal = () => {
-        // references are now sync'd and can be accessed.
-        //subtitle.style.color = "#f00";
-      }
-
-      const closeModal = () => {
-        setIsOpen(false);
-      }
-
-     const renderPledges = () => {
-       return items.map((pledge) => (
-         <div className="item" key={pledge.id} >
-           <CheckCircleIcon className="check" onClick={() => openModal(pledge.id)}/>
-           <ul>
-             <li>Mediate</li>
-             <li>1 Current Stick</li>
-           </ul>
-         </div>
-       ));
-     };
-
-     const removeItem = () => {
-         const filteredItems = items.filter(item => item.id !== currentItemId)
-         setItems(filteredItems)
-        closeModal()
-     }
-    
-    return (
-      <div id="hey">
-        {renderPledges()}
-
-        <Modal
-          isOpen={modalIsOpen}
-          onAfterOpen={afterOpenModal}
-          onRequestClose={closeModal}
-          style={customStyles}
-          contentLabel="Example Modal"
-        >
-          <h2>Confirmation</h2>
-          <button onClick={() => removeItem()}>remove</button>
-          <button >enter log manually</button>
-          <button onClick={closeModal}>cancel</button>
-        </Modal>
+  const renderPledges = () => {
+    return items.map((pledge) => (
+      <div className="item" key={pledge.id}>
+        <CheckCircleIcon
+          className="check"
+          onClick={() => openModal(pledge._id)}
+        />
+        <ul>
+          <li>{pledge.title}</li>
+          <li>{pledge.description}</li>
+        </ul>
       </div>
-    );
-}
+    ));
+  };
 
-export default Completed
+  const removeItem = () => {
+    editPledgeAction(
+      {
+        id: currentItemId,
+        state: "pending",
+      },
+      dispatch
+    );
+    closeModal();
+  };
+
+  return (
+    <div id="completed-pledges">
+      {renderPledges()}
+
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <div className="profile-modal-title">Confirmation</div>
+        <button className="profile-modal-button" onClick={() => removeItem()}>
+          Remove
+        </button>
+        <button className="profile-modal-button">Edit</button>
+        <button className="x-modal-button" onClick={closeModal}>
+          X
+        </button>
+      </Modal>
+    </div>
+  );
+};
+
+export default Completed;

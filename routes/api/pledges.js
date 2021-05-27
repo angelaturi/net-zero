@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const mongoose = require("mongoose");
 const passport = require("passport");
 const keys = require("../../config/keys");
 const Pledge = require("../../models/Pledge");
@@ -35,7 +34,7 @@ const upload = require("../../services/ImageUpload");
 
 // All Public Pledges
 router.get("/", (req, res) => {
-  Pledge.find({ public: true })
+  Pledge.find()
     .sort({ date: -1 })
     .then((pledges) => res.json(pledges))
     .catch((err) =>
@@ -69,49 +68,51 @@ router.post(
   "/",
   upload.single("image"),
   passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    const { errors, isValid } = validatePledgeInput(req.body);
+  async (req, res) => {
+    try {
+      const { errors, isValid } = validatePledgeInput(req.body);
 
-    if (!isValid) {
-      return res.status(400).json(errors);
+      // uploadImage(req.file).then((data) => {
+      //   const uploadedImageURL = data.Location;
+
+      const newPledge = new Pledge({
+        title: req.body.title,
+        description: req.body.description,
+        actionlist: req.body.actionlist,
+        public: req.body.public,
+        image: req.file ? req.file.location : "",
+        user: req.user.id,
+      });
+
+      newPledge
+        .save()
+        .then((pledge) => res.json(pledge))
+        .catch((err) => res.json(err));
+    } catch (err) {
+      console.log("an error occurred==>>", err);
+      res.status(500).send(err);
     }
-
-    // uploadImage(req.file).then((data) => {
-    //   const uploadedImageURL = data.Location;
-
-    const newPledge = new Pledge({
-      title: req.body.title,
-      description: req.body.description,
-      actionlist: req.body.actionlist,
-      public: req.body.public,
-      image: req.file ? req.file.location : "",
-      user: req.user.id,
-    });
-
-    newPledge
-      .save()
-      .then((pledge) => res.json(pledge))
-      .catch((err) => res.json(err));
   }
 );
-// update pledge
+
+// update
 router.patch(
   "/:id",
   passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    const { errors, isValid } = validatePledgeInput(req.body);
-
-    if (!isValid) {
-      return res.status(400).json(errors);
+  async (req, res) => {
+    try {
+      const updatedPledge = await Pledge.findOneAndUpdate(
+        { _id: req.params.id },
+        req.body,
+        {
+          new: true,
+        }
+      );
+      res.send(updatedPledge);
+    } catch (err) {
+      console.log("err==>>", err);
+      res.status(500).send(err);
     }
-
-    Pledge.findOne(req.body._id).then((pledge) => {
-      // pledge.ownerId = req.body.ownerId;
-      pledge.title = req.body.title;
-      pledge.description = req.body.description;
-
-      pledge.save().then((savedPledge) => res.json(savedPledge));
-    });
   }
 );
 // delete pledge

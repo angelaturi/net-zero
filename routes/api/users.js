@@ -5,7 +5,7 @@ const User = require("../../models/User");
 const keys = require("../../config/keys");
 const jwt = require("jsonwebtoken");
 const passport = require("passport");
-const Pledge = require("../../models/Pledge");
+const Pledge = require("../../models/User");
 
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
@@ -33,6 +33,17 @@ const upload = require("../../services/ImageUpload");
 //   const uploadPhoto = s3.upload(params).promise();
 //   return uploadPhoto;
 // };
+
+
+//Users Pledges
+router.get("/",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    User.find()
+      .then((users) => res.json(users))
+      .catch((err) => res.status(400).json(err));
+  }
+);
 
 //Users Pledges
 router.get(

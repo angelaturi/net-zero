@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
-
+const { Schema } = require("mongoose");
 const PledgeSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: "users" },
 
@@ -39,25 +38,24 @@ const PledgeSchema = new Schema({
       },
     },
   ],
-  follows: [
-    {
-      user: {
-        type: Schema.Types.ObjectId,
-        ref: "users",
-      },
-      count: {
-        type: String,
-        required: true,
-      },
-    },
-  ],
   image: {
     type: String,
     required: false,
   },
+  follows: [{ type: Schema.Types.ObjectId, ref: "users" }],
+
+  state: {
+    type: String,
+    required: true,
+    default: "pending",
+  },
   date: {
     type: Date,
     default: Date.now,
+  },
+  category: {
+    type: String,
+    required: true,
   },
 });
 

@@ -1,16 +1,16 @@
-import React, {useState} from 'react'
-import Sidebar from './Sidebar'
-import User_profile from './user_profile'
+import React, { useState } from "react";
+import Sidebar from "./Sidebar";
+import UserProfile from "./user_profile";
 
 const UserProfileContainer = () => {
+  return (
+    <div>
+      <div className="my-pledges-title"></div>
+      <div className="profile-container">
+        <UserProfile />
+      </div>
+    </div>
+  );
+};
 
-
-    return (
-        <div>
-            <User_profile />
-            <Sidebar />
-        </div>
-    )
-}
-
-export default UserProfileContainer
+export default UserProfileContainer;
