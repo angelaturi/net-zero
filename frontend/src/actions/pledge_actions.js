@@ -114,5 +114,5 @@ export const makePledge = (id) => (dispatch) =>
 
 export const deletePledge = (id) => (dispatch) =>
   PledgeApiUtil.deletePledge(id)
-    .then((pledge) => dispatch(removePledge(pledge)))
+    .then(() => dispatch(removePledge(id)))
     .catch((err) => console.log(err));

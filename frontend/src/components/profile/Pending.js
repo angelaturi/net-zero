@@ -40,30 +40,32 @@ const Pending = ({ filter, toggleEditPledgeModal }) => {
 
   const handleEdit = (e, pledgeId) => {
     e.preventDefault();
-    console.log("type==>>", e.type, "pledgeId", pledgeId);
     toggleEditPledgeModal(pledgeId);
   };
 
+  const deletePledge = () => {
+      
+  }
+
   const renderPledges = () => {
     return items.map((pledge) => (
-      <div className="item" key={pledge.id}>
-        <RadioButtonUncheckedIcon
-          className="check"
-          onClick={() => removeItem(pledge._id)}
-          onContextMenu={(e) => handleEdit(e, pledge._id)}
-        />
+      <div
+        onClick={() => removeItem(pledge._id)}
+        onContextMenu={(e) => handleEdit(e, pledge._id)}
+        className="item"
+        key={pledge._id}
+      >
+        <RadioButtonUncheckedIcon className="check" />
         <ul>
           <li>{pledge.title}</li>
           <li>{pledge.description}</li>
         </ul>
+        <button onClick={deletePledge} >Delete</button>
       </div>
     ));
   };
 
   const removeItem = (id) => {
-    console.log("hr===", id);
-    //  const filteredItems = items.filter(item => item.id !== currentItemId)
-    //  setItems(filteredItems)
     editPledgeAction(
       {
         id,

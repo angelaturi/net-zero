@@ -77,6 +77,8 @@ const AddPledge = ({
       >
         <button onClick={toggleAddPledgeModal}>close</button>
 
+        <h2>Add a Pledge</h2>
+
         <form onSubmit={handleCreatePledge}>
           Title:{" "}
           <input name="title" value={title} onChange={handleInputChange} />{" "}
