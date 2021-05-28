@@ -1,5 +1,7 @@
 //
+
 import React from 'react';
+import './pledges.css'
 
 class PledgeShow extends React.Component {
     constructor(props){
@@ -12,6 +14,7 @@ class PledgeShow extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFollow = this.handleFollow.bind(this);
         this.update = this.update.bind(this);
+        this.convertDate = this.convertDate.bind(this)
     }
 
     componentDidMount() {
@@ -27,6 +30,21 @@ class PledgeShow extends React.Component {
             }
         })    
     }
+
+    convertDate = dateTime => {
+    let dateObject = new Date(dateTime);
+    const dateOptions = { month: 'numeric', day: 'numeric', year: 'numeric' };
+    let date = dateObject.toLocaleDateString('en-US', dateOptions);
+    const now = new Date();
+    const dateObj = new Date(date);
+    if ((now.getDate() === dateObj.getDate()) && (now.getMonth() === dateObj.getMonth()) && (now.getYear() === dateObj.getFullYear())) {
+        return `Today`;
+    }
+    if ((now.getDate() - dateObj.getDate() === 1) || (now.getMonth() - dateObj.getMonth() === 1) || (now.getYear() - dateObj.getFullYear() === 1)) {
+        return `Yesterday`;
+    }
+    return date;
+    };
 
     handleSubmit(e) {
         e.preventDefault();
@@ -63,32 +81,40 @@ class PledgeShow extends React.Component {
         
         if (this.props.currentPledge) {
             return (
-                <div>
-                    <h1>{this.props.currentPledge.title}</h1>
-                    <p>Category: {this.props.currentPledge.category}</p>
-                    <img src={this.props.currentPledge.image} />
-                    <p>{this.props.currentPledge.description}</p>
-                    <p>{this.props.currentPledge.date}</p>
-                    <button onClick={() => this.handleFollow(this.props.currentPledge._id)}>
+                <div className="pledge-show-card">
+                    <button className="pledge-show-follow-button" onClick={() => this.handleFollow(this.props.currentPledge._id)}>
                         {this.state.followed ? "Followed!": "Follow Pledge" }
                     </button>
-                    <p>{this.props.currentPledge.follows.length} Followers</p> 
-                    <h2>Comments</h2>
+                    <div className="pledge-show-followers">{this.props.currentPledge.follows.length} people follow this pledge</div> 
+                     {this.props.currentPledge.user &&
+                            <p>By {this.props.currentPledge.user.name}</p>
+                        }
+                    <div className="pledge-show-date">Pledged {this.convertDate(this.props.currentPledge.date)}</div>
+                    
+                    <div className="pledge-show-title">{this.props.currentPledge.title}</div>
+                    {/* <div>Category÷: {this.props.currentPledge.category}</div> */}
+                    <div className="pledge-show-description">{this.props.currentPledge.description}</div>
+                    <img className="pledge-show-img" src={this.props.currentPledge.image} />
+                    <div className="pledge-show-comment-title">Comments</div>
                     <form onSubmit={this.handleSubmit}>
                         <input 
+                            className="pledge-show-comment-input"
                             type="textarea"
                             value={this.state.text}
                             onChange={this.update()}
                             placeholder="Leave a comment..."
                         />
-                        <input type="submit" value="Submit Comment" />
+                        <br />
+                        <input className="pledge-show-submit-comment" type="submit" value="Submit Comment" />
                     </form>
+                    <div className="pledge-show-border"></div>
                     
                     {
                         this.props.currentPledge.comments.map((comment) => (
                             <div>
-                                <h3>{comment.authorName}</h3>
-                                <p>{comment.text}</p>
+                                <div className="comment-username"><u>{comment.authorName}</u></div>
+                                <div className="comment-text">{comment.text}</div>
+                                <div className="pledge-show-border"></div>
                             </div>
                         ))
                     }
