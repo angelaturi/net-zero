@@ -5,6 +5,8 @@
   background-position: 60% 50%;
   background-size: cover;
   background-repeat: no-repeat;
+  overflow-y: hidden;
+  object-fit: cover;
 }
 
 .hero-image {
@@ -15,7 +17,9 @@
   background-position: center;
   background-repeat: no-repeat;
   vertical-align: baseline;
-  /* overflow-x: hidden; */
+  overflow-y: hidden;
+   object-fit: cover;
+
 }
 
 .hero-box {
@@ -28,7 +32,7 @@
 .hero-header {
   position: relative;
   font-family: Helvetica, sans-serif;
-  font-size: 40px;
+  font-size: 50px;
   top: -750px;
   color:white;
   font-weight: bold;
@@ -43,13 +47,16 @@
 .hero-subheader {
   position: relative;
   font-family: Helvetica, sans-serif;
-  font-size: 20px;
-  margin: 20px;
+  font-size: 24px;
+  /* margin: 20px; */
   top: -730px;
   color:white;
   font-weight: bold;
   /* background-color: black; */
     text-shadow: 2px 2px black;
+    margin-top: 20px;
+    margin-left: 90px;
+    margin-right: 90px;
 }
 
 .hero-subheader::selection {

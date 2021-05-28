@@ -6,9 +6,9 @@ const Hero = () => (
     <div className="hero-box">
     <div className="hero-header">Weaving sustainability into everyday life. </div>
     <div className="hero-subheader">
-      Showcasing its importance and impact in daily decisions and illuminating the way to a net zero carbon future. Net Zero gives an easy and simple way for anyone to take high-impact, achievable pledges to reduce their carbon pollution.
+      Netzero gives an easy and simple way for anyone to take high-impact, achievable pledges to reduce their carbon pollution.
     </div>
-    <button className="hero-button">Get Started</button>
+    {/* <button className="hero-button"> <a href="/signup">Get Started</a></button> */}
     </div>
   </section>
 );

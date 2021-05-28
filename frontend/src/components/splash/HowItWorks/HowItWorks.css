@@ -8,7 +8,7 @@
 
 .how-it-works-title {
   font-size: 32px;
-  margin-top: 50px;
+  margin-top: 70px;
 }
 
 .how-it-works-title::selection {
@@ -19,6 +19,8 @@
 .how-it-works-subtitle {
   font-size: 18px;
   margin-top: 20px;
+  margin-left: 70px;
+  margin-right: 70px;
 }
 
 .how-it-works-subtitle::selection {
