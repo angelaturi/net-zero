@@ -1,7 +1,7 @@
 # net-zero
 
 Net Zero is an easy-to-use pledge tracker that reminds and motivates you to commit to climate-change-curbing efforts every day and track your progress.
-With our minimal and intuitive design, Net Zero pledge tracker is here to make your building and monitoring pledges become more effective and completely effortless. 
+With our minimal and intuitive design, Net Zero pledge tracker is here to make your building and monitoring pledges become more effective and completely effortless. Together we have the power to change things.
 
 ## Technologies Used
 * React / Redux
