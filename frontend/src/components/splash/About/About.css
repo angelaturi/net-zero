@@ -1,0 +1,17 @@
+.about-section {
+  font-family: Helvetica, sans-serif;
+  /* width: 80%; */
+  margin: 30px;
+    text-align: center;
+
+}
+
+.about-title {
+  font-size: 32px;
+  margin-top: 50px;
+}
+
+.about-subtitle {
+  font-size: 18px;
+  margin-top: 20px;
+}
