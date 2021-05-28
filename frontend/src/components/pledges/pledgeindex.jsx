@@ -1,14 +1,14 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import {Link} from 'react-router-dom';
-
+import ImageUploader from 'react-images-upload';
 
 class PledgeIndex extends React.Component {
     constructor(props) {
         super(props);
     
         this.state = {
-            pledges: []
+            pledges: [],
         }
         this.handleFollow = this.handleFollow.bind(this);
     }
@@ -34,6 +34,7 @@ class PledgeIndex extends React.Component {
             return (<div>There are no Pledges</div>)
         } else {
             return (
+                
                 <div>
                     <h2>Pledges</h2>
                     {this.state.pledges.map(pledge => (
