@@ -1,7 +1,8 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Modal from "react-modal";
 import { useDispatch } from "react-redux";
 import { createPledgeAction } from "../../actions/pledge_actions";
+import ImageUploader from "react-images-upload";
 
 const customStyles = {
   content: {
@@ -32,13 +33,17 @@ const AddPledge = ({
   toggleAddPledgeModal,
   selectedCategory,
 }) => {
+
+ 
+
   const [formData, setFormData] = useState({
     title: "",
     description: "",
     isPublic: false,
+    imageURL: ""
   });
 
-  const { title, description, isPublic } = formData;
+  const { title, description, imageURL, isPublic } = formData;
   const dispatch = useDispatch();
 
   const handleInputChange = (event) => {
@@ -68,6 +73,12 @@ const AddPledge = ({
     toggleAddPledgeModal();
   };
 
+  const [pictures, setPictures] = useState([]);
+
+  const onDrop = picture => {
+    setPictures([...pictures, picture]);
+  };
+
   return (
     <div>
       <Modal
@@ -93,6 +104,13 @@ const AddPledge = ({
             value={description}
             onChange={handleInputChange}
           />
+          <ImageUploader
+            withIcon={true}
+            onChange={onDrop}
+            imgExtension={[".jpg", ".gif", ".png", ".gif"]}
+            maxFileSize={5242880}
+          />
+
           <br />
           <div className="create-pledge-titles"> Public:{" "} </div>
           <input

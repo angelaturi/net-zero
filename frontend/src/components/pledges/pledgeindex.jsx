@@ -29,6 +29,7 @@ class PledgeIndex extends React.Component {
     }
 
     render() {
+
         if (this.state.pledges.length === 0) {
             return (<div>There are no Pledges</div>)
         } else {
@@ -40,7 +41,10 @@ class PledgeIndex extends React.Component {
                         <div className="pledge-title">{pledge.title}</div>
                         <div className="pledge-description">{pledge.description}</div>
                         <p>{pledge.follows.length} followers!</p>
-                        <p>{pledge.category}</p> 
+                        <p>{pledge.category}</p>
+                        {pledge.user &&
+                            <p>{pledge.user.name}</p>
+                        }
                         <Link to={`/pledges/${pledge._id}`}>View Pledge</Link>
                         <button className="follow-button" onClick={() => this.handleFollow(pledge._id)}>Follow Pledge</button>
                     </div>
