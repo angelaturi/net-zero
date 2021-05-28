@@ -1,7 +1,7 @@
 # net-zero
 
 Net Zero is an easy-to-use pledge tracker that reminds and motivates you to commit to climate-change-curbing efforts every day and track your progress.
-With our minimal and intuitive design, Net Zero pledge tracker is here to make your building and monitoring pledges become more effective and completely effortless. Together we have the power to change things.
+With our minimal and intuitive design, Net Zero pledge tracker is here to make your building and monitoring pledges become more effective and completely effortless. Together we have the power to get to net zero carbon emissions by 2050.
 
 ## Technologies Used
 * React / Redux
@@ -12,7 +12,7 @@ With our minimal and intuitive design, Net Zero pledge tracker is here to make y
 ## Key Features
 * Add pledges to your pledge list:
 
-The to-do list will be a user's main source of truth for which pledges they create and commit to. Upon navigation to the user's profile page, users can toggle between their 'pending' and 'completed' pledge lists as well as filter between 'public' and 'private' pledges. At time of creation, pledges are automatically inputted onto the 'pending' pledge list. Pledges on the 'pending' list that are checked off will be moved onto the 'completed' pledge list.
+The to-do list will be a user's main source of truth for which pledges they commit to. Upon navigation to the user's profile page, users can toggle between their 'pending' and 'completed' pledge lists as well as filter between 'public' and 'private' pledges. At time of creation, pledges are automatically inputted onto the 'pending' pledge list. Pledges on the 'pending' list that are checked off will be moved onto the 'completed' pledge list.
 
 * Create pledge:
 
