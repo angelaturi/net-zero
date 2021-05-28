@@ -1,0 +1,129 @@
+.pledge-show-card {
+    background-color: #fff;
+    width: 50%;
+    margin: 15vh auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    transition: transform .2s;
+}
+
+.pledge-show-title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 36px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.pledge-show-img {
+    width: 100px;
+}
+
+.pledge-show-description {
+    font-family: Helvetica, sans-serif;
+    color: rgb(99, 99, 99);
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+.pledge-show-follow-button {
+    background-color: black;
+    color: white;
+    width: 120px;
+    height: 30px;
+    /* margin-top: 25px; */
+    position: relative;
+    /* top: px; */
+    /* left: 400px; */
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.pledge-show-follow-button:hover {
+    background-color:  rgb(104,220,93);
+    border: 1px solid  rgb(104,220,93);
+}
+
+.pledge-show-followers {
+    font-family: Helvetica, sans-serif;
+    font-size: 12px;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    
+}
+
+.pledge-show-comment-title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    font-weight: normal;
+    margin-top: 20px;
+}
+
+.pledge-show-comment-input {
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    color: black;
+    border: 1px solid lightgray;
+    width: 360px;
+    height: 30px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: normal;
+    justify-content: normal;
+    align-items: center;
+    text-align: left;
+    margin-top: 5px;
+}
+
+.pledge-show-submit-comment {
+    background-color: black;
+    color: white;
+    width: 120px;
+    height: 30px;
+    margin-top: 10px;
+    /* position: fixed; */
+    top: 0px;
+    right: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.pledge-show-submit-comment:hover {
+    background-color:  rgb(104,220,93);
+    border: 1px solid  rgb(104,220,93);
+}
+
+.pledge-show-date {
+    font-size: 12px;
+    color: gray;
+}
+
+.comment-username {
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+.pledge-show-border {
+    border: 0.5px solid lightgray;
+}
+
+.comment-text {
+    font-family: Helvetica, sans-serif;
+    font-size: 13px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.pledge-index-link {
+    font-family: Helvetica, sans-serif;
+    color: black
+}
+
+.pledge-index-link:hover {
+    font-family: Helvetica, sans-serif;
+    color: rgb(104,220,93);
+}

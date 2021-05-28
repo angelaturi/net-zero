@@ -70,8 +70,7 @@ const UserProfile = () => {
 
   return (
     <div className="profile-main">
-      <AddCircleIcon onClick={toggleCategoriesModal} />
-      <Sidebar setFilter={setFilter} />
+      <AddCircleIcon onClick={toggleCategoriesModal} /> <br /> <br />
 
       <PledgeCategories
         showCategoriesModal={showCategoriesModal}
@@ -89,16 +88,17 @@ const UserProfile = () => {
 
       {selectedPledge && (
         <EditPledge
-          selectedPledge={selectedPledge}
-          showEditPledgeModal={showEditPledgeModal}
-          toggleEditPledgeModal={toggleEditPledgeModal}
-          />
-          )}
+        selectedPledge={selectedPledge}
+        showEditPledgeModal={showEditPledgeModal}
+        toggleEditPledgeModal={toggleEditPledgeModal}
+        />
+        )}
 
       <div className="dates">
         <div className="dates-text">{finalDate}</div>
         <CalendarTodayIcon onClick={() => setShowCalendar(!showCalendar)} />
       </div>
+        <Sidebar setFilter={setFilter} />
       <div className="links">
         <p onClick={() => setPage("pending")}>Pending</p>
         <p onClick={() => setPage("completed")}> Completed</p>

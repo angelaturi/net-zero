@@ -37,11 +37,14 @@ class PledgeIndex extends React.Component {
                     <h2>Pledges</h2>
                     {this.state.pledges.map(pledge => (
                     <div className="feedItem">
+                        <p>{pledge.user &&
+                            <p>By {pledge.user.name}</p>
+                        }</p>
                         <div className="pledge-title">{pledge.title}</div>
                         <div className="pledge-description">{pledge.description}</div>
                         <p>{pledge.follows.length} followers!</p>
                         <p>{pledge.category}</p> 
-                        <Link to={`/pledges/${pledge._id}`}>View Pledge</Link>
+                        <Link className="pledge-index-link" style={{ textDecoration: 'none' }}  to={`/pledges/${pledge._id}`}>View Pledge</Link>
                         <button className="follow-button" onClick={() => this.handleFollow(pledge._id)}>Follow Pledge</button>
                     </div>
                     ))}
