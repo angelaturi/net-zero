@@ -1,12 +1,9 @@
 //
-
 import React from "react";
 import "./pledges.css";
-
 class PledgeShow extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       commentText: "",
       followed: false,
@@ -16,12 +13,10 @@ class PledgeShow extends React.Component {
     this.update = this.update.bind(this);
     this.convertDate = this.convertDate.bind(this);
   }
-
   componentDidMount() {
     let pledgeId = this.props.match.params.pledgeId;
     this.props.showPledge(pledgeId);
   }
-
   componentWillReceiveProps(newState) {
     newState.currentPledge.follows.map((followerId) => {
       if (this.props.currentUser.id === followerId) {
@@ -29,7 +24,6 @@ class PledgeShow extends React.Component {
       }
     });
   }
-
   convertDate = (dateTime) => {
     let dateObject = new Date(dateTime);
     const dateOptions = { month: "numeric", day: "numeric", year: "numeric" };
@@ -52,21 +46,17 @@ class PledgeShow extends React.Component {
     }
     return date;
   };
-
   handleSubmit(e) {
     e.preventDefault();
-
     let comment = {
       text: this.state.text,
       authorName: this.props.currentUser.handle,
     };
-
     this.props.commentOnPledge({
       pledgeId: this.props.match.params.pledgeId,
       ...comment,
     });
   }
-
   handleFollow(pledgeId) {
     //add userId to pledge follow array
     this.props.followPledge(pledgeId).then(() => {
@@ -76,14 +66,12 @@ class PledgeShow extends React.Component {
     this.setState({ followed: true });
     this.props.showPledge(pledgeId);
   }
-
   update() {
     return (e) =>
       this.setState({
         text: e.currentTarget.value,
       });
   }
-
   render() {
     if (this.props.currentPledge) {
       return (
@@ -103,7 +91,6 @@ class PledgeShow extends React.Component {
           <div className="pledge-show-date">
             Pledged {this.convertDate(this.props.currentPledge.date)}
           </div>
-
           <div className="pledge-show-title">
             {this.props.currentPledge.title}
           </div>
@@ -132,7 +119,6 @@ class PledgeShow extends React.Component {
             />
           </form>
           <div className="pledge-show-border"></div>
-
           {this.props.currentPledge.comments.map((comment) => (
             <div>
               <div className="comment-username">
@@ -149,5 +135,4 @@ class PledgeShow extends React.Component {
     }
   }
 }
-
 export default PledgeShow;

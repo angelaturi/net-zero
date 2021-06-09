@@ -183,6 +183,8 @@ router.post(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     Pledge.findById(req.params.id)
+      .populate("user", "handle")
+
       .then((pledge) => {
         if (!pledge.follows.includes(req.user.id)) {
           pledge.follows.push(req.user.id);
@@ -202,6 +204,7 @@ router.delete(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     Pledge.findById(req.params.id)
+      .populate("user", "handle")
       .then((pledge) => {
         let index = pledge.follows.indexOf(req.user.id);
 
