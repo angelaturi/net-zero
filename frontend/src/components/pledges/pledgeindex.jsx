@@ -25,6 +25,7 @@ class PledgeIndex extends React.Component {
 
     componentWillMount() {
         this.props.fetchPledges();
+        
     }
 
     componentWillReceiveProps(newState) {
@@ -34,6 +35,7 @@ class PledgeIndex extends React.Component {
 
 
     render() {
+        
         if (this.state.pledges.length === 0) {
             return (<div>There are no Pledges</div>)
         } else {
@@ -42,7 +44,7 @@ class PledgeIndex extends React.Component {
                     <h2>Pledges</h2>
                     {this.state.pledges.map(pledge => (
                     <div className="feedItem">
-                        <p>By {pledge.user.name}</p>
+                        <p>By {pledge.user.handle}</p>
                         <div className="pledge-title">{pledge.title}</div>
                         <div className="pledge-description">{pledge.description}</div>
                         <p>{pledge.follows.length} followers!</p>

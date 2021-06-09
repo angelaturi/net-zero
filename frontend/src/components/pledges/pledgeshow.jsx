@@ -87,7 +87,7 @@ class PledgeShow extends React.Component {
                     </button>
                     <div className="pledge-show-followers">{this.props.currentPledge.follows.length} people follow this pledge</div> 
                      {this.props.currentPledge.user &&
-                            <p>By {this.props.currentPledge.user.name}</p>
+                            <p>By {this.props.currentPledge.user.handle}</p>
                         }
                     <div className="pledge-show-date">Pledged {this.convertDate(this.props.currentPledge.date)}</div>
                     
