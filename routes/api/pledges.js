@@ -36,7 +36,7 @@ const { array } = require("../../services/ImageUpload");
 // All Public Pledges
 router.get("/", (req, res) => {
   Pledge.find()
-    .populate("user", "name")
+    .populate("user", "handle")
     .sort({ date: -1 })
     .then((pledges) => res.json(pledges))
     .catch((err) =>
@@ -47,7 +47,7 @@ router.get("/", (req, res) => {
 // Pledges by user
 router.get("/user/:user_id", (req, res) => {
   Pledge.find({ user: req.params.user_id })
-    .populate("user", "name")
+    .populate("user", "handle")
     .sort({ date: -1 })
     .then((pledges) => res.json(pledges))
     .catch((err) =>
@@ -60,7 +60,7 @@ router.get("/user/:user_id", (req, res) => {
 // Pledges by id
 router.get("/:id", (req, res) => {
   Pledge.findById(req.params.id)
-    .populate("user", "name")
+    .populate("user", "handle")
     .then((pledge) => res.json(pledge))
     .catch((err) =>
       res.status(404).json({ nopledgefound: "No pledge found with that ID" })
@@ -202,18 +202,18 @@ router.delete(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     Pledge.findById(req.params.id)
-    .then((pledge) => {
-      let index = pledge.follows.indexOf(req.user.id);
+      .then((pledge) => {
+        let index = pledge.follows.indexOf(req.user.id);
 
-      if (index !== -1) {
-        pledge.follows.splice(index, 1);
-      }
+        if (index !== -1) {
+          pledge.follows.splice(index, 1);
+        }
 
-      pledge.save().then((pledge) => res.json(pledge));
-    })
-    .catch((err) =>
-           res.status(404).json({ pledgenotfound: "No pledge found" })
-    );
+        pledge.save().then((pledge) => res.json(pledge));
+      })
+      .catch((err) =>
+        res.status(404).json({ pledgenotfound: "No pledge found" })
+      );
   }
 );
 
