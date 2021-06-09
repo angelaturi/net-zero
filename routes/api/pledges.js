@@ -7,6 +7,7 @@ const validatePledgeInput = require("../../validation/pledge");
 const User = require("../../models/User");
 
 const upload = require("../../services/ImageUpload");
+const { array } = require("../../services/ImageUpload");
 
 // const multer = require("multer");
 // const AWS = require("aws-sdk");
@@ -195,36 +196,24 @@ router.post(
   }
 );
 
-//unfollow
-router.post(
-  "/unfollow/:id",
-
+//follow delete
+router.delete(
+  "/follow/:id",
+  passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    User.findOne({ user: req.user.id }).then((user) => {
-      Pledge.findById(req.params.id)
-        .then((pledge) => {
-          if (
-            pledge.follows.filter(
-              (follow) => follow.user.toString() === req.user.id
-            ).length === 0
-          ) {
-            return res
-              .status(400)
-              .json({ notfollowed: "You have not yet followed this pledge" });
-          }
+    Pledge.findById(req.params.id)
+    .then((pledge) => {
+      let index = pledge.follows.indexOf(req.user.id);
 
-          const removeIndex = pledge.follows
-            .map((item) => item.user.toString())
-            .indexOf(req.user.id);
+      if (index !== -1) {
+        pledge.follows.splice(index, 1);
+      }
 
-          pledge.follows.splice(removeIndex, 1);
-
-          pledge.save().then((pledge) => res.json(pledge));
-        })
-        .catch((err) =>
-          res.status(404).json({ pledgenotfound: "No pledge found" })
-        );
-    });
+      pledge.save().then((pledge) => res.json(pledge));
+    })
+    .catch((err) =>
+           res.status(404).json({ pledgenotfound: "No pledge found" })
+    );
   }
 );
 

@@ -142,6 +142,11 @@ export const followPledge = (pledgeId) => (dispatch) =>
     .then((pledge) => dispatch(receivePledge(pledge)))
     .catch((err) => console.log(err));
 
+export const unfollowPledge = (pledgeId) => (dispatch) =>
+  PledgeApiUtil.unfollowPledge(pledgeId)
+    .then((pledge) => dispatch(receivePledge(pledge)))
+    .catch((err) => console.log(err));
+
 export const showPledge = (pledgeId) => (dispatch) =>
   PledgeApiUtil.getPledge(pledgeId)
     .then((pledge) => dispatch(showPledgeAction(pledge)))

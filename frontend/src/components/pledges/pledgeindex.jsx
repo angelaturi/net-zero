@@ -10,14 +10,17 @@ class PledgeIndex extends React.Component {
         this.state = {
             pledges: []
         }
-        this.handleFollow = this.handleFollow.bind(this);
+        this.toggleFollow = this.toggleFollow.bind(this);
     }
 
-    handleFollow(pledgeId) {
+    toggleFollow(pledge) {
         //add userId to pledge follow array
-        this.props.followPledge(pledgeId);
+        if (pledge.follows.includes(this.props.currentUser.id)) {
+            this.props.unfollowPledge(pledge._id);
+        } else {
+            this.props.followPledge(pledge._id);
+        }
         //update state
-
     }
 
     componentWillMount() {
@@ -28,6 +31,8 @@ class PledgeIndex extends React.Component {
         this.setState({ pledges: newState.pledges });
     }
 
+
+
     render() {
         if (this.state.pledges.length === 0) {
             return (<div>There are no Pledges</div>)
@@ -37,15 +42,16 @@ class PledgeIndex extends React.Component {
                     <h2>Pledges</h2>
                     {this.state.pledges.map(pledge => (
                     <div className="feedItem">
-                        <p>{pledge.user &&
-                            <p>By {pledge.user.name}</p>
-                        }</p>
+                        <p>By {pledge.user.name}</p>
                         <div className="pledge-title">{pledge.title}</div>
                         <div className="pledge-description">{pledge.description}</div>
                         <p>{pledge.follows.length} followers!</p>
                         <p>{pledge.category}</p> 
                         <Link className="pledge-index-link" style={{ textDecoration: 'none' }}  to={`/pledges/${pledge._id}`}>View Pledge</Link>
-                        <button className="follow-button" onClick={() => this.handleFollow(pledge._id)}>Follow Pledge</button>
+                        <button className="follow-button" onClick={() => this.toggleFollow(pledge)}>
+                            { pledge.follows.includes(this.props.currentUser.id) ? "Unfollow Pledge" : "Follow Pledge" }
+
+                        </button>
                     </div>
                     ))}
                 </div>

@@ -32,6 +32,10 @@ export const followPledge = (pledgeId) => {
   return axios.post(`/api/pledges/follow/${pledgeId}`);
 }
 
+export const unfollowPledge = (pledgeId) => {
+  return axios.delete(`/api/pledges/follow/${pledgeId}`);
+}
+
 export const commentOnPledge = ({pledgeId, ...comment}) => {
   return axios.post(`/api/pledges/${pledgeId}/comments`, comment)
 }
