@@ -50,13 +50,14 @@
   background-color: rgb(104, 220, 93);
   border: 1px solid rgb(104, 220, 93);
   color: black;
+  cursor: pointer;
 }
 
 .demo-submit-button {
-  background-color: rgb(104, 220, 93);
-  color: black;
+  background-color: black;
+  color: white;
   height: 40px;
-  width: 366px;
+  width: 367px;
   margin-top: 10px;
   font-family: Helvetica, sans-serif;
   font-size: 14px;
@@ -64,9 +65,10 @@
 }
 
 .demo-submit-button:hover {
-  background-color: black;
-  border: 1px solid black;
-  color: white;
+  background-color: rgb(104, 220, 93);
+  border: 1px solid rgb(104, 220, 93);
+  color: black;
+  cursor: pointer;
 }
 
 /* } */

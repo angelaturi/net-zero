@@ -44,6 +44,7 @@
     font-family: Helvetica, sans-serif;
     font-size: 14px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .signup-submit-button:hover {
