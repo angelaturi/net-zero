@@ -1,0 +1,42 @@
+.aboutus-box {
+  margin-top: 200px;
+  text-align: center;
+  position: relative;
+}
+
+.aboutus-header {
+  position: relative;
+  font-family: Helvetica, sans-serif;
+  font-size: 50px;
+  top: -900px;
+  color: white;
+  font-weight: bold;
+  /* background-color: black; */
+  text-shadow: 2px 2px black;
+}
+
+.aboutus-subheader {
+  position: relative;
+  font-family: Helvetica, sans-serif;
+  font-size: 24px;
+  /* margin: 20px; */
+  top: -800px;
+  color: white;
+  font-weight: bold;
+  /* background-color: black; */
+  text-shadow: 2px 2px black;
+  margin-top: 20px;
+  margin-left: 90px;
+  margin-right: 90px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.about-links {
+  color: white;
+}
+
+.about-links:hover {
+  color: rgb(104, 220, 93);
+}

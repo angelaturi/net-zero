@@ -10,6 +10,7 @@ import SignupFormContainer from "./session/signup_form_container";
 import UserProfileContainer from "./profile/user_profile_container";
 import PledgeIndexContainer from "./pledges/pledgeindex_container";
 import PledgeShowContainer from "./pledges/pledgeshow_container";
+import AboutUs from "./splash/AboutUs/aboutus";
 
 const App = () => (
   <div>
@@ -18,6 +19,7 @@ const App = () => (
       <AuthRoute exact path="/" component={Splash} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
+      <ProtectedRoute exact path="/aboutus" component={AboutUs} />
       <ProtectedRoute exact path="/home" component={MainPage} />
       <ProtectedRoute exact path="/profile" component={UserProfileContainer} />
       <ProtectedRoute exact path="/pledges" component={PledgeIndexContainer} />

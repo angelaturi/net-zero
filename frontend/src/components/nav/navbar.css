@@ -1,140 +1,152 @@
 .header {
-    position: fixed;
-    top: 0;
-    /* left: 10px; */
-    width: 100%;
-    z-index: 999;
-    height: 59px;
-    overflow: hidden;
-    -webkit-transition: height 0.3s;
-    -moz-transition: height 0.3s;
-    transition: height 0.3s;
+  position: fixed;
+  top: 0;
+  /* left: 10px; */
+  width: 100%;
+  z-index: 999;
+  height: 59px;
+  overflow: hidden;
+  -webkit-transition: height 0.3s;
+  -moz-transition: height 0.3s;
+  transition: height 0.3s;
 }
 
 .logo-placeholder {
-    cursor: pointer;
-    font-family: Helvetica, sans-serif;
-    font-weight: bold;
-    font-size: 40px;
-    color: black;
+  cursor: pointer;
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 40px;
+  color: black;
 }
 
 .logo-placeholder:hover {
-    color: rgb(104,220,93);
-    text-shadow: 1px 1px rgba(51, 51, 51, 0.363);
+  color: rgb(104, 220, 93);
+  text-shadow: 1px 1px rgba(51, 51, 51, 0.363);
 }
 
 .main-header {
-    font-family: "Helvetica Neue", sans-serif;
-    font-size: 100%;
-    position: absolute;
-    top: 0; 
-    width: 100%;
-    height: 59px;
-    border-bottom: .5px solid lightgray;
-    z-index: 999;
-    background-color: white;
-    align-items:center;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 59px;
+  border-bottom: 0.5px solid lightgray;
+  z-index: 999;
+  background-color: white;
+  align-items: center;
 }
 
 .top-header {
-    font-weight: 400;
-    font-size: 100%;
-    color: #000;
-    /* display: flex; */
-    justify-content: space-between;
-    margin-top: 10px;
+  font-weight: 400;
+  font-size: 100%;
+  color: #000;
+  /* display: flex; */
+  justify-content: space-between;
+  margin-top: 10px;
 }
 
 .signup-button-header {
-    font-family: Helvetica, sans-serif;
-    font-weight: bold;
-    cursor: pointer;
-    align-items: center;
-    height: 40px;
-    padding-left: 20px;
-    padding-right: 20px;
-    color: black;
-    position: fixed;
-    right: 105px;
-    margin-top: 12px;
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  align-items: center;
+  height: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: black;
+  position: fixed;
+  right: 105px;
+  margin-top: 12px;
 }
 
 .login-button-header {
-    font-family: Helvetica, sans-serif;
-    font-weight: bold;
-    cursor: pointer;
-    align-items: center;
-    height: 40px;
-    padding-left: 20px;
-    padding-right: 20px;
-    color: black;
-    position: fixed;
-    right: 30px;
-    margin-top: 12px;
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  align-items: center;
+  height: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: black;
+  position: fixed;
+  right: 30px;
+  margin-top: 12px;
 }
 
 .login-button-header:hover,
 .signup-button-header:hover {
-    color: rgb(104,220,93);
-    /* text-shadow: 1px 1px rgba(51, 51, 51, 0.527); */
+  color: rgb(104, 220, 93);
+  /* text-shadow: 1px 1px rgba(51, 51, 51, 0.527); */
 }
 
 .feed-button-header {
-    font-family: Helvetica, sans-serif;
-    font-weight: bold;
-    cursor: pointer;
-    align-items: center;
-    padding-left: 20px;
-    padding-right: 20px;
-    color: black;
-    position: fixed;
-    right: 260px;
-    margin-top: 12px;
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: black;
+  position: fixed;
+  right: 260px;
+  margin-top: 12px;
+}
 
+.about-button-header {
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: black;
+  position: fixed;
+  right: 320px;
+  margin-top: 12px;
 }
 
 .my-pledges-button-header {
-    font-family: Helvetica, sans-serif;
-    font-weight: bold;
-    cursor: pointer;
-    align-items: center;
-    height: 40px;
-    padding-left: 20px;
-    padding-right: 20px;
-    color: black;
-    position: fixed;
-    right: 30px;
-    margin-top: 12px;
-    right: 150px;
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  align-items: center;
+  height: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: black;
+  position: fixed;
+  right: 30px;
+  margin-top: 12px;
+  right: 150px;
 }
 
 .feed-button-header:hover,
-.my-pledges-button-header:hover {
-     color: rgb(104,220,93);
+.my-pledges-button-header:hover,
+.about-button-header:hover {
+  color: rgb(104, 220, 93);
 }
 
 .navbar-logout-button {
-    background-color: black;
-    color: white;
-    height: 30px;
-    width: 100px;
-    font-family: Helvetica, sans-serif;
-    font-weight: bold;
-    cursor: pointer;
-    align-items: center;
-    height: 40px;
-    padding-left: 20px;
-    padding-right: 20px;
-    background-color: black;
-    color:white;
-    position: fixed;
-    right: 30px;
-    
+  background-color: black;
+  color: white;
+  height: 30px;
+  width: 100px;
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  align-items: center;
+  height: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: black;
+  color: white;
+  position: fixed;
+  right: 30px;
 }
 
 .navbar-logout-button:hover {
-    background-color:  rgb(104,220,93);
-    border: 1px solid  rgb(104,220,93);
-    color: black;
+  background-color: rgb(104, 220, 93);
+  border: 1px solid rgb(104, 220, 93);
+  color: black;
 }

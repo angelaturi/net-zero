@@ -1,0 +1,12 @@
+.creator-Name {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.creator-links {
+  color: black;
+}
+
+.creator-links:hover {
+  color: rgb(104, 220, 93);
+}
