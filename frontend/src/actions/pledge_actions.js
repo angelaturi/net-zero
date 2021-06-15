@@ -146,7 +146,14 @@ export const showPledge = (pledgeId) => (dispatch) =>
     .then((pledge) => dispatch(receiveShowPledge(pledge)))
     .catch((err) => console.log(err));
 
+
+// COMMENT ACTIONS
 export const createCommentOnPledge = ({pledgeId, ...comment}) => (dispatch) => 
   PledgeApiUtil.createCommentOnPledge({pledgeId, ...comment})
+    .then((pledge) => dispatch(receiveShowPledge(pledge)))
+    .catch((err) => console.log(err));
+
+export const editCommentOnPledge = ({pledgeId, commentId, ...comment}) => (dispatch) => 
+  PledgeApiUtil.editCommentOnPledge({pledgeId, commentId, ...comment})
     .then((pledge) => dispatch(receiveShowPledge(pledge)))
     .catch((err) => console.log(err));

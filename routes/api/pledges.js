@@ -256,6 +256,7 @@ router.delete("/:id/comments/:comment_id",
     );
   }
 );
+
 // follow a pledge
 router.post(
   "/follow/:id",

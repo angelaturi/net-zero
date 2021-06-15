@@ -81,6 +81,7 @@ class PledgeShow extends React.Component {
 
   render() {
     if (this.props.currentPledge) {
+      let comments = this.props.currentPledge.comments.slice().reverse();
       return (
         <div className="pledge-show-card">
           <button
@@ -126,7 +127,7 @@ class PledgeShow extends React.Component {
             />
           </form>
           <div className="pledge-show-border"></div>
-          {this.props.currentPledge.comments.map((comment) => (
+          {comments.map((comment) => (
             <div>
               <div className="comment-username">
                 <u>{comment.authorName}</u>
