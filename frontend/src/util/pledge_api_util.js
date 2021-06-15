@@ -40,6 +40,6 @@ export const createCommentOnPledge = ({pledgeId, ...comment}) => {
   return axios.post(`/api/pledges/${pledgeId}/comments`, comment)
 }
 
-export const editCommentOnPledge = ({pledgeId, ...comment}) => {
+export const editCommentOnPledge = ({pledgeId, commentId, ...comment}) => {
   return axios.post(`/api/pledges/${pledgeId}/comments/${commentId}`, comment)
 }

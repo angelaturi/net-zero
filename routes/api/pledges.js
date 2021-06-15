@@ -128,17 +128,35 @@ router.delete("/:id", (req, res) => {
     .catch((err) => res.status(400).json(err));
 });
 
-//Add comment to pledge
+//Get all comment from a pledge
+router.get(
+  "/:id/comments/",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Pledge.findById(req.params.id)
+      .then((pledge) => {
+
+        //return all comments
+        return res.json(pledge.comments);
+      })
+      .catch((err) =>
+        res.status(404).json({ pledgenotfound: "No pledge found" })
+      );
+  }
+);
+
+//Post comment to pledge
 router.post(
   "/:id/comments/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     Pledge.findById(req.params.id)
       .then((pledge) => {
+        console.log(req.user);
         const newComment = {
-          authorId: req.body.authorId ? req.body.authorId : null,
+          authorId: req.user._id,
           text: req.body.text ? req.body.text : "",
-          authorName: req.body.authorName ? req.body.authorName : "",
+          authorName: req.user.handle,
         };
 
         pledge.comments.push(newComment);
@@ -151,6 +169,31 @@ router.post(
   }
 );
 
+//Get a comment from a pledge
+router.get(
+  "/:id/comments/:comment_id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Pledge.findById(req.params.id)
+      .then((pledge) => {
+
+        //find specific comment
+        let comm;
+        pledge.comments.forEach((comment) => {
+          if(comment._id == req.params.comment_id){
+            comm = comment;
+          }
+        })
+
+        res.json(comm);
+      })
+      .catch((err) =>
+        res.status(404).json({ pledgenotfound: "No comment found" })
+      );
+  }
+);
+
+
 //Edit a comment from a pledge
 router.patch(
   "/:id/comments/:comment_id",
@@ -159,8 +202,22 @@ router.patch(
     Pledge.findById(req.params.id)
       .then((pledge) => {
 
-        pledge.comments[req.params.comment_id].text = req.body.text;
+        //find index of specific comment
+        let comm;
+        let commIdx;
+        pledge.comments.forEach((comment, i) => {
+          if(comment._id == req.params.comment_id){
+            comm = comment;
+            commIdx = i;
+          }
+        })
+        
+        //modify text of that comment IF the logged in user is the one who made the comment
+        //if (req.user.id === comm.authorId)
+        pledge.comments[commIdx].text = req.body.text;
 
+
+        //save the pledge back to the database and return it
         pledge.save().then((pledge) => res.json(pledge));
       })
       .catch((err) =>
