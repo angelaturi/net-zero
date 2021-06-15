@@ -15,7 +15,7 @@ const AboutUs = () => {
       />
       <div className="aboutus-box">
         <div className="aboutus-header">
-          NET ZERO was built by the following talented Software Engineers.{" "}
+          NETZERO was built by the following talented Software Engineers.{" "}
         </div>
         <div className="aboutus-subheader">
           <div classnName="Creator-info">
