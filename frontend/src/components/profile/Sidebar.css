@@ -1,9 +1,9 @@
-.item1{
-    display: flex;
+.item1 {
+  display: flex;
 }
 
 .userInfo {
-    /* margin-top: 100px;
+  /* margin-top: 100px;
     --offset: var(--space);
     position: sticky;
     top: var(--offset);
@@ -17,41 +17,46 @@
 }
 
 .avatar-profile {
-    margin-top: 10px;
-    margin-left: 10px;
+  margin-top: 10px;
+  margin-left: 10px;
 }
 
 .sidebar-title {
-    font-family: Helvetica, sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 20px;
+  font-family: Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 .profile-modal-button {
-    background-color: black;
-    color: white;
-    height: 40px;
-    width: 200px;
-    font-size: 14px;
+  background-color: black;
+  color: white;
+  height: 40px;
+  width: 200px;
+  font-size: 14px;
 }
 
 .profile-modal-button:hover {
-    background-color:  rgb(104,220,93);
-    border: 1px solid rgb(104,220,93);
+  background-color: rgb(104, 220, 93);
+  border: 1px solid rgb(104, 220, 93);
 }
 
 .x-modal-button {
-    background: none;
-    border: none;
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    font-size: 14px;
+  background: none;
+  border: none;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  font-size: 14px;
 }
 
 .x-modal-button:hover {
-    transform: scale(1.2);
-    font-weight: bold;
+  transform: scale(1.2);
+  font-weight: bold;
+}
 
+.sort:hover {
+  color: rgb(104, 220, 93);
+
+  font-weight: bold;
 }

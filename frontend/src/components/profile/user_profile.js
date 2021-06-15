@@ -70,40 +70,41 @@ const UserProfile = () => {
 
   return (
     <div className="profile-main">
-      <AddCircleIcon onClick={toggleCategoriesModal} /> <br /> <br />
-
+      <AddCircleIcon onClick={toggleCategoriesModal} className="addcircle" />{" "}
+      <br /> <br />
       <PledgeCategories
         showCategoriesModal={showCategoriesModal}
         toggleCategoriesModal={toggleCategoriesModal}
         setSelectedCategory={setSelectedCategory}
         toggleAddPledgeModal={toggleAddPledgeModal}
       />
-
       <NewPledge
         showAddPledgeModal={showAddPledgeModal}
         selectedCategory={selectedCategory}
         toggleAddPledgeModal={toggleAddPledgeModal}
         filter={selectedCategory}
       />
-
       {selectedPledge && (
         <EditPledge
-        selectedPledge={selectedPledge}
-        showEditPledgeModal={showEditPledgeModal}
-        toggleEditPledgeModal={toggleEditPledgeModal}
+          selectedPledge={selectedPledge}
+          showEditPledgeModal={showEditPledgeModal}
+          toggleEditPledgeModal={toggleEditPledgeModal}
         />
-        )}
-
-      <div className="dates">
+      )}
+      {/* <div className="dates">
         <div className="dates-text">{finalDate}</div>
         <CalendarTodayIcon onClick={() => setShowCalendar(!showCalendar)} />
-      </div>
-        <Sidebar setFilter={setFilter} />
+      </div> */}
+      <Sidebar setFilter={setFilter} />
       <div className="links">
-        <p onClick={() => setPage("pending")}>Pending</p>
-        <p onClick={() => setPage("completed")}> Completed</p>
+        <p onClick={() => setPage("pending")} className="links-status">
+          Pending
+        </p>
+        <p onClick={() => setPage("completed")} className="links-status">
+          {" "}
+          Completed
+        </p>
       </div>
-
       <div>
         {page === "completed" ? (
           <Completed filter={filter} />
@@ -114,7 +115,6 @@ const UserProfile = () => {
           />
         )}
       </div>
-
       <div className="calendar">
         {showCalendar ? (
           <Calendar calendarType="Hebrew" onChange={onChange} value={value} />
@@ -122,7 +122,6 @@ const UserProfile = () => {
           ""
         )}
       </div>
-
     </div>
   );
 };
