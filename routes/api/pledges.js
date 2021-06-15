@@ -213,10 +213,10 @@ router.patch(
         })
         
         //modify text of that comment IF the logged in user is the one who made the comment
-        //if (req.user.id === comm.authorId)
-        pledge.comments[commIdx].text = req.body.text;
-
-
+        if (req.user._id.toString() === comm.authorId.toString()) {
+          pledge.comments[commIdx].text = req.body.text;
+        }
+        
         //save the pledge back to the database and return it
         pledge.save().then((pledge) => res.json(pledge));
       })
