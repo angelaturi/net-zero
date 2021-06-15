@@ -1,6 +1,6 @@
-//
 import React from "react";
 import "./pledges.css";
+
 class PledgeShow extends React.Component {
   constructor(props) {
     super(props);
@@ -13,10 +13,12 @@ class PledgeShow extends React.Component {
     this.update = this.update.bind(this);
     this.convertDate = this.convertDate.bind(this);
   }
+
   componentDidMount() {
     let pledgeId = this.props.match.params.pledgeId;
     this.props.showPledge(pledgeId);
   }
+
   componentWillReceiveProps(newState) {
     newState.currentPledge.follows.map((followerId) => {
       if (this.props.currentUser.id === followerId) {
@@ -24,6 +26,7 @@ class PledgeShow extends React.Component {
       }
     });
   }
+
   convertDate = (dateTime) => {
     let dateObject = new Date(dateTime);
     const dateOptions = { month: "numeric", day: "numeric", year: "numeric" };
@@ -46,17 +49,19 @@ class PledgeShow extends React.Component {
     }
     return date;
   };
+
   handleSubmit(e) {
     e.preventDefault();
     let comment = {
       text: this.state.text,
       authorName: this.props.currentUser.handle,
     };
-    this.props.commentOnPledge({
+    this.props.createCommentOnPledge({
       pledgeId: this.props.match.params.pledgeId,
       ...comment,
     });
   }
+
   handleFollow(pledgeId) {
     //add userId to pledge follow array
     this.props.followPledge(pledgeId).then(() => {
@@ -66,12 +71,14 @@ class PledgeShow extends React.Component {
     this.setState({ followed: true });
     this.props.showPledge(pledgeId);
   }
+
   update() {
     return (e) =>
       this.setState({
         text: e.currentTarget.value,
       });
   }
+
   render() {
     if (this.props.currentPledge) {
       return (

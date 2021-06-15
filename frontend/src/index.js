@@ -11,8 +11,6 @@ import axios from 'axios';
 import "react-calendar/dist/Calendar.css";
 import { fetchPledge } from './actions/pledge_actions';
 
-import { commentOnPledge } from './actions/pledge_actions';
-
 document.addEventListener('DOMContentLoaded', () => {
   let store;
 
@@ -48,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   window.fetchPledge = fetchPledge;
-  window.commentOnPledge = commentOnPledge;
 
   // Render our root component and pass in the store as a prop
   const root = document.getElementById("root");

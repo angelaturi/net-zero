@@ -6,7 +6,8 @@ import {
   REMOVE_PLEDGE,
   EDIT_PLEDGE_SUCCESS,
   CREATE_PLEDGE_SUCCESS,
-  SHOW_PLEDGE
+  SHOW_PLEDGE,
+  RECEIVE_SHOW_PLEDGE
 } from "../actions/pledge_actions";
 
 const DEFAULT_PLEDGES = [
@@ -54,9 +55,6 @@ const PledgesReducer = (
   const { type, payload } = action;
   let newState = Object.assign({}, state);
   switch (action.type) {
-    case SHOW_PLEDGE:
-      newState.show = action.pledge.data;
-      return newState;
     case RECEIVE_PLEDGES:
       newState.all = action.pledges.data;
       return newState;
@@ -68,6 +66,9 @@ const PledgesReducer = (
           newState.all[idx] = action.pledge.data;
         }
       })
+      return newState;
+    case RECEIVE_SHOW_PLEDGE:
+      newState.show = action.pledge.data;
       return newState;
     case RECEIVE_USER_PLEDGES:
       newState.user = action.pledges.data;

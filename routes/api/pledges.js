@@ -151,8 +151,26 @@ router.post(
   }
 );
 
-// Delete a comment
-router.delete("/comment/:id/:comment_id", (req, res) => {
+//Edit a comment from a pledge
+router.patch(
+  "/:id/comments/:comment_id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Pledge.findById(req.params.id)
+      .then((pledge) => {
+
+        pledge.comments[req.params.comment_id].text = req.body.text;
+
+        pledge.save().then((pledge) => res.json(pledge));
+      })
+      .catch((err) =>
+        res.status(404).json({ pledgenotfound: "No pledge found" })
+      );
+  }
+);
+
+// Delete a comment from a pledge
+router.delete("/:id/comments/:comment_id", (req, res) => {
   Pledge.findById(req.params.id)
     .then((pledge) => {
       if (
