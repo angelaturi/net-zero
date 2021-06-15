@@ -216,7 +216,7 @@ router.patch(
         if (req.user._id.toString() === comm.authorId.toString()) {
           pledge.comments[commIdx].text = req.body.text;
         }
-        
+
         //save the pledge back to the database and return it
         pledge.save().then((pledge) => res.json(pledge));
       })
@@ -227,31 +227,35 @@ router.patch(
 );
 
 // Delete a comment from a pledge
-router.delete("/:id/comments/:comment_id", (req, res) => {
-  Pledge.findById(req.params.id)
+router.delete("/:id/comments/:comment_id", 
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Pledge.findById(req.params.id)
     .then((pledge) => {
-      if (
-        pledge.comments.filter(
-          (comment) => comment._id.toString() === req.params.comment_id
-        ).length === 0
-      ) {
-        return res
-          .status(404)
-          .json({ commentnoteexists: "Comment does not exist" });
+
+      //find index of specific comment
+      let comm;
+      let commIdx;
+      pledge.comments.forEach((comment, i) => {
+        if(comment._id == req.params.comment_id){
+          comm = comment;
+          commIdx = i;
+        }
+      })
+      
+      //delete that comment IF the logged in user is the one who made the comment
+      if (req.user._id.toString() === comm.authorId.toString()) {
+        pledge.comments.splice(commIdx, 1);
       }
-
-      const removeIndex = pledge.comments
-        .map((item) => item._id.toString())
-        .indexOf(req.params.comment_id);
-
-      pledge.comments.splice(removeIndex, 1);
-
-      plege.save().then((pledge) => res.json(pledge));
+      
+      //save the pledge back to the database and return it
+      pledge.save().then((pledge) => res.json(pledge));
     })
     .catch((err) =>
       res.status(404).json({ pledgenotfound: "No pledge found" })
     );
-});
+  }
+);
 // follow a pledge
 router.post(
   "/follow/:id",
