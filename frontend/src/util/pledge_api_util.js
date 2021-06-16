@@ -36,6 +36,15 @@ export const unfollowPledge = (pledgeId) => {
   return axios.delete(`/api/pledges/follow/${pledgeId}`);
 }
 
-export const commentOnPledge = ({pledgeId, ...comment}) => {
-  return axios.post(`/api/pledges/${pledgeId}/comments`, comment)
+// COMMENT API UTIL
+export const createCommentOnPledge = ({pledgeId, ...comment}) => {
+  return axios.post(`/api/pledges/${pledgeId}/comments`, comment);
+}
+
+export const editCommentOnPledge = ({pledgeId, commentId, ...rest}) => {
+  return axios.patch(`/api/pledges/${pledgeId}/comments/${commentId}`, rest);
+}
+
+export const deleteComment = ({pledgeId, commentId}) => {
+  return axios.delete(`/api/pledges/${pledgeId}/comments/${commentId}`);
 }

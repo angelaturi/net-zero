@@ -1,5 +1,10 @@
 import { connect } from "react-redux";
-import { showPledge, followPledge, commentOnPledge } from "../../actions/pledge_actions";
+import { showPledge, 
+  followPledge, 
+  unfollowPledge,
+  createCommentOnPledge, 
+  editCommentOnPledge,
+  deleteComment } from "../../actions/pledge_actions";
 import PledgeShow from "./pledgeshow";
 
 const mapStateToProps = (state, ownProps) => {
@@ -15,7 +20,13 @@ const mapDispatchToProps = (dispatch) => {
   return {
       showPledge: (pledgeId) => dispatch(showPledge(pledgeId)),
       followPledge: (pledgeId) => dispatch(followPledge(pledgeId)),
-      commentOnPledge: ({pledgeId, ...comment}) => dispatch(commentOnPledge(({pledgeId, ...comment})))
+      unfollowPledge: (pledgeId) => dispatch(unfollowPledge(pledgeId)),
+      createCommentOnPledge: ({pledgeId, ...comment}) => 
+        dispatch(createCommentOnPledge({pledgeId, ...comment})),
+      editCommentOnPledge: ({pledgeId, commentId, ...comment}) => 
+        dispatch(editCommentOnPledge({pledgeId, commentId, ...comment})),
+      deleteComment: ({pledgeId, commentId}) =>
+        dispatch(deleteComment({pledgeId, commentId}))
   };
 };
 

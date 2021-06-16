@@ -14,7 +14,7 @@ export const RECEIVE_PLEDGES = "RECEIVE_PLEDGES";
 export const RECEIVE_PLEDGE = "RECEIVE_PLEDGE";
 export const RECEIVE_USER_PLEDGES = "RECEIVE_USER_PLEDGES";
 export const REMOVE_PLEDGE = "REMOVE_PLEDGE";
-export const SHOW_PLEDGE = "SHOW_PLEDGE";
+export const RECEIVE_SHOW_PLEDGE = "RECEIVE_SHOW_PLEDGE";
 export const COMMENT_ON_PLEDGE = "COMMENT_ON_PLEDGE";
 
 export const editPledge = () => ({
@@ -78,8 +78,8 @@ const receivePledge = (pledge) => ({
   pledge,
 });
 
-const showPledgeAction = (pledge) => ({
-  type: SHOW_PLEDGE,
+const receiveShowPledge = (pledge) => ({
+  type: RECEIVE_SHOW_PLEDGE,
   pledge,
 });
 
@@ -100,12 +100,6 @@ const removePledge = (pledgeId) => ({
 // })
 
 // //thunk actions
-
-export const commentOnPledge = ({pledgeId, ...comment}) => (dispatch) => 
-  PledgeApiUtil.commentOnPledge({pledgeId, ...comment})
-    .then((pledge) => dispatch(showPledgeAction(pledge)))
-    .catch((err) => console.log(err));
-
 
 export const fetchPledges = () => (dispatch) =>
   PledgeApiUtil.getPledges()
@@ -149,5 +143,22 @@ export const unfollowPledge = (pledgeId) => (dispatch) =>
 
 export const showPledge = (pledgeId) => (dispatch) =>
   PledgeApiUtil.getPledge(pledgeId)
-    .then((pledge) => dispatch(showPledgeAction(pledge)))
+    .then((pledge) => dispatch(receiveShowPledge(pledge)))
+    .catch((err) => console.log(err));
+
+
+// COMMENT ACTIONS
+export const createCommentOnPledge = ({pledgeId, ...comment}) => (dispatch) => 
+  PledgeApiUtil.createCommentOnPledge({pledgeId, ...comment})
+    .then((pledge) => dispatch(receiveShowPledge(pledge)))
+    .catch((err) => console.log(err));
+
+export const editCommentOnPledge = ({pledgeId, commentId, text}) => (dispatch) => 
+  PledgeApiUtil.editCommentOnPledge({pledgeId, commentId, text})
+    .then((pledge) => dispatch(receiveShowPledge(pledge)))
+    .catch((err) => console.log(err));
+
+export const deleteComment = ({pledgeId, commentId}) => (dispatch) =>
+  PledgeApiUtil.deleteComment({pledgeId, commentId})
+    .then((pledge) => dispatch(receiveShowPledge(pledge)))
     .catch((err) => console.log(err));
