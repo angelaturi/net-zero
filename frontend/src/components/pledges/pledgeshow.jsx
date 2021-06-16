@@ -78,7 +78,7 @@ class PledgeShow extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let comment = {
-      text: this.state.text,
+      text: this.state.commentText,
       authorName: this.props.currentUser.handle,
     };
     this.props.createCommentOnPledge({
