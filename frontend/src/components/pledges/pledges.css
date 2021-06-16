@@ -127,3 +127,43 @@
     font-family: Helvetica, sans-serif;
     color: rgb(104,220,93);
 }
+
+.edit-pledge-modal {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.edit-pledge-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-container {
+    display:flex;
+    border-bottom: 2px solid lightgray;
+}
+
+.comment-content-container {
+    flex-grow: 4;
+}
+
+.comments-crud-buttons-container {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    align-self: center;
+}
+
+.comments-crud-button {
+    background-color: black;
+    color: white;
+    top: 0px;
+    right: 20px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.comments-crud-button:hover {
+    background-color:  rgb(104,220,93);
+}

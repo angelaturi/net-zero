@@ -202,6 +202,7 @@ router.patch(
     Pledge.findById(req.params.id)
       .then((pledge) => {
 
+        console.log(req.body.text);
         //find index of specific comment
         let comm;
         let commIdx;

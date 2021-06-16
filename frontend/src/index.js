@@ -10,6 +10,7 @@ import { logout } from './actions/session_actions';
 import axios from 'axios';
 import "react-calendar/dist/Calendar.css";
 import { fetchPledge } from './actions/pledge_actions';
+import * as PledgeApiUtil from "./util/pledge_api_util";
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -46,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   window.fetchPledge = fetchPledge;
+  window.editCommentOnPledge = PledgeApiUtil.editCommentOnPledge;
 
   // Render our root component and pass in the store as a prop
   const root = document.getElementById("root");
