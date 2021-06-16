@@ -1,18 +1,27 @@
 .aboutus-box {
-  margin-top: 200px;
+  margin-top: 500px;
   text-align: center;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  /* align-items: baseline; */
+  justify-content: space-around;
 }
 
 .aboutus-header {
   position: relative;
   font-family: Helvetica, sans-serif;
   font-size: 50px;
-  top: -900px;
+  top: -1000px;
+  right: -20px;
+  margin-top: 60px;
+  margin-left: 50px;
+  margin-right: 50px;
   color: white;
   font-weight: bold;
   /* background-color: black; */
   text-shadow: 2px 2px black;
+  display: flex;
 }
 
 .aboutus-subheader {
@@ -20,16 +29,16 @@
   font-family: Helvetica, sans-serif;
   font-size: 24px;
   /* margin: 20px; */
-  top: -800px;
+  top: -900px;
   color: white;
   font-weight: bold;
   /* background-color: black; */
   text-shadow: 2px 2px black;
   margin-top: 20px;
-  margin-left: 90px;
-  margin-right: 90px;
+  margin-left: 50px;
+  margin-right: 50px;
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
   justify-content: space-between;
 }
 

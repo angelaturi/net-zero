@@ -62,6 +62,10 @@
   font-size: 2rem;
 }
 
+.check:hover {
+  color: rgba(2, 141, 9, 0.979);
+}
+
 .profile-modal-title {
   font-family: Helvetica, sans-serif;
   font-size: 24px;
@@ -181,4 +185,22 @@
   color: rgb(104, 220, 93);
   font-weight: bold;
   cursor: pointer;
+}
+
+.editing-pledge-button {
+  background-color: black;
+  color: white;
+  width: 60px;
+  height: 30px;
+  margin-top: 30px;
+  position: fixed;
+  top: -5px;
+  right: 100px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.editing-pledge-button:hover {
+  background-color: rgb(104, 220, 93);
+  border: 1px solid rgb(104, 220, 93);
 }

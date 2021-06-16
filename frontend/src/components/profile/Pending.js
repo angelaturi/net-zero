@@ -48,17 +48,27 @@ const Pending = ({ filter, toggleEditPledgeModal }) => {
   const renderPledges = () => {
     return items.map((pledge) => (
       <div
-        onClick={() => removeItem(pledge._id)}
-        onContextMenu={(e) => handleEdit(e, pledge._id)}
+        // onContextMenu={(e) => handleEdit(e, pledge._id)}
         className="item"
         key={pledge._id}
       >
-        <RadioButtonUncheckedIcon className="check" />
+        <RadioButtonUncheckedIcon
+          className="check"
+          onClick={() => removeItem(pledge._id)}
+        />
         <ul className="ul-pending-pledges">
           <li>{pledge.title}</li>
           <li className="pending-pledge-description">{pledge.description}</li>
         </ul>
-        <button className="follow-button-pledge-page" onClick={deletePledge}>Delete</button>
+        <button className="follow-button-pledge-page" onClick={deletePledge}>
+          Delete
+        </button>
+        <button
+          className="editing-pledge-button"
+          onClick={(e) => handleEdit(e, pledge._id)}
+        >
+          Edit
+        </button>
       </div>
     ));
   };
