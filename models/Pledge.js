@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 const { Schema } = require("mongoose");
+const User = require("./User");
+
 const PledgeSchema = new Schema({
-  user: { type: Schema.Types.ObjectId, ref: "users" },
+  user: { type: Schema.Types.ObjectId, ref: "User" },
 
   title: {
     type: String,
@@ -23,7 +25,7 @@ const PledgeSchema = new Schema({
     {
       authorId: {
         type: Schema.Types.ObjectId,
-        ref: "users",
+        ref: "User",
       },
       authorName: {
         type: String,
@@ -41,7 +43,7 @@ const PledgeSchema = new Schema({
     type: String,
     required: false,
   },
-  follows: [{ type: Schema.Types.ObjectId, ref: "users" }],
+  follows: [{ type: Schema.Types.ObjectId, ref: "User" }],
 
   state: {
     type: String,
@@ -57,4 +59,6 @@ const PledgeSchema = new Schema({
   },
 });
 
-module.exports = Pledge = mongoose.model("pledges", PledgeSchema);
+module.exports = Pledge = mongoose.model("Pledge", PledgeSchema);
+
+

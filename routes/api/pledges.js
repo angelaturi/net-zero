@@ -151,6 +151,7 @@ router.post(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     Pledge.findById(req.params.id)
+    .populate("user", "handle")
       .then((pledge) => {
         console.log(req.user);
         const newComment = {
@@ -200,6 +201,7 @@ router.patch(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     Pledge.findById(req.params.id)
+    .populate("user", "handle")
       .then((pledge) => {
 
         console.log(req.body.text);
@@ -232,6 +234,7 @@ router.delete("/:id/comments/:comment_id",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     Pledge.findById(req.params.id)
+    .populate("user", "handle")
     .then((pledge) => {
 
       //find index of specific comment

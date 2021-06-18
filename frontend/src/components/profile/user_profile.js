@@ -25,6 +25,10 @@ const UserProfile = () => {
   const [selectedPledge, setSelectedPledge] = useState(null);
 
   const pledges = useSelector((state) => state.pledges.all);
+  debugger
+  // pledges.filter((pledge) => {
+  //   return pledge.follows.includes("60b12f7a7c27940015a4c6aa")
+  // })
   const dispatch = useDispatch();
 
   useEffect(() => {
