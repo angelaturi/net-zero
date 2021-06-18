@@ -16,8 +16,11 @@ const customStyles = {
 };
 
 const Completed = ({ filter }) => {
-  const pledges = useSelector((state) => state.pledges.all);
-
+  let pledges = useSelector((state) => state.pledges.all);
+  const userId = useSelector((state) => state.session.user.id);
+  pledges = pledges.filter((pledge) => {
+    return pledge.follows.includes(userId)
+  })
   let items = pledges.filter((pledge) => pledge.state === "completed");
   items = items.filter((pledge) =>
     filter === "public"

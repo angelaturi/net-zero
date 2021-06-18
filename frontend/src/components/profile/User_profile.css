@@ -56,6 +56,7 @@
   transform: scale(1.05);
 }
 
+
 .check {
   color: rgb(104, 220, 93);
   align-self: center;
@@ -103,6 +104,10 @@
 
 .dropdown-text:hover {
   transform: scale(1.05);
+}
+
+.dropdown-text li {
+  list-style-type: none;
 }
 
 .add-pledge-button {
@@ -201,6 +206,31 @@
 }
 
 .editing-pledge-button:hover {
+  background-color: rgb(104, 220, 93);
+  border: 1px solid rgb(104, 220, 93);
+}
+
+.category-title {
+  padding: 0 20px 0 20px;
+}
+
+.button-pledge-page {
+  display: none;
+  background-color: black;
+  color: white;
+  width: 60px;
+  height: 30px;
+  margin: 20px 10px 0 10px;
+  cursor: pointer;
+
+}
+
+.item:hover .button-pledge-page {
+  display:block;
+}
+
+
+.button-pledge-page:hover {
   background-color: rgb(104, 220, 93);
   border: 1px solid rgb(104, 220, 93);
 }

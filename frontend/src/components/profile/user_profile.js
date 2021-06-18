@@ -9,7 +9,7 @@ import PledgeCategories from "./PledgeCategories";
 import NewPledge from "./NewPledge";
 import EditPledge from "./EditPledge";
 import Sidebar from "./Sidebar";
-import { fetchPledges } from "../../actions/pledge_actions";
+import { fetchPledges, fetchFollowedPledges } from "../../actions/pledge_actions";
 
 import "./User_profile.css";
 
@@ -24,11 +24,16 @@ const UserProfile = () => {
   const [filter, setFilter] = useState("all");
   const [selectedPledge, setSelectedPledge] = useState(null);
 
-  const pledges = useSelector((state) => state.pledges.all);
-  debugger
-  // pledges.filter((pledge) => {
-  //   return pledge.follows.includes("60b12f7a7c27940015a4c6aa")
-  // })
+  let pledges = useSelector((state) => state.pledges.all);
+  const userId = useSelector((state) => state.session.user.id);
+  
+
+  //filter out pledges that arent followed by the current user
+  pledges = pledges.filter((pledge) => {
+    return pledge.follows.includes(userId)
+  })
+
+
   const dispatch = useDispatch();
 
   useEffect(() => {

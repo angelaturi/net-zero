@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Modal from "react-modal";
 import { editPledgeAction } from "../../actions/pledge_actions";
 import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked";
+import { Link } from "react-router-dom";
 
 const customStyles = {
   content: {
@@ -16,7 +17,11 @@ const customStyles = {
 };
 
 const Pending = ({ filter, toggleEditPledgeModal }) => {
-  const pledges = useSelector((state) => Object.values(state.pledges.all));
+  let pledges = useSelector((state) => Object.values(state.pledges.all));
+  const userId = useSelector((state) => state.session.user.id);
+  pledges = pledges.filter((pledge) => {
+    return pledge.follows.includes(userId)
+  })
   const [modalIsOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   let items = pledges.filter((pledge) => pledge.state === "pending");
@@ -60,14 +65,25 @@ const Pending = ({ filter, toggleEditPledgeModal }) => {
           <li>{pledge.title}</li>
           <li className="pending-pledge-description">{pledge.description}</li>
         </ul>
-        <button className="follow-button-pledge-page" onClick={deletePledge}>
-          Delete
-        </button>
+        <Link to={`/pledges/${pledge._id}`}
+              style={{ textDecoration: "none" }}
+              >
+          <button
+            className="button-pledge-page">
+            View
+          </button>
+        </Link>
+
+
         <button
-          className="editing-pledge-button"
-          onClick={(e) => handleEdit(e, pledge._id)}
-        >
+          className="button-pledge-page"
+          onClick={(e) => handleEdit(e, pledge._id)}>
           Edit
+        </button>
+        <button 
+          className="button-pledge-page" 
+          onClick={deletePledge}>
+          Delete
         </button>
       </div>
     ));

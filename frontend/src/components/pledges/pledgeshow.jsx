@@ -81,6 +81,10 @@ class PledgeShow extends React.Component {
       text: this.state.commentText,
       authorName: this.props.currentUser.handle,
     };
+
+    this.setState({
+      commentText: "",
+    })
     this.props.createCommentOnPledge({
       pledgeId: this.props.match.params.pledgeId,
       ...comment,

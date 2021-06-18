@@ -30,7 +30,7 @@ const PledgeCategories = ({
   setSelectedCategory,
   toggleAddPledgeModal,
 }) => (
-  <div>
+  <div className="pledge-categories-modal">
     <Modal
       isOpen={showCategoriesModal}
       onRequestClose={toggleCategoriesModal}

@@ -7,45 +7,10 @@ import {
   EDIT_PLEDGE_SUCCESS,
   CREATE_PLEDGE_SUCCESS,
   SHOW_PLEDGE,
-  RECEIVE_SHOW_PLEDGE
+  RECEIVE_SHOW_PLEDGE,
+  RECEIVE_FOLLOWED_PLEDGES
 } from "../actions/pledge_actions";
 
-const DEFAULT_PLEDGES = [
-  {
-    id: "1",
-    title: "Use the dishwasher",
-    description:
-      "1Dishwashers use ½ the energy and ⅓rd of the water as handwashing. Finally, the perfect excuse for not doing the dishes.",
-    state: "completed",
-    public: true,
-  },
-  {
-    id: "2",
-    title: "Use the dishwasher",
-    description:
-      "2Dishwashers use ½ the energy and ⅓rd of the water as handwashing. Finally, the perfect excuse for not doing the dishes.",
-    state: "pending",
-    public: true,
-  },
-  {
-    id: "3",
-    title: "Use the dishwasher",
-    description:
-      "3Dishwashers use ½ the energy and ⅓rd of the water as handwashing. Finally, the perfect excuse for not doing the dishes.",
-    state: "completed",
-    public: false,
-  },
-  {
-    id: "4",
-    title: "Use the dishwasher",
-    description:
-      "4Dishwashers use ½ the energy and ⅓rd of the water as handwashing. Finally, the perfect excuse for not doing the dishes.",
-    state: "pending",
-    public: false,
-  },
-];
-
-const initialState = DEFAULT_PLEDGES;
 
 const PledgesReducer = (
   state = { all: [], user: {}, new: undefined },
@@ -69,6 +34,14 @@ const PledgesReducer = (
       return newState;
     case RECEIVE_SHOW_PLEDGE:
       newState.show = action.pledge.data;
+      return newState;
+    case RECEIVE_FOLLOWED_PLEDGES:
+      let pledges;
+      pledges = action.pledges.data.filter((pledge) => {
+        return pledge.follows.includes(state.session.user.id)
+      })
+
+      newState.user = pledges;
       return newState;
     case RECEIVE_USER_PLEDGES:
       newState.user = action.pledges.data;
