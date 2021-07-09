@@ -22,7 +22,7 @@ const AboutUs = () => {
             <div className="creator-Name">Angela Turi</div>
             <p className="creator-title">Team Lead</p>
             <div className="creator-links">
-              <a
+              {/* <a
                 href="https://www.linkedin.com/in/mohammad-taher-2b502b5b"
                 target="_blank"
               >
@@ -33,7 +33,7 @@ const AboutUs = () => {
               </a>
               <a href="https://github.com/zohebtaher" target="_blank">
                 <GitHubIcon className="about-links" style={{ fontSize: 50 }} />
-              </a>
+              </a> */}
             </div>
           </div>
           <div classnName="Creator-info">
