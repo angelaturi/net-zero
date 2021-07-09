@@ -8,11 +8,11 @@ const Creators = () => {
       <div className="how-it-works-title">About Us</div>
 
       <div className="step-container">
-        <div classnName="Creator-info">
+        <div className="Creator-info">
           <div className="creator-Name">Angela Turi</div>
           <p className="creator-title">Team Lead</p>
           <div className="creator-links">
-            <a
+            {/* <a
               href="https://www.linkedin.com/in/mohammad-taher-2b502b5b"
               target="_blank"
             >
@@ -23,10 +23,10 @@ const Creators = () => {
             </a>
             <a href="https://github.com/zohebtaher" target="_blank">
               <GitHubIcon className="creator-links" style={{ fontSize: 50 }} />
-            </a>
+            </a> */}
           </div>
         </div>
-        <div classnName="Creator-info">
+        <div className="Creator-info">
           <div className="creator-Name">Mohammad Taher</div>
           <p className="creator-title">Backend Engineer</p>
           <div className="creator-links">
@@ -44,7 +44,7 @@ const Creators = () => {
             </a>
           </div>
         </div>
-        <div classnName="Creator-info">
+        <div className="Creator-info">
           <div className="creator-Name">Philip Lowe</div>
           <p className="creator-title">Frontend Engineer</p>
           <div className="creator-links">
@@ -62,7 +62,7 @@ const Creators = () => {
             </a>
           </div>
         </div>
-        <div classnName="Creator-info">
+        <div className="Creator-info">
           <div className="creator-Name">Sebastian Sanchez</div>
           <p className="creator-title">Flex Engineer</p>
           <div className="creator-links">

@@ -75,11 +75,11 @@ const Pending = ({ filter, toggleEditPledgeModal }) => {
         </Link>
 
 
-        <button
+        {(pledge.user._id === userId) ? <button
           className="button-pledge-page"
           onClick={(e) => handleEdit(e, pledge._id)}>
           Edit
-        </button>
+        </button> : null}
         <button 
           className="button-pledge-page" 
           onClick={deletePledge}>

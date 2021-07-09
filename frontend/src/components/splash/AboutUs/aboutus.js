@@ -18,7 +18,7 @@ const AboutUs = () => {
           NETZERO was built by the following talented Software Engineers.{" "}
         </div>
         <div className="aboutus-subheader">
-          <div classnName="Creator-info">
+          <div className="Creator-info">
             <div className="creator-Name">Angela Turi</div>
             <p className="creator-title">Team Lead</p>
             <div className="creator-links">
@@ -36,7 +36,7 @@ const AboutUs = () => {
               </a> */}
             </div>
           </div>
-          <div classnName="Creator-info">
+          <div className="Creator-info">
             <div className="creator-Name">Mohammad Taher</div>
             <p className="creator-title">Backend Engineer</p>
             <div className="about-links">
@@ -54,7 +54,7 @@ const AboutUs = () => {
               </a>
             </div>
           </div>
-          <div classnName="Creator-info">
+          <div className="Creator-info">
             <div className="creator-Name">Philip Lowe</div>
             <p className="creator-title">Frontend Engineer</p>
             <div className="about-links">
@@ -72,7 +72,7 @@ const AboutUs = () => {
               </a>
             </div>
           </div>
-          <div classnName="Creator-info">
+          <div className="Creator-info">
             <div className="creator-Name">Sebastian Sanchez</div>
             <p className="creator-title">Flex Engineer</p>
             <div className="about-links">
