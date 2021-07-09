@@ -1,11 +1,13 @@
 General:
 -Add uptime robot if you don't already have one.
-
 -Remove Redux logger
 Footer:
 -Angela's links are just Mohammad's sites. Remove the icons if the links aren't available for her.
 Session form:
 -Style session errors. Remove the bullet points.
+
+--------------ABOVE IS DONE---------------
+
 -Add Demo User to both signup and 
 Profile:
 -I'm able to edit pledges that don't belong to me from my profile if I follow the pledge. I should only be able to edit pledges if I am the creator of the pledge.

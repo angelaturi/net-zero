@@ -75,7 +75,7 @@ class LoginForm extends React.Component {
         <div className="login-form-header">Login to Netzero</div>
         <br />
         <form onSubmit={this.handleSubmit}>
-          <div>
+          <div className="login-form">
             <input
               type="email"
               value={this.state.email}

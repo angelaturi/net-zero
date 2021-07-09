@@ -71,4 +71,9 @@
   cursor: pointer;
 }
 
+.login-form ul {
+  list-style-type: none;
+  color: red;
+}
+
 /* } */
