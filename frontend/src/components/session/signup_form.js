@@ -15,6 +15,8 @@ class SignupForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.clearedErrors = false;
+    this.demoLogin = this.demoLogin.bind(this);
+
   }
 
   componentWillReceiveProps(nextProps) {
@@ -47,6 +49,17 @@ class SignupForm extends React.Component {
 
     this.props.signup(user, this.props.history); 
 
+  }
+
+  // Demo User Login
+  demoLogin(e) {
+    e.preventDefault();
+
+    const demoUser = {
+      email: "demo@demo.com",
+      password: "password123",
+    };
+    this.props.login(demoUser);
   }
 
   renderErrors() {
@@ -97,6 +110,10 @@ class SignupForm extends React.Component {
               />
             <br/>
             <input type="submit" className="signup-submit-button" value="Submit" />
+            <br></br>
+            <button className="demo-submit-button" onClick={this.demoLogin}>
+              Demo User
+            </button>
             {this.renderErrors()}
           </div>
         </form>
