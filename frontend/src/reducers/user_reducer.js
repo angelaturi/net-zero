@@ -1,9 +1,4 @@
-import {
-  RECEIVE_CURRENT_USER,
-  RECEIVE_USER_LOGOUT,
-  RECEIVE_USER_SIGN_IN,
-} from "../actions/session_actions";
-import { GET_ALL_USERS_SUCCESS } from "../actions/user_actions";
+import { RECEIVE_NOTES } from "../actions/user_actions";
 
 const initialState = {
   data: [],
@@ -13,7 +8,7 @@ const initialState = {
 export default function (state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
-    case GET_ALL_USERS_SUCCESS: {
+    case RECEIVE_NOTES: {
       return { ...state, data: payload };
     }
 

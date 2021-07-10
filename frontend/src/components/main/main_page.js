@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Avatar from "@material-ui/core/Avatar";
 import { Link } from "react-router-dom";
 
-import { getAllUsers } from "../../actions/user_actions";
+import { fetchUsers } from "../../actions/user_actions";
 
 import "./main_page.css";
 
@@ -12,12 +12,12 @@ const MainPage = () => {
   // Title
   // Description
 
-  const users = useSelector((state) => state.users.data);
+  const users = useSelector((state) => state.users);
   const dispatch = useDispatch();
   
 
   useEffect(() => {
-    dispatch(getAllUsers());
+    dispatch(fetchUsers());
   }, []);
 
   /*const [data, setData] = useState([

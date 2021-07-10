@@ -6,11 +6,11 @@ Footer:
 Session form:
 -Style session errors. Remove the bullet points.
 -Add Demo User to both signup and login
+Profile:
 -I'm able to edit pledges that don't belong to me from my profile if I follow the pledge. I should only be able to edit pledges if I am the creator of the pledge.
 
 --------------ABOVE IS DONE---------------
 
-Profile:
 -I should be able to see other people's profiles by clicking on their usernames and see what pledges they're following.
 Pledge Create:
 -If I create a pledge, I should automatically be joined to it and when I click create, I should be redirected to that pledge show page.
