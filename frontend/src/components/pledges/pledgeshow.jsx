@@ -2,6 +2,8 @@ import React from "react";
 import "./pledges.css";
 import Modal from "react-modal";
 import { deleteComment } from "../../actions/pledge_actions";
+import { Link } from "react-router-dom";
+
 
 const customStyles = {
   content: {
@@ -180,7 +182,12 @@ class PledgeShow extends React.Component {
             {this.props.currentPledge.follows.length} people follow this pledge
           </div>
           {this.props.currentPledge.user && (
-            <p>By {this.props.currentPledge.user.handle}</p>
+            <p>By <Link
+            className="pledge-index-link"
+            style={{ textDecoration: "none" }}
+            to={`/users/${this.props.currentPledge.user._id}`}>
+              {this.props.currentPledge.user.handle}
+            </Link></p>
           )}
           <div className="pledge-show-date">
             Pledged {this.convertDate(this.props.currentPledge.date)}
@@ -217,7 +224,11 @@ class PledgeShow extends React.Component {
             <div className="comment-container">
               <div className="comment-content-container">
                 <div className="comment-username">
-                  <u>{comment.authorName}</u>
+                  <u><Link 
+                    style={{ textDecoration: "none" }}
+                    to={`/users/${comment.authorId}`}>
+                    {comment.authorName}
+                  </Link></u>
                 </div>
                 <div className="comment-text">{comment.text}</div>
               </div>

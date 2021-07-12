@@ -1,9 +1,9 @@
 import * as APIUtil from "../util/user_api_util";
 
-export const RECEIVE_NOTES = "RECEIVE_NOTES";
+export const RECEIVE_USERS = "RECEIVE_USERS";
 
 const receiveUsers = (users) => ({
-  type: RECEIVE_NOTES,
+  type: RECEIVE_USERS,
   users
 });
 

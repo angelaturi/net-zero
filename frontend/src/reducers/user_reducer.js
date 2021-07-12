@@ -1,4 +1,4 @@
-import { RECEIVE_NOTES } from "../actions/user_actions";
+import { RECEIVE_USERS } from "../actions/user_actions";
 
 const initialState = {
   data: [],
@@ -6,11 +6,10 @@ const initialState = {
 };
 
 export default function (state = initialState, action) {
-  const { type, payload } = action;
-  switch (type) {
-    case RECEIVE_NOTES: {
-      return { ...state, data: payload };
-    }
+
+  switch (action.type) {
+    case RECEIVE_USERS: 
+      return action.users.data;
 
     default:
       return state;
