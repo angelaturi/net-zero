@@ -5,7 +5,7 @@ With our minimal and intuitive design, Net Zero pledge tracker is here to make y
 
 [Net Zero](https://netzero-application.herokuapp.com/)
 
-Notes            |  Notebooks
+Pledge Index            |  Profile
 :-------------------------:|:-------------------------:
 ![Screenshot of the Notes view](./frontend/public/assets/images/screenshot1.png) | ![Screenshot of the Notebooks view](./frontend/public/assets/images/screenshot2.png)
 
