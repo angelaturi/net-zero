@@ -7,7 +7,7 @@ With our minimal and intuitive design, Net Zero pledge tracker is here to make y
 
 Notes            |  Notebooks
 :-------------------------:|:-------------------------:
-![Screenshot of the Notes view](./frontend/public/assets/images/screenshot1.png) | ![Screenshot of the Notebooks view](./frontend/public/assets/images/screenshot1.png)
+![Screenshot of the Notes view](./frontend/public/assets/images/screenshot1.png) | ![Screenshot of the Notebooks view](./frontend/public/assets/images/screenshot2.png)
 
 ## Technologies Used
 * React / Redux
