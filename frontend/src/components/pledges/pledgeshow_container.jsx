@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import { showPledge, 
   followPledge, 
   unfollowPledge,
+  updatePledge,
   deletePledge,
   createCommentOnPledge, 
   editCommentOnPledge,
@@ -30,6 +31,7 @@ const mapDispatchToProps = (dispatch) => {
       deleteComment: ({pledgeId, commentId}) =>
         dispatch(deleteComment({pledgeId, commentId})),
       deletePledge: (pledgeId) => dispatch(deletePledge(pledgeId)),
+      updatePledge: (pledge) => dispatch(updatePledge(pledge)),
   };
 };
 

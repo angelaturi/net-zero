@@ -17,7 +17,7 @@ export const createPledge = (pledge) => {
 };
 
 export const updatePledge = (pledge) => {
-  return axios.patch(`/api/pledges/${pledge.id}`, pledge);
+  return axios.patch(`/api/pledges/${pledge._id}`, pledge);
 };
 
 export const deletePledge = (pledgeId) => {

@@ -31,6 +31,9 @@ class PledgeShow extends React.Component {
       editCommentText: "",
 
       showEditPledgeModal: false,
+      currentPledge: null,
+      newPledgeTitle: '',
+      newPledgeDescription: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.toggleFollow = this.toggleFollow.bind(this);
@@ -44,12 +47,29 @@ class PledgeShow extends React.Component {
     this.handleDeleteComment = this.handleDeleteComment.bind(this);
 
     this.toggleEditPledgeModal = this.toggleEditPledgeModal.bind(this);
+    this.handleUpdatePledge = this.handleUpdatePledge.bind(this);
     this.handleDeletePledge = this.handleDeletePledge.bind(this);
+  }
+
+  updateField(field) {
+
+    return e => {
+        this.setState({ [field]: e.currentTarget.value });
+      }
   }
 
   componentDidMount() {
     let pledgeId = this.props.match.params.pledgeId;
     this.props.showPledge(pledgeId);
+    if (this.props.currentPledge) {
+
+      this.setState({
+        currentPledge: this.props.currentPledge,
+        newPledgeTitle: this.props.currentPledge.title,
+        newPledgeDescription: this.props.currentPledge.description,
+  
+      })
+    }
   }
 
   componentWillReceiveProps(newState) {
@@ -57,6 +77,7 @@ class PledgeShow extends React.Component {
     if(!newState.currentPledge) {
       let pledgeId = this.props.match.params.pledgeId;
       this.props.showPledge(pledgeId);
+      
     } else {
 
       newState.currentPledge.follows.map((followerId) => {
@@ -64,9 +85,18 @@ class PledgeShow extends React.Component {
           this.setState({ followed: true });
         }
       });
-    }
+    } 
+  }
 
-    
+  componentDidUpdate(prevProps) {
+    if (this.props.currentPledge != prevProps.currentPledge) {
+      this.setState({
+        currentPledge: this.props.currentPledge,
+        newPledgeTitle: this.props.currentPledge.title,
+        newPledgeDescription: this.props.currentPledge.description,
+  
+      })
+    }
   }
 
   convertDate = (dateTime) => {
@@ -140,10 +170,6 @@ class PledgeShow extends React.Component {
       });
   }
 
-  toggleEditPledgeModal() {
-
-  }
-
   handleUpdateComment(e) {
     e.preventDefault();
 
@@ -185,6 +211,8 @@ class PledgeShow extends React.Component {
     let prevshowEditPledgeModal = this.state.showEditPledgeModal;
     this.setState({
       showEditPledgeModal: !prevshowEditPledgeModal,
+      currentPledge: this.props.currentPledge,
+
     });
   }
 
@@ -192,6 +220,16 @@ class PledgeShow extends React.Component {
     this.props.deletePledge(pledge._id);
     this.props.history.push(`/pledges/`)
   }
+
+  handleUpdatePledge(e) {
+    e.preventDefault();
+    let newPledge = this.props.currentPledge;
+    newPledge.title = this.state.newPledgeTitle;
+    newPledge.description = this.state.newPledgeDescription;
+    debugger
+    this.props.updatePledge(newPledge);
+    this.toggleEditPledgeModal();
+  };
 
   render() {
     
@@ -228,10 +266,7 @@ class PledgeShow extends React.Component {
                     onClick={(e) => this.handleDeletePledge(this.props.currentPledge)}>
                     Delete
                   </button>             
-                </div>: 
-                <div>
-                  {this.props.currentPledge.user._id}, {this.props.currentUser.id}
-                </div>}
+                </div>: null}
 
           </div>
 
@@ -319,11 +354,34 @@ class PledgeShow extends React.Component {
               </form>
             </div>
           </Modal>
-          <EditPledge
-            selectedPledge={this.props.currentPledge}
-            showEditPledgeModal={this.state.showEditPledgeModal}
-            toggleEditPledgeModal={this.toggleEditPledgeModal}
-          />
+          {
+            this.state.currentPledge &&
+            // <EditPledge
+            //   selectedPledge={this.state.currentPledge}
+            //   showEditPledgeModal={this.state.showEditPledgeModal}
+            //   toggleEditPledgeModal={this.toggleEditPledgeModal}
+            // />
+            <Modal
+              isOpen={this.state.showEditPledgeModal}
+              onRequestClose={this.toggleEditPledgeModal}
+              style={customStyles}
+            >
+            <h2>Edit a Pledge</h2>
+            <form onSubmit={(e) => this.handleUpdatePledge(e)}>
+
+              <div className="create-pledge-titles">Title:</div>
+              <input className="create-pledge-input" name="title" value={this.state.newPledgeTitle} 
+              onChange={this.updateField('newPledgeTitle')} />
+
+              <div className="create-pledge-titles">Title:</div>
+              <input className="create-pledge-input" name="title" value={this.state.newPledgeDescription} 
+              onChange={this.updateField('newPledgeDescription')} />
+              <br />
+              <button className="signup-submit-button">Save</button>
+
+            </form>
+            </Modal>
+          }
         </div>
       );
     } else {

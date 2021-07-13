@@ -132,10 +132,10 @@ export const makePledge = (pledge) => (dispatch) =>
     .then((pledge) => dispatch(receivePledge(pledge)))
     .catch((err) => console.log(err));
 
-// export const editPledge = (id) => (dispatch) =>
-//   PledgeApiUtil.updatePledge(id)
-//     .then((pledge) => dispatch(receivePledge(pledge)))
-//     .catch((err) => console.log(err));
+export const updatePledge = (pledge) => (dispatch) =>
+  PledgeApiUtil.updatePledge(pledge)
+    .then((pledge) => dispatch(receivePledge(pledge)))
+    .catch((err) => console.log(err));
 
 export const deletePledge = (id) => (dispatch) =>
   PledgeApiUtil.deletePledge(id)
