@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Modal from "react-modal";
 import { useDispatch } from "react-redux";
-import { createPledgeAction } from "../../actions/pledge_actions";
+import { withRouter, useHistory } from "react-router-dom";
+import { fetchPledges, followPledge, unfollowPledge, makePledge } from '../../actions/pledge_actions';
 
 const customStyles = {
   content: {
@@ -40,6 +41,8 @@ const AddPledge = ({
 
   const { title, description, isPublic } = formData;
   const dispatch = useDispatch();
+  let history = useHistory();
+
 
   const handleInputChange = (event) => {
     const { name, value, type, checked } = event.target;
@@ -58,13 +61,21 @@ const AddPledge = ({
 
   const handleCreatePledge = (e) => {
     e.preventDefault();
-    dispatch(
-      createPledgeAction({
-        ...formData,
-        public: isPublic,
-        category: selectedCategory,
-      })
-    );
+    let createPledge = (pledge) => dispatch(makePledge(pledge));
+
+    let pledge = {
+      ...formData,
+      public: isPublic,
+      category: selectedCategory,
+    }
+
+    createPledge(pledge)
+    .then((res) => {
+      let pledge = res.pledge.data;
+      dispatch(followPledge(pledge._id));
+      debugger
+      history.push(`/pledges/${pledge._id}`);
+    })
     toggleAddPledgeModal();
   };
 
@@ -109,4 +120,4 @@ const AddPledge = ({
     </div>
   );
 };
-export default AddPledge;
+export default withRouter(AddPledge);

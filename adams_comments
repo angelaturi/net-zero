@@ -8,10 +8,10 @@ Session form:
 -Add Demo User to both signup and login
 Profile:
 -I'm able to edit pledges that don't belong to me from my profile if I follow the pledge. I should only be able to edit pledges if I am the creator of the pledge.
+-I should be able to see other people's profiles by clicking on their usernames and see what pledges they're following.
 
 --------------ABOVE IS DONE---------------
 
--I should be able to see other people's profiles by clicking on their usernames and see what pledges they're following.
 Pledge Create:
 -If I create a pledge, I should automatically be joined to it and when I click create, I should be redirected to that pledge show page.
 Pledge Show:
@@ -20,3 +20,5 @@ Pledge Show:
 GH Repo
 -Add a production README that's fully fleshed out. Technologies used, Group members and their roles, Code snippets, etc.
 -Add an about section
+
+- Style User Show

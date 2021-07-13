@@ -127,8 +127,8 @@ export const fetchPledge = (id) => (dispatch) =>
     .then((pledge) => dispatch(receivePledge(pledge)))
     .catch((err) => console.log(err));
 
-export const makePledge = (id) => (dispatch) =>
-  PledgeApiUtil.createPledge(id)
+export const makePledge = (pledge) => (dispatch) =>
+  PledgeApiUtil.createPledge(pledge)
     .then((pledge) => dispatch(receivePledge(pledge)))
     .catch((err) => console.log(err));
 
