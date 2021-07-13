@@ -1,3 +1,58 @@
 .user-show {
     margin-top: 100px;
 }
+
+.profile-main {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    position: relative;
+    width: 60%;
+    margin: 100px 100px 100px 200px;
+}
+
+.pledge-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid darkgray;
+    transition: transform 0.2s;
+
+
+}
+
+.pledge-item:hover {
+    transform: scale(1.05);
+}
+
+.pledge-item-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.pledge-item-content h3 {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 10px 10px 10px 10px;
+}
+
+.pledge-item-content p {
+    font-size: 14px;
+    font-weight: 400;
+    color: gray;
+    margin: 0px 10px 10px 10px;
+}
+
+button {
+    background-color: black;
+    color: white;
+    width: 60px;
+    height: 30px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(104, 220, 93);
+    border: 1px solid rgb(104, 220, 93);
+  }

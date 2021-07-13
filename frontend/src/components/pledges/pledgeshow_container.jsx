@@ -2,10 +2,12 @@ import { connect } from "react-redux";
 import { showPledge, 
   followPledge, 
   unfollowPledge,
+  deletePledge,
   createCommentOnPledge, 
   editCommentOnPledge,
   deleteComment } from "../../actions/pledge_actions";
 import PledgeShow from "./pledgeshow";
+import { withRouter } from "react-router-dom";
 
 const mapStateToProps = (state, ownProps) => {
 
@@ -26,8 +28,9 @@ const mapDispatchToProps = (dispatch) => {
       editCommentOnPledge: ({pledgeId, commentId, ...comment}) => 
         dispatch(editCommentOnPledge({pledgeId, commentId, ...comment})),
       deleteComment: ({pledgeId, commentId}) =>
-        dispatch(deleteComment({pledgeId, commentId}))
+        dispatch(deleteComment({pledgeId, commentId})),
+      deletePledge: (pledgeId) => dispatch(deletePledge(pledgeId)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(PledgeShow);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PledgeShow));

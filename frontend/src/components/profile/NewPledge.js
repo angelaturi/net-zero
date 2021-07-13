@@ -73,7 +73,7 @@ const AddPledge = ({
     .then((res) => {
       let pledge = res.pledge.data;
       dispatch(followPledge(pledge._id));
-      debugger
+      
       history.push(`/pledges/${pledge._id}`);
     })
     toggleAddPledgeModal();

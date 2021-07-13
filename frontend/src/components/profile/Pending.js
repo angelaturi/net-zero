@@ -65,6 +65,14 @@ const Pending = ({ filter, toggleEditPledgeModal }) => {
           <li>{pledge.title}</li>
           <li className="pending-pledge-description">{pledge.description}</li>
         </ul>
+        
+
+
+        {(pledge.user._id === userId) ? <button
+          className="button-pledge-page"
+          onClick={(e) => handleEdit(e, pledge._id)}>
+          Edit
+        </button> : null}
         <Link to={`/pledges/${pledge._id}`}
               style={{ textDecoration: "none" }}
               >
@@ -73,18 +81,11 @@ const Pending = ({ filter, toggleEditPledgeModal }) => {
             View
           </button>
         </Link>
-
-
-        {(pledge.user._id === userId) ? <button
-          className="button-pledge-page"
-          onClick={(e) => handleEdit(e, pledge._id)}>
-          Edit
-        </button> : null}
-        <button 
+        {/* <button 
           className="button-pledge-page" 
           onClick={deletePledge}>
           Delete
-        </button>
+        </button> */}
       </div>
     ));
   };

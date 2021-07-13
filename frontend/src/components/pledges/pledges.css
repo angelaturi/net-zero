@@ -290,3 +290,34 @@ font-size: 1rem;
     border: 1px solid  rgb(104,220,93);
 
 }
+
+.pledge-show-options {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pledge-show-options-follow{
+    display: flex;
+    flex-direction: column;
+}
+
+.pledge-show-options-edit-delete{
+    display: flex;
+    flex-direction: column;
+}
+
+.button {
+    margin: 2px;
+    background-color: black;
+    color: white;
+    width: 100px;
+    height: 30px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color:  rgb(104,220,93);
+    border: 1px solid  rgb(104,220,93);
+
+}

@@ -26,7 +26,7 @@ const UserProfile = () => {
 
   let pledges = useSelector((state) => state.pledges.all);
   const userId = useSelector((state) => state.session.user.id);
-  
+  const currentUser = useSelector((state) => state.session.user);
 
   //filter out pledges that arent followed by the current user
   pledges = pledges.filter((pledge) => {
@@ -79,6 +79,9 @@ const UserProfile = () => {
 
   return (
     <div className="profile-main">
+      <h1>
+        {currentUser.handle}'s Pledges
+      </h1>
       <AddCircleIcon onClick={toggleCategoriesModal} className="addcircle" />{" "}
       <br /> <br />
       <PledgeCategories

@@ -1,5 +1,6 @@
 import React from 'react';
 import "./user_show.css";
+import { Link } from 'react-router-dom';
 
 class UserShow extends React.Component {
     constructor(props) {
@@ -58,30 +59,49 @@ class UserShow extends React.Component {
         if (this.state.userToShow && this.state.pledgesToShow) {
             return (
                 <div className="user-show">
-                    <h1>
-                        {userToShow.handle}
-                    </h1>
-                    <h2>Followed Pledges</h2>
-                        {pledgesToShow.map((pledge) => {
-                            
-                            return (
-                                <div key={pledge._id}>
-                                    {pledge.title}
-                                </div>
-                                )
-                            })}
+                    <div className="profile-main">
+
+                        <h1>
+                            {userToShow.handle}'s Pledges
+                        </h1>
+                        <h2>Followed Pledges</h2>
+                            {pledgesToShow.map((pledge) => {
+                                
+                                return (
+                                    <div className="pledge-item" key={pledge._id}>
+                                        <div className="pledge-item-content">
+                                            <h3>
+                                                {pledge.title}
+                                            </h3>
+                                            <p>
+                                                {pledge.description}
+                                            </p>
+                                        </div>
+                                        
+                                        <Link to={`/pledges/${pledge._id}`}>
+                                            <button>
+                                                View
+                                            </button>
+                                        </Link>
+                                    </div>
+                                    )
+                                })}
+                    </div>
                 </div>
             )
         } else if (this.state.userToShow) {
             return (
                 <div className="user-show">
-                    <h1>
-                        {userToShow.handle}
-                    </h1>
-                    <h2>
-                        Followed Pledges
-                    </h2>
-                    <p>This user has no followed pledges!</p>
+                     <div className="profile-main">
+                        <h1>
+                            {userToShow.handle}
+                        </h1>
+                        <h2>
+                            Followed Pledges
+                        </h2>
+                        <p>This user has no followed pledges!</p>
+                     </div>
+                    
                 </div>
             )
         } else {
