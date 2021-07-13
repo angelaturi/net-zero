@@ -11,7 +11,6 @@ const PledgeSchema = new Schema({
   },
   description: {
     type: String,
-    required: true,
   },
   actionlist: {
     type: Array,

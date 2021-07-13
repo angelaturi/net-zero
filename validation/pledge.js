@@ -25,14 +25,14 @@ module.exports = function validatePledgeInput(data) {
       "Title field should be minimum 4 characters and maximum 20 characters.";
   }
 
-  if (Validator.isEmpty(data.description)) {
-    errors.description = "Description field is required.";
-  }
+  // if (Validator.isEmpty(data.description)) {
+  //   errors.description = "Description field is required.";
+  // }
 
-  if (!Validator.isLength(data.description, { min: 8, max: 1000 })) {
-    errors.description =
-      "Description field should be minimum 8 characters and maximum 1000 characters.";
-  }
+  // if (!Validator.isLength(data.description, { min: 8, max: 1000 })) {
+  //   errors.description =
+  //     "Description field should be minimum 8 characters and maximum 1000 characters.";
+  // }
 
   // if (Validator.isEmpty(data.state)) {
   //   errors.state = "State field is required.";
