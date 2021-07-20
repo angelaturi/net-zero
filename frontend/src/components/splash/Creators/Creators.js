@@ -4,7 +4,7 @@ import "./Creators.css";
 
 const Creators = () => {
   return (
-    <section className="how-it-works-section">
+    <section className="how-it-works-section about-section">
       <div className="how-it-works-title">About Us</div>
 
       <div className="step-container">

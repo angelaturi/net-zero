@@ -37,3 +37,19 @@
 }
 
 
+.about-section {
+  background-color: lightgray;
+  margin: 0px;
+  padding: 10px;
+
+}
+
+.about-section .how-it-works-title {
+  margin-top: 50px;
+
+}
+
+.about-section .step-container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
