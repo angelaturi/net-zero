@@ -15,7 +15,11 @@ const AboutUs = () => {
       />
       <div className="aboutus-box">
         <div className="aboutus-header">
-          NETZERO was built by the following talented Software Engineers.{" "}
+          <div>
+            <a href="https://github.com/angelaturi/net-zero" target="_blank">
+              <GitHubIcon className="github-icon" style={{fontSize: 50}} /> NETZERO 
+            </a> was built by the following talented Software Engineers.{" "}
+          </div>
         </div>
         <div className="aboutus-subheader">
           <div className="Creator-info">
@@ -90,7 +94,9 @@ const AboutUs = () => {
               </a>
             </div>
           </div>
+          
         </div>
+        
         {/* <button className="hero-button"> <a href="/signup">Get Started</a></button> */}
       </div>
     </section>

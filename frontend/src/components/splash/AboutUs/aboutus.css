@@ -24,6 +24,21 @@
   display: flex;
 }
 
+.aboutus-header a {
+  text-decoration: none;
+  color: white;
+}
+
+.aboutus-header a:hover {
+  text-decoration: none;
+  color: rgb(104, 220, 93);
+
+}
+
+.github-icon {
+  vertical-align: top;
+}
+
 .aboutus-subheader {
   position: relative;
   font-family: Helvetica, sans-serif;

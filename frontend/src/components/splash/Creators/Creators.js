@@ -78,6 +78,12 @@ const Creators = () => {
           </div>
         </div>
       </div>
+      <div>
+        <div className="how-it-works-title">NetZero Github Repository</div>
+        <a href="https://github.com/angelaturi/net-zero" target="_blank">
+          <GitHubIcon className="creator-links" style={{fontSize: 50}} />
+        </a>
+      </div>
     </section>
   );
 };
